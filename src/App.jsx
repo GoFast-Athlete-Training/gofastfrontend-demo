@@ -39,12 +39,12 @@ import MentalHub from "./Pages/Mental/MentalHub";
 import Nutrition from "./Pages/Maintenance/Nutrition";
 import InjuryPrevention from "./Pages/Maintenance/InjuryPrevention";
 
-// Setup (Modular)
+// Setup (Modular) - Updated paths
 import Profile from "./Pages/Setup/Profile";
 import Goals from "./Pages/Setup/Goals";
-import RaceSetup from "./Pages/Setup/RaceSetup";
-import RunnerProfile from "./Pages/Setup/RunnerProfile";
-import Settings from "./Pages/Settings";
+import RaceSetup from "./Pages/Settings/RaceSetup";
+import RunnerProfile from "./Pages/Settings/RunnerProfile";
+import Settings from "./Pages/Settings/Settings";
 
 const App = () => (
   <Router>

@@ -71,13 +71,6 @@ const GoFastDashboard = () => {
       size: "large"
     },
     {
-      name: "Next Up",
-      description: "Upcoming workouts and schedule",
-      icon: "📅",
-      color: "bg-purple-500",
-      route: "/week-view"
-    },
-    {
       name: "Race",
       description: "Race day execution",
       icon: "🏁",
@@ -150,19 +143,17 @@ const GoFastDashboard = () => {
         </div>
 
         {/* Current Phase */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <h2 className="text-xl font-bold mb-4">Current Phase</h2>
+        <div className="bg-white rounded-lg shadow p-4 mb-6">
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="text-2xl font-bold text-blue-600">{currentPhase.name}</h3>
-              <p className="text-gray-600">{currentPhase.week}</p>
-              <p className="text-sm text-gray-500 mt-1">{currentPhase.focus}</p>
+              <h3 className="text-lg font-bold text-blue-600">{currentPhase.name}</h3>
+              <p className="text-sm text-gray-600">{currentPhase.week}</p>
             </div>
             <div className="text-right">
-              <div className="w-32 bg-gray-200 rounded-full h-3">
-                <div className="bg-blue-500 h-3 rounded-full" style={{width: `${currentPhase.progress}%`}}></div>
+              <div className="w-24 bg-gray-200 rounded-full h-2">
+                <div className="bg-blue-500 h-2 rounded-full" style={{width: `${currentPhase.progress}%`}}></div>
               </div>
-              <p className="text-sm text-gray-500 mt-2">{currentPhase.progress}% complete</p>
+              <p className="text-xs text-gray-500 mt-1">{currentPhase.progress}% complete</p>
             </div>
           </div>
         </div>

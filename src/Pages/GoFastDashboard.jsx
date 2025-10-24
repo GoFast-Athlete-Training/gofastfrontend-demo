@@ -120,9 +120,9 @@ const GoFastDashboard = () => {
           ))}
         </div>
 
-        {/* Mental Section */}
+        {/* Body & Mind Section */}
         <div className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Mental & Reflection</h2>
+          <h2 className="text-xl font-bold mb-4">Body & Mind Maintenance</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
               onClick={() => navigate("/mental-hub")}
@@ -132,8 +132,32 @@ const GoFastDashboard = () => {
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
                   🧠
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Mental</h3>
+                <h3 className="text-lg font-semibold mb-2">Mental Health</h3>
                 <p className="text-gray-600 text-sm">Reflection, journaling, and mental training</p>
+              </div>
+            </div>
+            <div
+              onClick={() => navigate("/nutrition")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  🥗
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Nutrition</h3>
+                <p className="text-gray-600 text-sm">Fuel your training with proper nutrition</p>
+              </div>
+            </div>
+            <div
+              onClick={() => navigate("/injury-prevention")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  🏥
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Injury Prevention</h3>
+                <p className="text-gray-600 text-sm">Stay healthy and avoid injuries</p>
               </div>
             </div>
           </div>

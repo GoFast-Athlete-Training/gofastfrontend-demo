@@ -36,6 +36,8 @@ import PostRaceHub from "./Pages/PostRace/PostRaceHub";
 import RecoveryPlan from "./Pages/PostRace/RecoveryPlan";
 import NextGoals from "./Pages/PostRace/NextGoals";
 import MentalHub from "./Pages/Mental/MentalHub";
+import Nutrition from "./Pages/Maintenance/Nutrition";
+import InjuryPrevention from "./Pages/Maintenance/InjuryPrevention";
 
 // Setup (Modular)
 import Profile from "./Pages/Setup/Profile";
@@ -79,6 +81,8 @@ const App = () => (
       <Route path="/recovery-plan" element={<RecoveryPlan />} />
       <Route path="/next-goals" element={<NextGoals />} />
       <Route path="/mental-hub" element={<MentalHub />} />
+      <Route path="/nutrition" element={<Nutrition />} />
+      <Route path="/injury-prevention" element={<InjuryPrevention />} />
       
       {/* Setup (Modular) */}
       <Route path="/profile" element={<Profile />} />

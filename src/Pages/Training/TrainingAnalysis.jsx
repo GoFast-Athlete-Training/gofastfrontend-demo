@@ -147,7 +147,7 @@ const TrainingAnalysis = () => {
                 Back to Training Hub
               </button>
               <button
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/dashboard")}
                 className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
               >
                 Back to Dashboard

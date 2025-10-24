@@ -34,7 +34,7 @@ const GoCrushIt = () => {
 
           <div className="flex gap-4">
             <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/dashboard")}
               className="flex-1 px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition"
             >
               Back to Dashboard

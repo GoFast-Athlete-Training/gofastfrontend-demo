@@ -206,7 +206,7 @@ const WeekView = () => {
             Today's Workout 🏃‍♂️
           </button>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/dashboard")}
             className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
           >
             Back to Dashboard

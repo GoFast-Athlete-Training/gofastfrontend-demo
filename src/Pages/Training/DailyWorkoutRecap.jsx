@@ -14,7 +14,7 @@ const DailyWorkoutRecap = () => {
     console.log({ feeling, injury, injuryDetail, notes });
     // For demo - just show success and navigate back
     alert("Recap submitted! Your coach will review this feedback.");
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
@@ -97,7 +97,7 @@ const DailyWorkoutRecap = () => {
                 Submit Recap
               </button>
               <button
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/dashboard")}
                 className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
               >
                 Back

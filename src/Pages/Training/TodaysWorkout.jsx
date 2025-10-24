@@ -154,7 +154,7 @@ const TodaysWorkout = () => {
             </button>
             <button
               className="flex-1 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/dashboard")}
             >
               Dashboard 🏠
             </button>

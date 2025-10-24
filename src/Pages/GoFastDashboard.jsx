@@ -4,20 +4,34 @@ import { useNavigate } from "react-router-dom";
 const GoFastDashboard = () => {
   const navigate = useNavigate();
 
-  // Boston Marathon data
-  const raceDate = new Date('2026-04-30');
+  // Next Race (local prep race)
+  const nextRaceDate = new Date('2024-12-15');
   const today = new Date();
-  const daysUntilRace = Math.ceil((raceDate - today) / (1000 * 60 * 60 * 24));
-  const weeksUntilRace = Math.ceil(daysUntilRace / 7);
+  const daysUntilNextRace = Math.ceil((nextRaceDate - today) / (1000 * 60 * 60 * 24));
+  const weeksUntilNextRace = Math.ceil(daysUntilNextRace / 7);
   
-  const marathonData = {
+  const nextRaceData = {
+    raceName: "Charlotte Turkey Trot 5K",
+    raceDate: "December 15, 2024",
+    raceType: "5K",
+    goalTime: "22:30",
+    weeksUntilRace: weeksUntilNextRace,
+    daysUntilRace: daysUntilNextRace
+  };
+
+  // Goal Race (the big one we really track)
+  const goalRaceDate = new Date('2026-04-30');
+  const daysUntilGoalRace = Math.ceil((goalRaceDate - today) / (1000 * 60 * 60 * 24));
+  const weeksUntilGoalRace = Math.ceil(daysUntilGoalRace / 7);
+  
+  const goalRaceData = {
     goalTime: "3:25:00",
     currentTime: "3:45:00", 
     goalPace: "7:48",
     currentPace: "8:30",
     projectedPace: "8:12",
-    weeksUntilRace,
-    daysUntilRace,
+    weeksUntilRace: weeksUntilGoalRace,
+    daysUntilRace: daysUntilGoalRace,
     raceName: "Boston Marathon",
     raceDate: "April 30, 2026"
   };
@@ -116,16 +130,20 @@ const GoFastDashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h2 className="text-lg font-semibold text-gray-600 mb-2">Your Next Race</h2>
-              <h3 className="text-xl font-bold mb-1">{marathonData.raceName}</h3>
-              <p className="text-gray-600">{marathonData.raceDate}</p>
-              <p className="text-sm text-gray-500 mt-1">{marathonData.weeksUntilRace} weeks until race</p>
+              <h3 className="text-xl font-bold mb-1">{nextRaceData.raceName}</h3>
+              <p className="text-gray-600">{nextRaceData.raceDate}</p>
+              <p className="text-sm text-gray-500 mt-1">{nextRaceData.weeksUntilRace} weeks until race</p>
+              <p className="text-sm text-blue-600 font-semibold mt-1">Goal: {nextRaceData.goalTime}</p>
             </div>
             <div>
               <h2 className="text-lg font-semibold text-gray-600 mb-2">Your Goal Race</h2>
-              <div className="text-right">
-                <p className="text-2xl font-bold text-orange-600">{marathonData.goalTime}</p>
+              <h3 className="text-xl font-bold mb-1">{goalRaceData.raceName}</h3>
+              <p className="text-gray-600">{goalRaceData.raceDate}</p>
+              <p className="text-sm text-gray-500 mt-1">{goalRaceData.weeksUntilRace} weeks until race</p>
+              <div className="text-right mt-2">
+                <p className="text-2xl font-bold text-orange-600">{goalRaceData.goalTime}</p>
                 <p className="text-sm text-gray-500">Goal Time</p>
-                <p className="text-sm text-gray-500 mt-1">{marathonData.goalPace} pace</p>
+                <p className="text-sm text-gray-500">{goalRaceData.goalPace} pace</p>
               </div>
             </div>
           </div>

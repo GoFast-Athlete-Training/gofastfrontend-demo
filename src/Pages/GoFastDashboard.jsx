@@ -101,10 +101,10 @@ const GoFastDashboard = () => {
             </div>
             <div className="flex gap-3">
               <button
-                onClick={() => navigate("/my-races")}
+                onClick={() => navigate("/settings")}
                 className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
               >
-                My Races 📅
+                Settings ⚙️
               </button>
               <button
                 onClick={() => navigate("/todays-workout")}
@@ -270,48 +270,6 @@ const GoFastDashboard = () => {
           </div>
         </div>
 
-        {/* Setup & Settings */}
-        <div className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Setup & Settings</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div
-              onClick={() => navigate("/profile")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200"
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  👤
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Profile Setup</h3>
-                <p className="text-gray-600 text-sm">Set up your runner profile</p>
-              </div>
-            </div>
-            <div
-              onClick={() => navigate("/goals")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200"
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  🎯
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Build My Plan</h3>
-                <p className="text-gray-600 text-sm">Set goals and build your training plan</p>
-              </div>
-            </div>
-            <div
-              onClick={() => navigate("/race-setup")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200"
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  🏁
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Race Setup</h3>
-                <p className="text-gray-600 text-sm">Set up your race and training plan</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

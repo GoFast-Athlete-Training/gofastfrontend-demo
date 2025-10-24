@@ -44,6 +44,7 @@ import Profile from "./Pages/Setup/Profile";
 import Goals from "./Pages/Setup/Goals";
 import RaceSetup from "./Pages/Setup/RaceSetup";
 import RunnerProfile from "./Pages/Setup/RunnerProfile";
+import Settings from "./Pages/Settings";
 
 const App = () => (
   <Router>

@@ -29,6 +29,8 @@ import HotelTravel from "./Pages/Race/HotelTravel";
 import RaceStrategy from "./Pages/Race/RaceStrategy";
 import RaceChecklist from "./Pages/Race/RaceChecklist";
 import RaceDetail from "./Pages/Race/RaceDetail";
+import RaceMorning from "./Pages/Race/RaceMorning";
+import RaceFeedback from "./Pages/Race/RaceFeedback";
 
 // Setup (Modular)
 import Profile from "./Pages/Setup/Profile";
@@ -65,6 +67,8 @@ const App = () => (
       <Route path="/race-strategy" element={<RaceStrategy />} />
       <Route path="/race-checklist" element={<RaceChecklist />} />
       <Route path="/race-detail/:raceId" element={<RaceDetail />} />
+      <Route path="/race-morning" element={<RaceMorning />} />
+      <Route path="/race-feedback" element={<RaceFeedback />} />
       
       {/* Setup (Modular) */}
       <Route path="/profile" element={<Profile />} />

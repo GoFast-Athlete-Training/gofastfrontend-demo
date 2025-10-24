@@ -19,6 +19,10 @@ import MatchActivity from "./Pages/Training/MatchActivity";
 import GarminConnect from "./Pages/Training/GarminConnect";
 import GarminConnected from "./Pages/Training/GarminConnected";
 
+// Race Modules
+import RaceHub from "./Pages/Race/RaceHub";
+import MyRaces from "./Pages/Race/MyRaces";
+
 // Setup (Modular)
 import Profile from "./Pages/Setup/Profile";
 import Goals from "./Pages/Setup/Goals";
@@ -43,6 +47,10 @@ const App = () => (
       <Route path="/match-activity" element={<MatchActivity />} />
       <Route path="/connect-garmin" element={<GarminConnect />} />
       <Route path="/garmin-connected" element={<GarminConnected />} />
+      
+      {/* Race Modules */}
+      <Route path="/race-hub" element={<RaceHub />} />
+      <Route path="/my-races" element={<MyRaces />} />
       
       {/* Setup (Modular) */}
       <Route path="/profile" element={<Profile />} />

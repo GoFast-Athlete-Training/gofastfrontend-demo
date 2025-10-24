@@ -32,8 +32,15 @@ const GoFastDashboard = () => {
       route: "/training-hub"
     },
     {
+      name: "My Races",
+      description: "Plan and prepare for your race",
+      icon: "📅",
+      color: "bg-purple-500",
+      route: "/my-races"
+    },
+    {
       name: "Run My Race", 
-      description: "Race day execution and strategy",
+      description: "Race day execution",
       icon: "🏁",
       color: "bg-red-500",
       route: "/race-hub"
@@ -44,13 +51,6 @@ const GoFastDashboard = () => {
       icon: "🎉",
       color: "bg-green-500", 
       route: "/post-race-hub"
-    },
-    {
-      name: "My Races",
-      description: "Manage races, hotels, travel",
-      icon: "✈️",
-      color: "bg-purple-500",
-      route: "/my-races"
     }
   ];
 

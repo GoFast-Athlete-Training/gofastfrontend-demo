@@ -1,13 +1,26 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const WeeklyReview = ({ userId }) => {
+const WeeklyReview = () => {
   const navigate = useNavigate();
-  const [summary, setSummary] = useState(null);
+  
+  // Dummy weekly summary data
+  const summary = {
+    weekIndex: 4,
+    totalMiles: 52,
+    totalTime: "7:15:30",
+    avgPace: "8:30",
+    runsCompleted: 5,
+    runsPlanned: 6,
+    longestRun: 15,
+    avgHeartRate: 155,
+    caloriesBurned: 4200,
+    elevationGained: 1200
+  };
+
   const [reflection, setReflection] = useState({
-    durability: 3,
-    breathing: 3,
+    durability: 4,
+    breathing: 4,
     fatigue: 3,
     mood: "🙂",
     injuryRisk: false,
@@ -17,29 +30,11 @@ const WeeklyReview = ({ userId }) => {
 
   const moodOptions = ["😫", "😕", "🙂", "😎", "🔥"];
 
-  useEffect(() => {
-    const fetchSummary = async () => {
-      const res = await axios.get("/api/performance/weekly-summary", {
-        params: { userId }
-      });
-      setSummary(res.data);
-    };
-
-    fetchSummary();
-  }, [userId]);
-
-  const handleSave = async () => {
-    await axios.post("/api/performance/week/checkin", {
-      userId,
-      weekIndex: summary.weekIndex,
-      ...summary,
-      reflection
-    });
-
-    navigate("/pulse/today");
+  const handleSave = () => {
+    // Save reflection data (could be localStorage or API)
+    localStorage.setItem('weekly-reflection', JSON.stringify(reflection));
+    navigate("/");
   };
-
-  if (!summary) return <div className="p-6 text-center">Loading weekly review...</div>;
 
   return (
     <div className="max-w-3xl mx-auto p-6">

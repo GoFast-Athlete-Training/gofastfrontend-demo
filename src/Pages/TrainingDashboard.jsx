@@ -8,6 +8,7 @@ const TrainingDashboard = () => {
   const raceDate = new Date('2026-04-30');
   const today = new Date();
   const daysUntilRace = Math.ceil((raceDate - today) / (1000 * 60 * 60 * 24));
+  const weeksUntilRace = Math.ceil(daysUntilRace / 7);
   
   const marathonData = {
     goalTime: "3:25:00", // 3 hours 25 minutes
@@ -15,6 +16,7 @@ const TrainingDashboard = () => {
     goalPace: "7:48", // 7 minutes 48 seconds per mile
     currentPace: "8:30", // 8 minutes 30 seconds per mile
     projectedPace: "8:12", // 8 minutes 12 seconds per mile
+    weeksUntilRace,
     daysUntilRace,
     raceName: "Boston Marathon",
     raceDate: "April 30, 2026"
@@ -81,12 +83,12 @@ const TrainingDashboard = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">{marathonData.raceName}</h1>
-                <p className="text-gray-600">{marathonData.raceDate} • {marathonData.daysUntilRace} days to go</p>
+                <p className="text-gray-600">{marathonData.raceDate} • {marathonData.weeksUntilRace} weeks to go</p>
               </div>
             </div>
             <div className="text-right">
               <div className="text-2xl font-bold text-gray-900">
-                {marathonData.daysUntilRace} days
+                {marathonData.weeksUntilRace} weeks
               </div>
               <div className="text-sm text-gray-500">
                 until race day

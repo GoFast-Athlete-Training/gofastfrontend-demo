@@ -12,10 +12,10 @@ const GarminConnected = () => {
       </p>
 
       <button
-        onClick={() => navigate("/pulse/today")}
+        onClick={() => navigate("/")}
         className="bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition"
       >
-        Go to My Training
+        Go to Training Dashboard
       </button>
     </div>
   );

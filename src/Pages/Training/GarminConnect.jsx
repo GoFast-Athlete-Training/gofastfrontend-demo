@@ -5,8 +5,8 @@ const GarminConnect = () => {
   const navigate = useNavigate();
 
   const handleConnect = () => {
-    // Redirect user to your backend which initiates Garmin OAuth
-    window.location.href = "https://your-backend.com/api/garmin/auth"; // Replace with actual backend auth URL
+    // Simulate Garmin connection for demo
+    navigate("/garmin-connected");
   };
 
   return (

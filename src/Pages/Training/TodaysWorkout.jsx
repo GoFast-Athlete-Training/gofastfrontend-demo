@@ -1,62 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getTodayWorkout } from "../../api/trainingDayApi";
 
 const TodaysWorkout = () => {
-  const [workout, setWorkout] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchWorkout = async () => {
-      try {
-        const data = await getTodayWorkout();
-        setWorkout(data);
-      } catch (err) {
-        console.error("Failed to load today's workout:", err);
-        setError(err.response?.data?.error || "Failed to load workout");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchWorkout();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl">Loading today's run...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 mb-4">{error}</p>
-          <button
-            onClick={() => navigate("/training-pulse-hub")}
-            className="bg-orange-500 text-white px-4 py-2 rounded"
-          >
-            Back to Hub
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!workout || workout.status === "rest") {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Rest Day 😌</h2>
-          <p className="text-gray-600">No workout scheduled for today. Enjoy your recovery!</p>
-        </div>
-      </div>
-    );
-  }
+  // Dummy workout data - no API calls
+  const workout = {
+    planned: {
+      label: "Tempo Run - Marathon Pace",
+      type: "tempo",
+      mileage: 8,
+      paceRange: "7:45-8:00",
+      targetPace: "7:50",
+      hrZone: "3",
+      hrRange: "160-170 bpm",
+      description: "Run at your goal marathon pace. Focus on maintaining consistent effort throughout. This builds the endurance you need for Boston."
+    },
+    actual: {
+      completed: false
+    },
+    status: "pending"
+  };
 
   const { planned, actual, status } = workout;
 

@@ -1,31 +1,80 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const NextWeekPlan = ({ userId, current5kPace, age, weekIndex }) => {
-  const [week, setWeek] = useState(null);
-  const [loading, setLoading] = useState(true);
+const WeekView = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchWeek = async () => {
-      try {
-        const res = await axios.get(`/api/weekplan/${weekIndex}`, {
-          params: { userId }
-        });
-        setWeek(res.data);
-      } catch (err) {
-        console.error("Error fetching week plan:", err);
-      } finally {
-        setLoading(false);
+  // Dummy week data - no API calls
+  const week = {
+    weekIndex: 4,
+    phase: "Base Building",
+    targetMileage: 52,
+    days: [
+      {
+        day: "Monday",
+        type: "Easy Run",
+        mileage: "6 miles",
+        paceRange: { min: "8:30", max: "9:00" },
+        hrRange: { min: "140", max: "150" },
+        segments: []
+      },
+      {
+        day: "Tuesday", 
+        type: "Tempo Run",
+        mileage: "8 miles",
+        paceRange: { min: "7:45", max: "8:00" },
+        hrRange: { min: "160", max: "170" },
+        segments: [
+          { type: "Warm-up", distance: "2 miles", pace: "8:30" },
+          { type: "Tempo", distance: "4 miles", pace: "7:50" },
+          { type: "Cool-down", distance: "2 miles", pace: "8:30" }
+        ]
+      },
+      {
+        day: "Wednesday",
+        type: "Rest Day",
+        mileage: "0 miles",
+        paceRange: { min: "N/A", max: "N/A" },
+        hrRange: { min: "N/A", max: "N/A" },
+        segments: []
+      },
+      {
+        day: "Thursday",
+        type: "Easy Run", 
+        mileage: "7 miles",
+        paceRange: { min: "8:30", max: "9:00" },
+        hrRange: { min: "140", max: "150" },
+        segments: []
+      },
+      {
+        day: "Friday",
+        type: "Easy Run",
+        mileage: "6 miles", 
+        paceRange: { min: "8:30", max: "9:00" },
+        hrRange: { min: "140", max: "150" },
+        segments: []
+      },
+      {
+        day: "Saturday",
+        type: "Long Run",
+        mileage: "15 miles",
+        paceRange: { min: "8:00", max: "8:30" },
+        hrRange: { min: "150", max: "160" },
+        segments: [
+          { type: "Easy", distance: "10 miles", pace: "8:30" },
+          { type: "Marathon Pace", distance: "5 miles", pace: "7:50" }
+        ]
+      },
+      {
+        day: "Sunday",
+        type: "Recovery Run",
+        mileage: "4 miles",
+        paceRange: { min: "9:00", max: "9:30" },
+        hrRange: { min: "130", max: "140" },
+        segments: []
       }
-    };
-
-    fetchWeek();
-  }, [userId, weekIndex]);
-
-  if (loading) return <div className="p-6 text-center">Loading next week's plan...</div>;
-  if (!week) return <div className="p-6 text-center">No plan found for next week.</div>;
+    ]
+  };
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
@@ -69,4 +118,4 @@ const NextWeekPlan = ({ userId, current5kPace, age, weekIndex }) => {
   );
 };
 
-export default NextWeekPlan;
+export default WeekView;

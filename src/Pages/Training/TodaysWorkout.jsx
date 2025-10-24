@@ -134,12 +134,26 @@ const TodaysWorkout = () => {
         {/* Action Buttons */}
         <div className="space-y-3">
           {!actual?.completed ? (
-            <button
-              className="w-full px-6 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition text-lg"
-              onClick={() => navigate("/")}
-            >
-              Go Do It! 🏃‍♂️
-            </button>
+            <>
+              <button
+                className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
+                onClick={() => navigate("/daily-recap")}
+              >
+                Log It Manually 📝
+              </button>
+              <button
+                className="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition"
+                onClick={() => {
+                  setWorkout(prev => ({
+                    ...prev,
+                    actual: { ...prev.actual, completed: true, mileage: 8, pace: "7:52", avgHR: 165 },
+                    status: "completed"
+                  }));
+                }}
+              >
+                Simulate Workout Complete 🏃‍♂️
+              </button>
+            </>
           ) : (
             <button
               className="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition"

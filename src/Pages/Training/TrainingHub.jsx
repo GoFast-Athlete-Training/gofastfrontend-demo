@@ -33,6 +33,13 @@ const TrainingHub = () => {
       icon: "🎯",
       color: "bg-purple-500",
       route: "/race-predictor"
+    },
+    {
+      name: "Training Analytics",
+      description: "Detailed analysis of your training data",
+      icon: "📊",
+      color: "bg-indigo-500",
+      route: "/training-analysis"
     }
   ];
 

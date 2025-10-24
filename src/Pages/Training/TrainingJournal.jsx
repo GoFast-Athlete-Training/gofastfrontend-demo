@@ -6,7 +6,30 @@ const TrainingJournal = () => {
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('gofast-journal-entries')) || [];
-    setEntries(saved);
+    // If no saved entries, show sample entries
+    if (saved.length === 0) {
+      const sampleEntries = [
+        {
+          text: "Had an amazing tempo run today! Felt strong and controlled the whole way. The weather was perfect and I was in such a good headspace. Really starting to see the progress from all this training.",
+          timestamp: "1/15/2024, 6:30:00 PM"
+        },
+        {
+          text: "Tough long run yesterday. My legs felt heavy from the start and I had to dig deep to finish. But I'm proud I didn't quit. Sometimes the hard days teach you the most about yourself.",
+          timestamp: "1/13/2024, 8:45:00 AM"
+        },
+        {
+          text: "Track workout was brutal but I hit all my splits. The last 800 felt like death but I pushed through. Coach says I'm getting stronger mentally. That means more than the physical gains sometimes.",
+          timestamp: "1/11/2024, 7:15:00 PM"
+        },
+        {
+          text: "Easy recovery run today. Legs felt fresh and I could have gone faster but stuck to the plan. Discipline is hard but it's paying off. Really enjoying the process lately.",
+          timestamp: "1/9/2024, 6:00:00 AM"
+        }
+      ];
+      setEntries(sampleEntries);
+    } else {
+      setEntries(saved);
+    }
   }, []);
 
   const handleSave = () => {

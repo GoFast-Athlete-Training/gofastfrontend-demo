@@ -32,10 +32,17 @@ const TrainingDashboard = () => {
       route: "/todays-workout"
     },
     {
+      name: "My Runs",
+      description: "View your Garmin activities",
+      icon: "⌚",
+      color: "bg-blue-500",
+      route: "/see-activities"
+    },
+    {
       name: "Week View",
       description: "This week's training plan",
       icon: "📅",
-      color: "bg-blue-500",
+      color: "bg-indigo-500",
       route: "/week-view"
     },
     {

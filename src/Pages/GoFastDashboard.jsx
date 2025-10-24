@@ -22,31 +22,56 @@ const GoFastDashboard = () => {
     raceDate: "April 30, 2026"
   };
 
+  // Current phase data
+  const currentPhase = {
+    name: "Base Building",
+    week: "Week 8 of 16",
+    focus: "Building aerobic base and endurance",
+    progress: 50
+  };
+
+  // Today's dashboard data
+  const todayData = {
+    workout: {
+      type: "Long Run",
+      distance: "12 miles",
+      pace: "8:30-9:00",
+      time: "1:42:00"
+    },
+    weather: {
+      temp: "68°F",
+      condition: "Partly Cloudy",
+      humidity: "65%",
+      wind: "8 mph"
+    }
+  };
+
   // Main action cards
   const mainCards = [
     {
-      name: "Training Hub",
+      name: "Training",
       description: "Your complete training dashboard",
       icon: "🏃‍♂️",
       color: "bg-blue-500",
-      route: "/training-hub"
+      route: "/training-hub",
+      size: "large"
     },
     {
-      name: "Race Planning",
-      description: "Plan and prepare for your race",
+      name: "Next Up",
+      description: "Upcoming workouts and schedule",
       icon: "📅",
       color: "bg-purple-500",
-      route: "/my-races"
+      route: "/week-view"
     },
     {
-      name: "Race Day", 
+      name: "Race",
       description: "Race day execution",
       icon: "🏁",
       color: "bg-red-500",
       route: "/race-hub"
     },
     {
-      name: "Recovery",
+      name: "Beyond",
       description: "Post-race recovery and next steps",
       icon: "🎉",
       color: "bg-green-500", 
@@ -69,10 +94,10 @@ const GoFastDashboard = () => {
             </div>
             <div className="flex gap-3">
               <button
-                onClick={() => navigate("/training-analysis")}
-                className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
+                onClick={() => navigate("/my-races")}
+                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
               >
-                Analytics 📊
+                My Races 📅
               </button>
               <button
                 onClick={() => navigate("/todays-workout")}
@@ -88,15 +113,71 @@ const GoFastDashboard = () => {
       <div className="max-w-6xl mx-auto px-4 py-6">
         {/* Race Summary */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <div className="flex justify-between items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-xl font-bold mb-2">{marathonData.raceName}</h2>
+              <h2 className="text-lg font-semibold text-gray-600 mb-2">Your Next Race</h2>
+              <h3 className="text-xl font-bold mb-1">{marathonData.raceName}</h3>
               <p className="text-gray-600">{marathonData.raceDate}</p>
               <p className="text-sm text-gray-500 mt-1">{marathonData.weeksUntilRace} weeks until race</p>
             </div>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-600 mb-2">Your Goal Race</h2>
+              <div className="text-right">
+                <p className="text-2xl font-bold text-orange-600">{marathonData.goalTime}</p>
+                <p className="text-sm text-gray-500">Goal Time</p>
+                <p className="text-sm text-gray-500 mt-1">{marathonData.goalPace} pace</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Current Phase */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h2 className="text-xl font-bold mb-4">Current Phase</h2>
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-blue-600">{currentPhase.name}</h3>
+              <p className="text-gray-600">{currentPhase.week}</p>
+              <p className="text-sm text-gray-500 mt-1">{currentPhase.focus}</p>
+            </div>
             <div className="text-right">
-              <p className="text-2xl font-bold text-orange-600">{marathonData.goalTime}</p>
-              <p className="text-sm text-gray-500">Goal Time</p>
+              <div className="w-32 bg-gray-200 rounded-full h-3">
+                <div className="bg-blue-500 h-3 rounded-full" style={{width: `${currentPhase.progress}%`}}></div>
+              </div>
+              <p className="text-sm text-gray-500 mt-2">{currentPhase.progress}% complete</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Today's Dashboard */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h2 className="text-xl font-bold mb-4">Today's Run</h2>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🏃‍♂️</div>
+              <h3 className="text-2xl font-bold text-blue-600">{todayData.workout.type}</h3>
+              <p className="text-gray-600 text-lg">{todayData.workout.distance}</p>
+              <p className="text-sm text-gray-500 mt-2">Pace: {todayData.workout.pace}</p>
+              <p className="text-sm text-gray-500">Time: {todayData.workout.time}</p>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h2 className="text-xl font-bold mb-4">Weather</h2>
+            <div className="text-center">
+              <div className="text-4xl mb-4">☀️</div>
+              <h3 className="text-2xl font-bold text-orange-600">{todayData.weather.temp}</h3>
+              <p className="text-gray-600 text-lg">{todayData.weather.condition}</p>
+              <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
+                <div>
+                  <p className="text-gray-500">Humidity</p>
+                  <p className="font-semibold">{todayData.weather.humidity}</p>
+                </div>
+                <div>
+                  <p className="text-gray-500">Wind</p>
+                  <p className="font-semibold">{todayData.weather.wind}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -107,7 +188,9 @@ const GoFastDashboard = () => {
             <div
               key={index}
               onClick={() => navigate(card.route)}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+              className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group ${
+                card.size === 'large' ? 'lg:col-span-2' : ''
+              }`}
             >
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">

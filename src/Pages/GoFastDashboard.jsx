@@ -109,10 +109,10 @@ const GoFastDashboard = () => {
           ))}
         </div>
 
-        {/* Additional Tools */}
+        {/* Mental & Reflection Section */}
         <div className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Quick Access</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h2 className="text-xl font-bold mb-4">Mental & Reflection</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div
               onClick={() => navigate("/daily-recap")}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
@@ -147,6 +147,18 @@ const GoFastDashboard = () => {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Mental Training</h3>
                 <p className="text-gray-600 text-sm">Mindset and motivation tools</p>
+              </div>
+            </div>
+            <div
+              onClick={() => navigate("/weekly-review")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  📊
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Weekly Review</h3>
+                <p className="text-gray-600 text-sm">Review your week's progress</p>
               </div>
             </div>
           </div>

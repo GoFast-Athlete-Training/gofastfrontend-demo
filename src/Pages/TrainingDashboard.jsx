@@ -4,6 +4,22 @@ import { useNavigate } from "react-router-dom";
 const TrainingDashboard = () => {
   const navigate = useNavigate();
 
+  // Boston Marathon data
+  const raceDate = new Date('2026-04-30');
+  const today = new Date();
+  const daysUntilRace = Math.ceil((raceDate - today) / (1000 * 60 * 60 * 24));
+  
+  const marathonData = {
+    goalTime: 3.25, // 3:25:00 in hours
+    currentTime: 3.45, // 3:45:00 in hours  
+    goalPace: 7.8, // 7:48 per mile
+    currentPace: 8.6, // 8:36 per mile
+    projectedPace: 8.2, // 8:12 per mile
+    daysUntilRace,
+    raceName: "Boston Marathon",
+    raceDate: "April 30, 2026"
+  };
+
   // Core training modules
   const trainingModules = [
     {
@@ -50,13 +66,69 @@ const TrainingDashboard = () => {
     }
   ];
 
+  // Calculate progress
+  const timeImprovement = marathonData.currentTime - marathonData.goalTime;
+  const paceImprovement = marathonData.currentPace - marathonData.goalPace;
+  const progressPercent = ((marathonData.currentTime - marathonData.goalTime) / (marathonData.currentTime - marathonData.goalTime)) * 100;
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Training Dashboard</h1>
-          <p className="text-lg text-gray-600">Your complete training command center</p>
+        {/* Race Header Summary */}
+        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center">
+                <span className="text-2xl text-white">🏃‍♂️</span>
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">{marathonData.raceName}</h1>
+                <p className="text-gray-600">{marathonData.raceDate} • {marathonData.daysUntilRace} days to go</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-gray-900">
+                {marathonData.daysUntilRace} days
+              </div>
+              <div className="text-sm text-gray-500">
+                until race day
+              </div>
+            </div>
+          </div>
+          
+          {/* Goal vs Current */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-blue-600">{marathonData.goalTime.toFixed(2)}</div>
+              <div className="text-gray-600">Goal Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-orange-600">{marathonData.currentTime.toFixed(2)}</div>
+              <div className="text-gray-600">Current Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-green-600">{marathonData.projectedPace.toFixed(1)}</div>
+              <div className="text-gray-600">Projected Pace</div>
+            </div>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="mb-4">
+            <div className="flex justify-between text-sm text-gray-600 mb-2">
+              <span>Current: {marathonData.currentPace.toFixed(1)}/mi</span>
+              <span>Goal: {marathonData.goalPace.toFixed(1)}/mi</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-3">
+              <div 
+                className="bg-gradient-to-r from-orange-500 to-red-600 h-3 rounded-full transition-all duration-500"
+                style={{ width: `${Math.min(75, 100)}%` }}
+              ></div>
+            </div>
+          </div>
+          
+          <div className="text-sm text-gray-500">
+            Need to improve by {paceImprovement.toFixed(1)} seconds per mile to reach goal
+          </div>
         </div>
 
         {/* Training Modules Grid */}
@@ -83,25 +155,25 @@ const TrainingDashboard = () => {
           ))}
         </div>
 
-        {/* Quick Stats */}
+        {/* Training Stats */}
         <div className="mt-12 bg-white rounded-xl shadow-lg p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">This Week</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Training Progress</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">42</div>
-              <div className="text-gray-600">Miles</div>
+              <div className="text-3xl font-bold text-blue-600">52</div>
+              <div className="text-gray-600">Miles This Week</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">5</div>
+              <div className="text-3xl font-bold text-green-600">6</div>
               <div className="text-gray-600">Workouts</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">8:15</div>
+              <div className="text-3xl font-bold text-orange-600">8:36</div>
               <div className="text-gray-600">Avg Pace</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">85%</div>
-              <div className="text-gray-600">Completion</div>
+              <div className="text-3xl font-bold text-purple-600">92%</div>
+              <div className="text-gray-600">Plan Completion</div>
             </div>
           </div>
         </div>

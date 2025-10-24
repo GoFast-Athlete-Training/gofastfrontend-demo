@@ -169,7 +169,7 @@ const WeeklyReview = () => {
             onChange={(e) => setReflection({ ...reflection, notes: e.target.value })}
             className="w-full border rounded p-2"
             rows={3}
-            placeholder="Anything your future self or coach should know?"
+            placeholder="How did this week feel? What would you do differently?"
           />
         </div>
       </div>
@@ -178,7 +178,7 @@ const WeeklyReview = () => {
           onClick={handleSave}
           className="bg-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 transition"
         >
-          Save + Build Next Week
+          Save Reflection
         </button>
       </div>
     </div>

@@ -60,9 +60,12 @@ const GoFastDashboard = () => {
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-bold">GoFast</h1>
-              <p className="text-gray-600">Training Dashboard</p>
+            <div className="flex items-center gap-4">
+              <img src="/logo.jpg" alt="GoFast Logo" className="h-12 w-12 rounded-lg" />
+              <div>
+                <h1 className="text-2xl font-bold">GoFast</h1>
+                <p className="text-gray-600">Training Dashboard</p>
+              </div>
             </div>
             <div className="flex gap-3">
               <button

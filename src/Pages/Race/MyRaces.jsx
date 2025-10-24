@@ -14,13 +14,6 @@ const MyRaces = () => {
       route: "/course-visualization"
     },
     {
-      name: "Final Workout",
-      description: "Preview your shakeout and race-eve tips",
-      icon: "🏃‍♂️",
-      color: "bg-purple-500",
-      route: "/final-workout"
-    },
-    {
       name: "Hotel & Travel",
       description: "Book hotels, flights, and race logistics",
       icon: "✈️",

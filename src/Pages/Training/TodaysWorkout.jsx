@@ -5,6 +5,10 @@ const TodaysWorkout = () => {
   const navigate = useNavigate();
 
   // Dummy workout data - no API calls
+  const today = new Date();
+  const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+  const dateStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  
   const workout = {
     planned: {
       label: "Tempo Run - Marathon Pace",
@@ -19,7 +23,7 @@ const TodaysWorkout = () => {
     actual: {
       completed: false
     },
-    status: "pending"
+    status: "scheduled"
   };
 
   const { planned, actual, status } = workout;
@@ -33,10 +37,11 @@ const TodaysWorkout = () => {
             <div>
               <h2 className="text-2xl font-bold mb-1">{planned.label || "Today's Workout"}</h2>
               <p className="text-gray-600 capitalize">{planned.type}</p>
+              <p className="text-sm text-gray-500 mt-1">{dayName}, {dateStr}</p>
             </div>
             <div className={`px-3 py-1 rounded-full text-sm font-semibold ${
               status === 'completed' ? 'bg-green-100 text-green-700' :
-              status === 'pending' ? 'bg-blue-100 text-blue-700' :
+              status === 'scheduled' ? 'bg-blue-100 text-blue-700' :
               'bg-gray-100 text-gray-700'
             }`}>
               {status}

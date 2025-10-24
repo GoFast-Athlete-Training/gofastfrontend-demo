@@ -10,6 +10,7 @@ import WeekView from "./Pages/Training/WeekView";
 import TrainingJournal from "./Pages/Training/TrainingJournal";
 import MentalReplenishment from "./Pages/Training/MentalReplenishment";
 import WeeklyReview from "./Pages/Training/WeeklyReview";
+import GoCrushIt from "./Pages/Training/GoCrushIt";
 import GarminConnect from "./Pages/Training/GarminConnect";
 import GarminConnected from "./Pages/Training/GarminConnected";
 
@@ -29,6 +30,7 @@ const App = () => (
       <Route path="/training-journal" element={<TrainingJournal />} />
       <Route path="/mental-replenishment" element={<MentalReplenishment />} />
       <Route path="/weekly-review" element={<WeeklyReview />} />
+      <Route path="/go-crush-it" element={<GoCrushIt />} />
       <Route path="/connect-garmin" element={<GarminConnect />} />
       <Route path="/garmin-connected" element={<GarminConnected />} />
       

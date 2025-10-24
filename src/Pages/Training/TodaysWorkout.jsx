@@ -134,18 +134,36 @@ const TodaysWorkout = () => {
         {/* Action Buttons */}
         <div className="space-y-3">
           <button
+            className="w-full px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition"
+            onClick={() => {
+              // Simulate sending to Garmin
+              alert("Workout sent to Garmin! Check your device to start the workout.");
+            }}
+          >
+            Send to Garmin 📱
+          </button>
+          
+          <button
             className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
             onClick={() => navigate("/daily-recap")}
           >
             Log It Manually 📝
           </button>
           
-          <button
-            className="w-full px-6 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"
-            onClick={() => navigate("/")}
-          >
-            Back to Dashboard
-          </button>
+          <div className="flex gap-3">
+            <button
+              className="flex-1 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"
+              onClick={() => navigate("/my-runs")}
+            >
+              My Runs 🏃‍♂️
+            </button>
+            <button
+              className="flex-1 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"
+              onClick={() => navigate("/")}
+            >
+              Dashboard 🏠
+            </button>
+          </div>
         </div>
       </div>
     </div>

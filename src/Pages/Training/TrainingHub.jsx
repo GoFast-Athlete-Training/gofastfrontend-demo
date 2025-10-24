@@ -95,33 +95,110 @@ const TrainingHub = () => {
           </div>
         </div>
 
-        {/* Main Training Actions */}
+        {/* Main Training Dashboard */}
         <div className="p-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl font-bold mb-6">Training</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-6xl mx-auto">
+            {/* Week Overview */}
+            <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold">This Week's Training</h2>
+                <div className="text-right">
+                  <p className="text-2xl font-bold text-blue-600">42.5 mi</p>
+                  <p className="text-sm text-gray-500">Total Miles</p>
+                </div>
+              </div>
+              
+              {/* Week Calendar */}
+              <div className="grid grid-cols-7 gap-2">
+                {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => {
+                  const isToday = index === 2; // Wednesday
+                  const isCompleted = index < 3; // Mon, Tue, Wed completed
+                  const workoutType = index === 0 ? 'easy' : index === 1 ? 'tempo' : index === 2 ? 'long' : index === 4 ? 'interval' : index === 6 ? 'easy' : 'rest';
+                  
+                  return (
+                    <div key={day} className={`p-3 rounded-lg text-center ${
+                      isToday ? 'bg-blue-100 border-2 border-blue-500' :
+                      isCompleted ? 'bg-green-100' :
+                      workoutType === 'rest' ? 'bg-gray-100' :
+                      'bg-orange-100'
+                    }`}>
+                      <p className="text-xs font-semibold text-gray-600">{day}</p>
+                      <p className="text-lg font-bold">
+                        {workoutType === 'rest' ? 'R' : 
+                         workoutType === 'easy' ? 'E' :
+                         workoutType === 'tempo' ? 'T' :
+                         workoutType === 'long' ? 'L' : 'I'}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {workoutType === 'rest' ? 'Rest' :
+                         workoutType === 'easy' ? '6 mi' :
+                         workoutType === 'tempo' ? '8 mi' :
+                         workoutType === 'long' ? '12 mi' : '5 mi'}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Today's Focus */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
               <div
                 onClick={() => navigate("/todays-workout")}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+                className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-200 cursor-pointer group text-white"
               >
                 <div className="text-center">
                   <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-200">
                     🏃‍♂️
                   </div>
                   <h3 className="text-2xl font-semibold mb-2">Run Today</h3>
-                  <p className="text-gray-600">Your workout for today</p>
+                  <p className="text-blue-100">Long Run - 12 miles</p>
+                  <p className="text-sm text-blue-200 mt-2">Target Pace: 8:30-9:00</p>
                 </div>
               </div>
+              
               <div
                 onClick={() => navigate("/see-activities")}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+                className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-200 cursor-pointer group text-white"
               >
                 <div className="text-center">
                   <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-200">
                     ⌚
                   </div>
                   <h3 className="text-2xl font-semibold mb-2">My Runs</h3>
-                  <p className="text-gray-600">View all your Garmin activities</p>
+                  <p className="text-green-100">View your Garmin activities</p>
+                  <p className="text-sm text-green-200 mt-2">3 runs this week</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-white rounded-lg shadow p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-gray-500">This Week</p>
+                    <p className="text-2xl font-bold">42.5 mi</p>
+                  </div>
+                  <div className="text-2xl">📊</div>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-gray-500">Avg Pace</p>
+                    <p className="text-2xl font-bold">8:15</p>
+                  </div>
+                  <div className="text-2xl">⏱️</div>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-gray-500">Streak</p>
+                    <p className="text-2xl font-bold">12 days</p>
+                  </div>
+                  <div className="text-2xl">🔥</div>
                 </div>
               </div>
             </div>

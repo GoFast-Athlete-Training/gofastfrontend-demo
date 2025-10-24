@@ -10,11 +10,11 @@ const TrainingDashboard = () => {
   const daysUntilRace = Math.ceil((raceDate - today) / (1000 * 60 * 60 * 24));
   
   const marathonData = {
-    goalTime: 3.25, // 3:25:00 in hours
-    currentTime: 3.45, // 3:45:00 in hours  
-    goalPace: 7.8, // 7:48 per mile
-    currentPace: 8.6, // 8:36 per mile
-    projectedPace: 8.2, // 8:12 per mile
+    goalTime: "3:25:00", // 3 hours 25 minutes
+    currentTime: "3:45:00", // 3 hours 45 minutes
+    goalPace: "7:48", // 7 minutes 48 seconds per mile
+    currentPace: "8:30", // 8 minutes 30 seconds per mile
+    projectedPace: "8:12", // 8 minutes 12 seconds per mile
     daysUntilRace,
     raceName: "Boston Marathon",
     raceDate: "April 30, 2026"
@@ -66,10 +66,8 @@ const TrainingDashboard = () => {
     }
   ];
 
-  // Calculate progress
-  const timeImprovement = marathonData.currentTime - marathonData.goalTime;
-  const paceImprovement = marathonData.currentPace - marathonData.goalPace;
-  const progressPercent = ((marathonData.currentTime - marathonData.goalTime) / (marathonData.currentTime - marathonData.goalTime)) * 100;
+  // Calculate progress (simplified for now)
+  const progressPercent = 75; // 75% progress toward goal
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -99,15 +97,15 @@ const TrainingDashboard = () => {
           {/* Goal vs Current */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{marathonData.goalTime.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-blue-600">{marathonData.goalTime}</div>
               <div className="text-gray-600">Goal Time</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-orange-600">{marathonData.currentTime.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-orange-600">{marathonData.currentTime}</div>
               <div className="text-gray-600">Current Time</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{marathonData.projectedPace.toFixed(1)}</div>
+              <div className="text-2xl font-bold text-green-600">{marathonData.projectedPace}/mi</div>
               <div className="text-gray-600">Projected Pace</div>
             </div>
           </div>
@@ -115,19 +113,19 @@ const TrainingDashboard = () => {
           {/* Progress Bar */}
           <div className="mb-4">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
-              <span>Current: {marathonData.currentPace.toFixed(1)}/mi</span>
-              <span>Goal: {marathonData.goalPace.toFixed(1)}/mi</span>
+              <span>Current: {marathonData.currentPace}/mi</span>
+              <span>Goal: {marathonData.goalPace}/mi</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
               <div 
                 className="bg-gradient-to-r from-orange-500 to-red-600 h-3 rounded-full transition-all duration-500"
-                style={{ width: `${Math.min(75, 100)}%` }}
+                style={{ width: `${Math.min(progressPercent, 100)}%` }}
               ></div>
             </div>
           </div>
           
           <div className="text-sm text-gray-500">
-            Need to improve by {paceImprovement.toFixed(1)} seconds per mile to reach goal
+            Need to improve by 42 seconds per mile to reach goal
           </div>
         </div>
 
@@ -168,7 +166,7 @@ const TrainingDashboard = () => {
               <div className="text-gray-600">Workouts</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">8:36</div>
+              <div className="text-3xl font-bold text-orange-600">8:30</div>
               <div className="text-gray-600">Avg Pace</div>
             </div>
             <div className="text-center">

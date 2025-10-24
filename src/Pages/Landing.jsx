@@ -11,7 +11,13 @@ const Landing = () => {
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo/Icon */}
           <div className="mb-8">
-            <div className="text-8xl mb-4">🏃‍♂️</div>
+            <div className="mb-6">
+              <img 
+                src="/logo.jpg" 
+                alt="GoFast Logo" 
+                className="w-24 h-24 mx-auto rounded-full shadow-lg"
+              />
+            </div>
             <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6">
               Let's Go Fast!
             </h1>

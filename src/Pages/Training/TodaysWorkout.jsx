@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const TodaysWorkout = () => {
@@ -9,7 +9,7 @@ const TodaysWorkout = () => {
   const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
   const dateStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   
-  const workout = {
+  const [workout, setWorkout] = useState({
     planned: {
       label: "Tempo Run - Marathon Pace",
       type: "tempo",
@@ -24,7 +24,7 @@ const TodaysWorkout = () => {
       completed: false
     },
     status: "scheduled"
-  };
+  });
 
   const { planned, actual, status } = workout;
 
@@ -126,17 +126,35 @@ const TodaysWorkout = () => {
             </div>
             <span className="text-xs text-blue-700">Auto-sync enabled</span>
           </div>
+          <p className="text-xs text-blue-600 mt-2">
+            <em>Future: Workouts will auto-sync from Garmin after completion</em>
+          </p>
         </div>
 
         {/* Action Buttons */}
         <div className="space-y-3">
           {!actual?.completed ? (
-            <button
-              className="w-full px-6 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition text-lg"
-              onClick={() => navigate("/daily-recap")}
-            >
-              Log It Manually 📝
-            </button>
+            <>
+              <button
+                className="w-full px-6 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition text-lg"
+                onClick={() => navigate("/daily-recap")}
+              >
+                Log It Manually 📝
+              </button>
+              <button
+                className="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition"
+                onClick={() => {
+                  // Simulate workout completion
+                  setWorkout(prev => ({
+                    ...prev,
+                    actual: { completed: true, mileage: 8, pace: "7:52", avgHR: 165 },
+                    status: "completed"
+                  }));
+                }}
+              >
+                Simulate Workout Complete 🏃‍♂️
+              </button>
+            </>
           ) : (
             <button
               className="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition"

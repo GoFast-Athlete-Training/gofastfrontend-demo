@@ -5,14 +5,14 @@ const GoFastDashboard = () => {
   const navigate = useNavigate();
 
   // Next Race (local prep race)
-  const nextRaceDate = new Date('2024-12-15');
+  const nextRaceDate = new Date('2025-01-15');
   const today = new Date();
   const daysUntilNextRace = Math.ceil((nextRaceDate - today) / (1000 * 60 * 60 * 24));
   const weeksUntilNextRace = Math.ceil(daysUntilNextRace / 7);
   
   const nextRaceData = {
-    raceName: "Charlotte Turkey Trot 5K",
-    raceDate: "December 15, 2024",
+    raceName: "DC Rock 'n' Roll 5K",
+    raceDate: "January 15, 2025",
     raceType: "5K",
     goalTime: "22:30",
     weeksUntilRace: weeksUntilNextRace,

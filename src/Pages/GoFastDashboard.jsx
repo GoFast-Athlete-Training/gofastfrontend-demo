@@ -205,42 +205,87 @@ const GoFastDashboard = () => {
 
         {/* Body & Mind Section */}
         <div className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Body & Mind Maintenance</h2>
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl shadow-lg p-6">
+            <h2 className="text-xl font-bold mb-4 text-white">Body & Mind Maintenance</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div
+                onClick={() => navigate("/mental-hub")}
+                className="bg-white/20 backdrop-blur-sm rounded-lg p-4 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
+              >
+                <div className="text-center">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">
+                    🧠
+                  </div>
+                  <h3 className="text-sm font-semibold mb-1 text-white">Mental Health</h3>
+                  <p className="text-xs text-purple-100">Reflection & journaling</p>
+                </div>
+              </div>
+              <div
+                onClick={() => navigate("/nutrition")}
+                className="bg-white/20 backdrop-blur-sm rounded-lg p-4 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
+              >
+                <div className="text-center">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">
+                    🥗
+                  </div>
+                  <h3 className="text-sm font-semibold mb-1 text-white">Nutrition</h3>
+                  <p className="text-xs text-purple-100">Fuel your training</p>
+                </div>
+              </div>
+              <div
+                onClick={() => navigate("/injury-prevention")}
+                className="bg-white/20 backdrop-blur-sm rounded-lg p-4 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
+              >
+                <div className="text-center">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">
+                    🏥
+                  </div>
+                  <h3 className="text-sm font-semibold mb-1 text-white">Injury Prevention</h3>
+                  <p className="text-xs text-purple-100">Stay healthy</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Setup & Settings */}
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-4">Setup & Settings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
-              onClick={() => navigate("/mental-hub")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+              onClick={() => navigate("/profile")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200"
             >
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  🧠
+                  👤
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Mental Health</h3>
-                <p className="text-gray-600 text-sm">Reflection, journaling, and mental training</p>
+                <h3 className="text-lg font-semibold mb-2">Profile Setup</h3>
+                <p className="text-gray-600 text-sm">Set up your runner profile</p>
               </div>
             </div>
             <div
-              onClick={() => navigate("/nutrition")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+              onClick={() => navigate("/goals")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200"
             >
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  🥗
+                  🎯
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Nutrition</h3>
-                <p className="text-gray-600 text-sm">Fuel your training with proper nutrition</p>
+                <h3 className="text-lg font-semibold mb-2">Build My Plan</h3>
+                <p className="text-gray-600 text-sm">Set goals and build your training plan</p>
               </div>
             </div>
             <div
-              onClick={() => navigate("/injury-prevention")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+              onClick={() => navigate("/my-races")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200"
             >
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  🏥
+                  📅
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Injury Prevention</h3>
-                <p className="text-gray-600 text-sm">Stay healthy and avoid injuries</p>
+                <h3 className="text-lg font-semibold mb-2">Event Setup</h3>
+                <p className="text-gray-600 text-sm">Add and manage your races</p>
               </div>
             </div>
           </div>

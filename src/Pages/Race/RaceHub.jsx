@@ -27,13 +27,6 @@ const RaceHub = () => {
       color: "bg-orange-500",
       route: "/race-morning"
     },
-    {
-      name: "Race Feedback",
-      description: "Post-race reflection and next steps",
-      icon: "💭",
-      color: "bg-blue-500",
-      route: "/race-feedback"
-    }
   ];
 
   return (

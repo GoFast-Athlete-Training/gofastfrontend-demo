@@ -108,6 +108,49 @@ const GoFastDashboard = () => {
             </div>
           ))}
         </div>
+
+        {/* Additional Tools */}
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-4">Quick Access</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              onClick={() => navigate("/daily-recap")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  💭
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Reflection</h3>
+                <p className="text-gray-600 text-sm">Daily workout recap and mental training</p>
+              </div>
+            </div>
+            <div
+              onClick={() => navigate("/training-journal")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  📝
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Training Journal</h3>
+                <p className="text-gray-600 text-sm">Log your thoughts and progress</p>
+              </div>
+            </div>
+            <div
+              onClick={() => navigate("/mental-replenishment")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  🧠
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Mental Training</h3>
+                <p className="text-gray-600 text-sm">Mindset and motivation tools</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,38 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const TrainingHub = () => {
+const PostRaceHub = () => {
   const navigate = useNavigate();
 
-  // Training modules - focused on execution
-  const trainingModules = [
+  // Post-race modules
+  const postRaceModules = [
     {
-      name: "Today's Workout",
-      description: "Your workout for today",
-      icon: "🏃‍♂️",
-      color: "bg-red-500",
-      route: "/todays-workout"
-    },
-    {
-      name: "Week View",
-      description: "This week's training plan",
-      icon: "📅",
+      name: "Race Feedback",
+      description: "Final reflection and what's next",
+      icon: "💭",
       color: "bg-blue-500",
-      route: "/week-view"
+      route: "/race-feedback"
     },
     {
-      name: "My Runs",
-      description: "View your Garmin activities",
-      icon: "⌚",
+      name: "Recovery Plan",
+      description: "Rest, nutrition, and gradual return",
+      icon: "🛌",
       color: "bg-green-500",
-      route: "/see-activities"
+      route: "/recovery-plan"
     },
     {
-      name: "Race Predictor",
-      description: "Analyze training data to predict race performance",
+      name: "Next Goals",
+      description: "Set your next training targets",
       icon: "🎯",
       color: "bg-purple-500",
-      route: "/race-predictor"
+      route: "/next-goals"
     }
   ];
 
@@ -43,8 +36,8 @@ const TrainingHub = () => {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold">Training Hub</h1>
-              <p className="text-gray-600">Your training plan and progress</p>
+              <h1 className="text-2xl font-bold">Post Race</h1>
+              <p className="text-gray-600">Recovery and next steps</p>
             </div>
             <button
               onClick={() => navigate("/")}
@@ -57,9 +50,25 @@ const TrainingHub = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* Training Modules Grid */}
+        {/* Race Summary */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <div className="flex justify-between items-start">
+            <div>
+              <h2 className="text-xl font-bold mb-2">Boston Marathon</h2>
+              <p className="text-gray-600">April 30, 2026</p>
+              <p className="text-sm text-gray-500 mt-1">Completed</p>
+            </div>
+            <div className="text-right">
+              <p className="text-2xl font-bold text-green-600">3:28:15</p>
+              <p className="text-sm text-gray-500">Actual Time</p>
+              <p className="text-sm text-gray-400">Goal: 3:25:00</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Post-Race Modules Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {trainingModules.map((module, index) => (
+          {postRaceModules.map((module, index) => (
             <div
               key={index}
               onClick={() => navigate(module.route)}
@@ -80,4 +89,4 @@ const TrainingHub = () => {
   );
 };
 
-export default TrainingHub;
+export default PostRaceHub;

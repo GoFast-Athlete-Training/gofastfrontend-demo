@@ -6,6 +6,7 @@ import ScrollToTop from "./Components/ScrollToTop";
 import GoFastDashboard from "./Pages/GoFastDashboard";
 
 // Core Training Modules
+import TrainingHub from "./Pages/Training/TrainingHub";
 import TodaysWorkout from "./Pages/Training/TodaysWorkout";
 import WeekView from "./Pages/Training/WeekView";
 import TrainingJournal from "./Pages/Training/TrainingJournal";
@@ -30,6 +31,7 @@ const App = () => (
       <Route path="/" element={<GoFastDashboard />} />
       
       {/* Core Training Modules */}
+      <Route path="/training-hub" element={<TrainingHub />} />
       <Route path="/todays-workout" element={<TodaysWorkout />} />
       <Route path="/week-view" element={<WeekView />} />
       <Route path="/training-journal" element={<TrainingJournal />} />

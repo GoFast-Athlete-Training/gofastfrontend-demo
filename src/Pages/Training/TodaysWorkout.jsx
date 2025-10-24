@@ -117,22 +117,49 @@ const TodaysWorkout = () => {
           </div>
         )}
 
+        {/* Garmin Status */}
+        <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+              <span className="text-sm font-medium text-blue-900">Garmin Connected</span>
+            </div>
+            <span className="text-xs text-blue-700">Auto-sync enabled</span>
+          </div>
+        </div>
+
         {/* Action Buttons */}
-        <div className="flex gap-4">
-          <button
-            className="flex-1 px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition"
-            onClick={() => navigate("/go-crush-it")}
-          >
-            {actual?.completed ? "View Details" : "Let's Go 🔥"}
-          </button>
-          {!actual?.completed && (
+        <div className="space-y-3">
+          {!actual?.completed ? (
+            <>
+              <button
+                className="w-full px-6 py-4 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition text-lg"
+                onClick={() => navigate("/workout-in-progress")}
+              >
+                Start Workout 🏃‍♂️
+              </button>
+              <button
+                className="w-full px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
+                onClick={() => navigate("/log-workout")}
+              >
+                Log It Manually 📝
+              </button>
+            </>
+          ) : (
             <button
-              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
-              onClick={() => navigate("/training-pulse-hub")}
+              className="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition"
+              onClick={() => navigate("/workout-details")}
             >
-              Back
+              View Details ✅
             </button>
           )}
+          
+          <button
+            className="w-full px-6 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"
+            onClick={() => navigate("/")}
+          >
+            Back to Dashboard
+          </button>
         </div>
       </div>
     </div>

@@ -8,27 +8,27 @@ const GoCrushIt = () => {
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-xl mx-auto">
         <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-          <h1 className="text-4xl font-bold mb-6">Go Crush It 💥</h1>
+          <h1 className="text-4xl font-bold mb-6">You Crushed It! 🎉</h1>
           <p className="text-gray-700 mb-8 text-lg leading-relaxed">
-            You've seen the plan. Now it's time to make it real.  
-            Get out there, hit your stride, and come back strong.
+            That was solid work. Your body just got stronger, your mind just got tougher.  
+            This is how champions are built - one workout at a time.
           </p>
 
-          <div className="bg-orange-50 border border-orange-200 p-6 rounded-xl text-left mb-8">
-            <p className="mb-4 font-semibold text-orange-900">How it works:</p>
-            <ul className="list-disc ml-6 space-y-2 text-orange-800">
-              <li>We're not timing you. No beeps. No cues.</li>
-              <li>Just go do the workout on your own terms.</li>
-              <li>If your Garmin is connected, we'll auto-sync your stats.</li>
-              <li>If not, no worries — you can log it manually after.</li>
+          <div className="bg-green-50 border border-green-200 p-6 rounded-xl text-left mb-8">
+            <p className="mb-4 font-semibold text-green-900">What's Next:</p>
+            <ul className="list-disc ml-6 space-y-2 text-green-800">
+              <li>Your stats are being synced from your Garmin</li>
+              <li>Take a moment to reflect on how it felt</li>
+              <li>Hydrate, fuel, and recover smart</li>
+              <li>Tomorrow's plan is already waiting for you</li>
             </ul>
           </div>
 
-          <div className="bg-green-50 border border-green-200 p-6 rounded-xl mb-8">
-            <h3 className="font-semibold text-green-900 mb-3">Your Mission</h3>
-            <p className="text-green-800 text-sm">
-              <strong>Trust your training.</strong> You've put in the work. Now let your body do what it knows how to do.<br/><br/>
-              <em>No overthinking. No second-guessing. Just run.</em>
+          <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl mb-8">
+            <h3 className="font-semibold text-blue-900 mb-3">Today's Impact</h3>
+            <p className="text-blue-800 text-sm">
+              <strong>8 miles of marathon pace work.</strong> Every step made you stronger.<br/><br/>
+              <em>This is the work that builds champions. You're doing it.</em>
             </p>
           </div>
 

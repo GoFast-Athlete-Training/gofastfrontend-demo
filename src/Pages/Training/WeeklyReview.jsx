@@ -6,21 +6,47 @@ const WeeklyReview = () => {
   
   // Dummy weekly summary data
   const summary = {
-    weekIndex: 4,
-    totalMiles: 52,
-    totalTime: "7:15:30",
-    avgPace: "8:30",
-    runsCompleted: 5,
-    runsPlanned: 6,
-    longestRun: 15,
-    avgHeartRate: 155,
-    caloriesBurned: 4200,
-    elevationGained: 1200
+    weekIndex: 8,
+    totalMileage: 42.5,
+    longRunDistance: 12,
+    longRunHR: 165,
+    activities: [
+      {
+        date: "Monday, Dec 2",
+        mileage: 6.2,
+        pace: "8:15",
+        avgHr: 155
+      },
+      {
+        date: "Tuesday, Dec 3", 
+        mileage: 8.1,
+        pace: "7:45",
+        avgHr: 170
+      },
+      {
+        date: "Wednesday, Dec 4",
+        mileage: 12.0,
+        pace: "8:30",
+        avgHr: 165
+      },
+      {
+        date: "Friday, Dec 6",
+        mileage: 5.2,
+        pace: "8:00",
+        avgHr: 150
+      },
+      {
+        date: "Sunday, Dec 8",
+        mileage: 11.0,
+        pace: "8:45",
+        avgHr: 160
+      }
+    ]
   };
 
   const [reflection, setReflection] = useState({
-    durability: 4,
-    breathing: 4,
+    durability: 3,
+    breathing: 3,
     fatigue: 3,
     mood: "🙂",
     injuryRisk: false,
@@ -31,14 +57,31 @@ const WeeklyReview = () => {
   const moodOptions = ["😫", "😕", "🙂", "😎", "🔥"];
 
   const handleSave = () => {
-    // Save reflection data (could be localStorage or API)
-    localStorage.setItem('weekly-reflection', JSON.stringify(reflection));
+    alert("Weekly review saved! Great job this week!");
     navigate("/");
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Weekly Review</h1>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white shadow-sm border-b">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl font-bold">Weekly Review</h1>
+              <p className="text-gray-600">Review your week's progress and how you felt</p>
+            </div>
+            <button
+              onClick={() => navigate("/")}
+              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
+            >
+              Back to Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto p-6">
 
       {/* 📊 Garmin Overview */}
       <div className="mb-6">
@@ -131,12 +174,13 @@ const WeeklyReview = () => {
         </div>
       </div>
 
-      <button
-        onClick={handleSave}
-        className="bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
-      >
-        Save + Build Next Week
-      </button>
+        <button
+          onClick={handleSave}
+          className="bg-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 transition"
+        >
+          Save + Build Next Week
+        </button>
+      </div>
     </div>
   );
 };

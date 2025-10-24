@@ -25,29 +25,29 @@ const GoFastDashboard = () => {
   // Main action cards
   const mainCards = [
     {
-      name: "Training",
-      description: "Your training plan and progress",
+      name: "Training Hub",
+      description: "Your complete training dashboard",
       icon: "🏃‍♂️",
       color: "bg-blue-500",
       route: "/training-hub"
     },
     {
-      name: "My Races",
+      name: "Race Planning",
       description: "Plan and prepare for your race",
       icon: "📅",
       color: "bg-purple-500",
       route: "/my-races"
     },
     {
-      name: "Run My Race", 
+      name: "Race Day", 
       description: "Race day execution",
       icon: "🏁",
       color: "bg-red-500",
       route: "/race-hub"
     },
     {
-      name: "Post Race",
-      description: "Recovery and next steps",
+      name: "Recovery",
+      description: "Post-race recovery and next steps",
       icon: "🎉",
       color: "bg-green-500", 
       route: "/post-race-hub"
@@ -63,8 +63,8 @@ const GoFastDashboard = () => {
             <div className="flex items-center gap-4">
               <img src="/logo.jpg" alt="GoFast Logo" className="h-12 w-12 rounded-lg" />
               <div>
-                <h1 className="text-2xl font-bold">GoFast</h1>
-                <p className="text-gray-600">Training Dashboard</p>
+                <h1 className="text-2xl font-bold">GoFast Planner</h1>
+                <p className="text-gray-600">Your complete training ecosystem</p>
               </div>
             </div>
             <div className="flex gap-3">

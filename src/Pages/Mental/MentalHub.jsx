@@ -21,9 +21,9 @@ const MentalHub = () => {
       route: "/training-journal"
     },
     {
-      name: "Mental Training",
-      description: "Mindset and motivation tools",
-      icon: "🧠",
+      name: "Replenish",
+      description: "Encouraging words on the journey",
+      icon: "🌱",
       color: "bg-orange-500",
       route: "/mental-replenishment"
     },

@@ -92,6 +92,7 @@ const App = () => (
       <Route path="/goals" element={<Goals />} />
       <Route path="/race-setup" element={<RaceSetup />} />
       <Route path="/runner-profile" element={<RunnerProfile />} />
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   </Router>
 );

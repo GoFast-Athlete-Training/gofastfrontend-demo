@@ -136,7 +136,10 @@ const MyRaces = () => {
 
         {/* Add Race Button */}
         <div className="mt-8 text-center">
-          <button className="px-8 py-4 bg-blue-500 text-white rounded-xl font-semibold hover:bg-blue-600 transition shadow-lg">
+          <button 
+            onClick={() => navigate("/race-setup")}
+            className="px-8 py-4 bg-blue-500 text-white rounded-xl font-semibold hover:bg-blue-600 transition shadow-lg"
+          >
             + Add New Race
           </button>
         </div>

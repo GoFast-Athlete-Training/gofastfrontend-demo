@@ -28,6 +28,7 @@ import CourseVisualization from "./Pages/Race/CourseVisualization";
 import HotelTravel from "./Pages/Race/HotelTravel";
 import RaceStrategy from "./Pages/Race/RaceStrategy";
 import RaceChecklist from "./Pages/Race/RaceChecklist";
+import RaceDetail from "./Pages/Race/RaceDetail";
 
 // Setup (Modular)
 import Profile from "./Pages/Setup/Profile";
@@ -63,6 +64,7 @@ const App = () => (
       <Route path="/hotel-travel" element={<HotelTravel />} />
       <Route path="/race-strategy" element={<RaceStrategy />} />
       <Route path="/race-checklist" element={<RaceChecklist />} />
+      <Route path="/race-detail/:raceId" element={<RaceDetail />} />
       
       {/* Setup (Modular) */}
       <Route path="/profile" element={<Profile />} />

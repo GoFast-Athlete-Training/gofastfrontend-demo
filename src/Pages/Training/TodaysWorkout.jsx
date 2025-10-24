@@ -145,19 +145,12 @@ const TodaysWorkout = () => {
             Send to Garmin 📱
           </button>
           
-          <button
-            className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
-            onClick={() => navigate("/daily-recap")}
-          >
-            Log It Manually 📝
-          </button>
-          
           <div className="flex gap-3">
             <button
               className="flex-1 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"
-              onClick={() => navigate("/my-runs")}
+              onClick={() => navigate("/see-activities")}
             >
-              My Runs 🏃‍♂️
+              My Runs ⌚
             </button>
             <button
               className="flex-1 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"

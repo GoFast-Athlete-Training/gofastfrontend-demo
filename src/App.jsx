@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop";
 
 // Main Dashboard
-import TrainingDashboard from "./Pages/TrainingDashboard";
+import GoFastDashboard from "./Pages/GoFastDashboard";
 
 // Core Training Modules
 import TodaysWorkout from "./Pages/Training/TodaysWorkout";
@@ -27,7 +27,7 @@ const App = () => (
     <ScrollToTop />
     <Routes>
       {/* Main Dashboard */}
-      <Route path="/" element={<TrainingDashboard />} />
+      <Route path="/" element={<GoFastDashboard />} />
       
       {/* Core Training Modules */}
       <Route path="/todays-workout" element={<TodaysWorkout />} />

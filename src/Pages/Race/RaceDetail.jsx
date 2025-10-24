@@ -127,12 +127,20 @@ const RaceDetail = () => {
               <h1 className="text-2xl font-bold">{race.name}</h1>
               <p className="text-gray-600">{race.date} • {race.location}</p>
             </div>
-            <button
-              onClick={() => navigate("/my-races")}
-              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
-            >
-              Back to My Races
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={() => navigate("/my-races")}
+                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
+              >
+                Back to My Races
+              </button>
+              <button
+                onClick={() => navigate("/")}
+                className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
+              >
+                Back to Dashboard
+              </button>
+            </div>
           </div>
         </div>
       </div>

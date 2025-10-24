@@ -127,12 +127,12 @@ const WeekView = () => {
         <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-3xl font-bold mb-2">Week {week.weekIndex + 1}</h1>
-              <p className="text-gray-600 text-lg">{week.phase} Phase</p>
+              <h1 className="text-3xl font-bold mb-2">Week {week.weekIndex + 1} of 16: {week.phase}</h1>
+              <p className="text-gray-600 text-lg">Base Building Phase</p>
             </div>
             <div className="text-right">
               <p className="text-2xl font-bold text-orange-600">{week.targetMileage} mi</p>
-              <p className="text-sm text-gray-500">Total Target</p>
+              <p className="text-sm text-gray-500">Total Miles</p>
             </div>
           </div>
         </div>

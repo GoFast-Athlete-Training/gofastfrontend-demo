@@ -101,6 +101,12 @@ const GoFastDashboard = () => {
             </div>
             <div className="flex gap-3">
               <button
+                onClick={() => navigate("/my-races")}
+                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
+              >
+                My Races 📅
+              </button>
+              <button
                 onClick={() => navigate("/settings")}
                 className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
               >

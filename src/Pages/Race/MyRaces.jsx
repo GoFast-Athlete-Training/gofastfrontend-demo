@@ -14,13 +14,6 @@ const MyRaces = () => {
       route: "/course-visualization"
     },
     {
-      name: "Race Predictor",
-      description: "Calculate your projected pace and lock it in",
-      icon: "🎯",
-      color: "bg-blue-500",
-      route: "/race-predictor"
-    },
-    {
       name: "Final Workout",
       description: "Preview your shakeout and race-eve tips",
       icon: "🏃‍♂️",

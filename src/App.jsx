@@ -12,6 +12,7 @@ import WeekView from "./Pages/Training/WeekView";
 import TrainingJournal from "./Pages/Training/TrainingJournal";
 import MentalReplenishment from "./Pages/Training/MentalReplenishment";
 import WeeklyReview from "./Pages/Training/WeeklyReview";
+import RacePredictor from "./Pages/Training/RacePredictor";
 import GoCrushIt from "./Pages/Training/GoCrushIt";
 import DailyWorkoutRecap from "./Pages/Training/DailyWorkoutRecap";
 import SeeActivities from "./Pages/Training/SeeActivities";
@@ -42,6 +43,7 @@ const App = () => (
       <Route path="/training-journal" element={<TrainingJournal />} />
       <Route path="/mental-replenishment" element={<MentalReplenishment />} />
       <Route path="/weekly-review" element={<WeeklyReview />} />
+      <Route path="/race-predictor" element={<RacePredictor />} />
       <Route path="/go-crush-it" element={<GoCrushIt />} />
       <Route path="/daily-recap" element={<DailyWorkoutRecap />} />
       <Route path="/see-activities" element={<SeeActivities />} />

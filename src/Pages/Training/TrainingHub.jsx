@@ -47,6 +47,13 @@ const TrainingHub = () => {
       icon: "📊",
       color: "bg-indigo-500",
       route: "/weekly-review"
+    },
+    {
+      name: "Race Predictor",
+      description: "Analyze training data to predict race performance",
+      icon: "🎯",
+      color: "bg-blue-500",
+      route: "/race-predictor"
     }
   ];
 

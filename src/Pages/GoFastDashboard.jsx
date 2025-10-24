@@ -64,12 +64,20 @@ const GoFastDashboard = () => {
               <h1 className="text-2xl font-bold">GoFast</h1>
               <p className="text-gray-600">Training Dashboard</p>
             </div>
-            <button
-              onClick={() => navigate("/todays-workout")}
-              className="px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition text-lg"
-            >
-              Run Today 🏃‍♂️
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={() => navigate("/training-analysis")}
+                className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
+              >
+                Analytics 📊
+              </button>
+              <button
+                onClick={() => navigate("/todays-workout")}
+                className="px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition text-lg"
+              >
+                Run Today 🏃‍♂️
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -109,56 +117,20 @@ const GoFastDashboard = () => {
           ))}
         </div>
 
-        {/* Mental & Reflection Section */}
+        {/* Mental Section */}
         <div className="mt-8">
           <h2 className="text-xl font-bold mb-4">Mental & Reflection</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
-              onClick={() => navigate("/reflection")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  💭
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Reflection</h3>
-                <p className="text-gray-600 text-sm">Daily workout recap and mental training</p>
-              </div>
-            </div>
-            <div
-              onClick={() => navigate("/training-journal")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  📝
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Training Journal</h3>
-                <p className="text-gray-600 text-sm">Log your thoughts and progress</p>
-              </div>
-            </div>
-            <div
-              onClick={() => navigate("/mental-replenishment")}
+              onClick={() => navigate("/mental-hub")}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
             >
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
                   🧠
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Mental Training</h3>
-                <p className="text-gray-600 text-sm">Mindset and motivation tools</p>
-              </div>
-            </div>
-            <div
-              onClick={() => navigate("/weekly-review")}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  📊
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Weekly Review</h3>
-                <p className="text-gray-600 text-sm">Review your week's progress</p>
+                <h3 className="text-lg font-semibold mb-2">Mental</h3>
+                <p className="text-gray-600 text-sm">Reflection, journaling, and mental training</p>
               </div>
             </div>
           </div>

@@ -33,6 +33,7 @@ import RaceDetail from "./Pages/Race/RaceDetail";
 import RaceMorning from "./Pages/Race/RaceMorning";
 import RaceFeedback from "./Pages/Race/RaceFeedback";
 import PostRaceHub from "./Pages/PostRace/PostRaceHub";
+import MentalHub from "./Pages/Mental/MentalHub";
 
 // Setup (Modular)
 import Profile from "./Pages/Setup/Profile";
@@ -73,6 +74,7 @@ const App = () => (
       <Route path="/race-morning" element={<RaceMorning />} />
       <Route path="/race-feedback" element={<RaceFeedback />} />
       <Route path="/post-race-hub" element={<PostRaceHub />} />
+      <Route path="/mental-hub" element={<MentalHub />} />
       
       {/* Setup (Modular) */}
       <Route path="/profile" element={<Profile />} />

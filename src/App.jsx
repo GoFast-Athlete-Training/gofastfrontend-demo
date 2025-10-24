@@ -25,6 +25,9 @@ import GarminConnected from "./Pages/Training/GarminConnected";
 import RaceHub from "./Pages/Race/RaceHub";
 import MyRaces from "./Pages/Race/MyRaces";
 import CourseVisualization from "./Pages/Race/CourseVisualization";
+import HotelTravel from "./Pages/Race/HotelTravel";
+import RaceStrategy from "./Pages/Race/RaceStrategy";
+import RaceChecklist from "./Pages/Race/RaceChecklist";
 
 // Setup (Modular)
 import Profile from "./Pages/Setup/Profile";
@@ -57,6 +60,9 @@ const App = () => (
       <Route path="/race-hub" element={<RaceHub />} />
       <Route path="/my-races" element={<MyRaces />} />
       <Route path="/course-visualization" element={<CourseVisualization />} />
+      <Route path="/hotel-travel" element={<HotelTravel />} />
+      <Route path="/race-strategy" element={<RaceStrategy />} />
+      <Route path="/race-checklist" element={<RaceChecklist />} />
       
       {/* Setup (Modular) */}
       <Route path="/profile" element={<Profile />} />

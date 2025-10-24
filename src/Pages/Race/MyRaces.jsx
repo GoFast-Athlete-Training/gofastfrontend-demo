@@ -19,20 +19,6 @@ const MyRaces = () => {
       icon: "✈️",
       color: "bg-orange-500",
       route: "/hotel-travel"
-    },
-    {
-      name: "Race Strategy",
-      description: "Pacing, nutrition, and race day plan",
-      icon: "📋",
-      color: "bg-red-500",
-      route: "/race-strategy"
-    },
-    {
-      name: "Race Checklist",
-      description: "Everything you need for race day",
-      icon: "✅",
-      color: "bg-yellow-500",
-      route: "/race-checklist"
     }
   ];
 

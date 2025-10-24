@@ -7,6 +7,20 @@ const RaceHub = () => {
   // Race day modules
   const raceModules = [
     {
+      name: "Race Strategy",
+      description: "Pacing, nutrition, and race day plan",
+      icon: "📋",
+      color: "bg-red-500",
+      route: "/race-strategy"
+    },
+    {
+      name: "Race Checklist",
+      description: "Everything you need for race day",
+      icon: "✅",
+      color: "bg-yellow-500",
+      route: "/race-checklist"
+    },
+    {
       name: "Race Morning",
       description: "Pre-race mindset and locked-in pace",
       icon: "🌅",
@@ -17,7 +31,7 @@ const RaceHub = () => {
       name: "Race Feedback",
       description: "Post-race reflection and next steps",
       icon: "💭",
-      color: "bg-red-500",
+      color: "bg-blue-500",
       route: "/race-feedback"
     }
   ];

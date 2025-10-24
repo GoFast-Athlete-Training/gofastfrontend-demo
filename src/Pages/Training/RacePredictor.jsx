@@ -20,6 +20,18 @@ const RacePredictor = () => {
     recentHalf: "1:38:45"
   };
 
+  // Last 4 weeks trending data
+  const weeklyTrends = [
+    { week: "Week 13", miles: 48, pace: "8:45", longRun: "18 mi", trend: "up" },
+    { week: "Week 14", miles: 52, pace: "8:35", longRun: "20 mi", trend: "up" },
+    { week: "Week 15", miles: 55, pace: "8:25", longRun: "22 mi", trend: "up" },
+    { week: "Week 16", miles: 58, pace: "8:15", longRun: "24 mi", trend: "up" }
+  ];
+
+  const handleAnalysisClick = () => {
+    navigate("/training-analysis");
+  };
+
   const predictions = [
     {
       metric: "Goal Time",
@@ -147,15 +159,50 @@ const RacePredictor = () => {
           </div>
         </div>
 
+        {/* Last 4 Weeks Trending */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h2 className="text-xl font-bold mb-4">Last 4 Weeks Trending 📈</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {weeklyTrends.map((week, index) => (
+              <div key={index} className="text-center p-4 border rounded-lg hover:shadow-md transition-shadow">
+                <p className="text-sm text-gray-500 mb-2">{week.week}</p>
+                <div className="space-y-2">
+                  <div>
+                    <p className="text-lg font-bold text-blue-600">{week.miles} mi</p>
+                    <p className="text-xs text-gray-500">Miles</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-green-600">{week.pace}/mi</p>
+                    <p className="text-xs text-gray-500">Avg Pace</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-purple-600">{week.longRun}</p>
+                    <p className="text-xs text-gray-500">Long Run</p>
+                  </div>
+                  <div className="flex justify-center">
+                    <span className="text-green-500 text-lg">📈</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Analysis Summary */}
-        <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+        <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-6">
           <h2 className="text-xl font-bold mb-4 text-green-900">Training Analysis</h2>
-          <div className="space-y-3 text-green-800">
+          <div className="space-y-3 text-green-800 mb-4">
             <p>• Your training volume of <strong>{trainingData.avgWeeklyMileage} miles/week</strong> is excellent for marathon training</p>
             <p>• Recent race times suggest you're <strong>3 minutes ahead</strong> of your goal pace</p>
             <p>• Your projected finish time of <strong>{trainingData.projectedTime}</strong> is <strong>3 minutes faster</strong> than your goal</p>
             <p>• Based on your training, you're on track to <strong>exceed your goal</strong> by a significant margin</p>
           </div>
+          <button
+            onClick={handleAnalysisClick}
+            className="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
+          >
+            View Detailed Analysis 📊
+          </button>
         </div>
       </div>
     </div>

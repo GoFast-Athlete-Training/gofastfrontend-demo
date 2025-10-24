@@ -142,22 +142,6 @@ const GoFastDashboard = () => {
           </div>
         </div>
 
-        {/* Current Phase */}
-        <div className="bg-white rounded-lg shadow p-4 mb-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-lg font-bold text-blue-600">{currentPhase.name}</h3>
-              <p className="text-sm text-gray-600">{currentPhase.week}</p>
-            </div>
-            <div className="text-right">
-              <div className="w-24 bg-gray-200 rounded-full h-2">
-                <div className="bg-blue-500 h-2 rounded-full" style={{width: `${currentPhase.progress}%`}}></div>
-              </div>
-              <p className="text-xs text-gray-500 mt-1">{currentPhase.progress}% complete</p>
-            </div>
-          </div>
-        </div>
-
         {/* Today's Dashboard */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           <div className="bg-white rounded-xl shadow-lg p-6">
@@ -191,25 +175,21 @@ const GoFastDashboard = () => {
           </div>
         </div>
 
-        {/* Main Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {mainCards.map((card, index) => (
-            <div
-              key={index}
-              onClick={() => navigate(card.route)}
-              className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group ${
-                card.size === 'large' ? 'lg:col-span-2' : ''
-              }`}
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  {card.icon}
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{card.name}</h3>
-                <p className="text-gray-600 text-sm">{card.description}</p>
+        {/* Training - Main Focus */}
+        <div className="mb-8">
+          <div
+            onClick={() => navigate("/training-hub")}
+            className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-200 cursor-pointer group text-white"
+          >
+            <div className="text-center">
+              <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                🏃‍♂️
               </div>
+              <h3 className="text-3xl font-bold mb-2">Training</h3>
+              <p className="text-blue-100 text-lg">Your complete training dashboard</p>
+              <p className="text-sm text-blue-200 mt-2">Base Building - Week 8 of 16</p>
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Body & Mind Section */}
@@ -252,6 +232,39 @@ const GoFastDashboard = () => {
                   <h3 className="text-sm font-semibold mb-1 text-white">Injury Prevention</h3>
                   <p className="text-xs text-purple-100">Stay healthy</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Race & Beyond - Demo Only */}
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-4 text-gray-500">Race & Beyond (Demo)</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              onClick={() => navigate("/race-hub")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200 opacity-75"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  🏁
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Race Day</h3>
+                <p className="text-gray-600 text-sm">Race day execution</p>
+                <p className="text-xs text-gray-400 mt-1">Not yet in training phase</p>
+              </div>
+            </div>
+            <div
+              onClick={() => navigate("/post-race-hub")}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200 opacity-75"
+            >
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  🎉
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Post-Race</h3>
+                <p className="text-gray-600 text-sm">Recovery and next steps</p>
+                <p className="text-xs text-gray-400 mt-1">Not yet in training phase</p>
               </div>
             </div>
           </div>

@@ -93,12 +93,20 @@ const SeeActivities = () => {
                   </div>
                   
                   {index === 0 && (
-                    <button
-                      onClick={() => navigate("/match-activity")}
-                      className="ml-4 px-4 py-2 bg-orange-500 text-white rounded-lg text-sm font-semibold hover:bg-orange-600 transition"
-                    >
-                      Match to Training
-                    </button>
+                    <div className="ml-4 flex flex-col gap-2">
+                      <button
+                        onClick={() => navigate("/match-activity")}
+                        className="px-4 py-2 bg-orange-500 text-white rounded-lg text-sm font-semibold hover:bg-orange-600 transition"
+                      >
+                        Match to Training
+                      </button>
+                      <button
+                        onClick={() => navigate("/daily-recap")}
+                        className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold hover:bg-blue-600 transition"
+                      >
+                        Reflect on this run
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>

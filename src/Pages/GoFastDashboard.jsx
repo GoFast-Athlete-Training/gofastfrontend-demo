@@ -277,15 +277,15 @@ const GoFastDashboard = () => {
               </div>
             </div>
             <div
-              onClick={() => navigate("/my-races")}
+              onClick={() => navigate("/race-setup")}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group border-2 border-gray-200"
             >
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  📅
+                  🏁
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Event Setup</h3>
-                <p className="text-gray-600 text-sm">Add and manage your races</p>
+                <h3 className="text-lg font-semibold mb-2">Race Setup</h3>
+                <p className="text-gray-600 text-sm">Set up your race and training plan</p>
               </div>
             </div>
           </div>

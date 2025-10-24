@@ -42,6 +42,8 @@ import InjuryPrevention from "./Pages/Maintenance/InjuryPrevention";
 // Setup (Modular)
 import Profile from "./Pages/Setup/Profile";
 import Goals from "./Pages/Setup/Goals";
+import RaceSetup from "./Pages/Setup/RaceSetup";
+import RunnerProfile from "./Pages/Setup/RunnerProfile";
 
 const App = () => (
   <Router>
@@ -87,6 +89,8 @@ const App = () => (
       {/* Setup (Modular) */}
       <Route path="/profile" element={<Profile />} />
       <Route path="/goals" element={<Goals />} />
+      <Route path="/race-setup" element={<RaceSetup />} />
+      <Route path="/runner-profile" element={<RunnerProfile />} />
     </Routes>
   </Router>
 );

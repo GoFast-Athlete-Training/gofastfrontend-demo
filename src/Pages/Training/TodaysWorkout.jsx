@@ -23,7 +23,7 @@ const TodaysWorkout = () => {
     actual: {
       completed: false
     },
-    status: "scheduled"
+    status: "tempo"
   };
 
   const { planned, actual, status } = workout;
@@ -40,11 +40,13 @@ const TodaysWorkout = () => {
               <p className="text-sm text-gray-500 mt-1">{dayName}, {dateStr}</p>
             </div>
             <div className={`px-3 py-1 rounded-full text-sm font-semibold ${
-              status === 'completed' ? 'bg-green-100 text-green-700' :
-              status === 'scheduled' ? 'bg-blue-100 text-blue-700' :
+              status === 'tempo' ? 'bg-orange-100 text-orange-700' :
+              status === 'long' ? 'bg-blue-100 text-blue-700' :
+              status === 'easy' ? 'bg-green-100 text-green-700' :
+              status === 'interval' ? 'bg-red-100 text-red-700' :
               'bg-gray-100 text-gray-700'
             }`}>
-              {status}
+              {status.toUpperCase()}
             </div>
           </div>
 

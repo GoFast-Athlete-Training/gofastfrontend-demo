@@ -7,7 +7,7 @@ const PostRaceHub = () => {
   // Post-race modules
   const postRaceModules = [
     {
-      name: "Race Feedback",
+      name: "Reflect",
       description: "Final reflection and what's next",
       icon: "💭",
       color: "bg-blue-500",

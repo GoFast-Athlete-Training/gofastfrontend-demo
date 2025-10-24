@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const TodaysWorkout = () => {
@@ -9,7 +9,7 @@ const TodaysWorkout = () => {
   const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
   const dateStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   
-  const [workout, setWorkout] = useState({
+  const workout = {
     planned: {
       label: "Tempo Run - Marathon Pace",
       type: "tempo",
@@ -24,7 +24,7 @@ const TodaysWorkout = () => {
       completed: false
     },
     status: "scheduled"
-  });
+  };
 
   const { planned, actual, status } = workout;
 
@@ -133,35 +133,12 @@ const TodaysWorkout = () => {
 
         {/* Action Buttons */}
         <div className="space-y-3">
-          {!actual?.completed ? (
-            <>
-              <button
-                className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
-                onClick={() => navigate("/daily-recap")}
-              >
-                Log It Manually 📝
-              </button>
-              <button
-                className="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition"
-                onClick={() => {
-                  setWorkout(prev => ({
-                    ...prev,
-                    actual: { ...prev.actual, completed: true, mileage: 8, pace: "7:52", avgHR: 165 },
-                    status: "completed"
-                  }));
-                }}
-              >
-                Simulate Workout Complete 🏃‍♂️
-              </button>
-            </>
-          ) : (
-            <button
-              className="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition"
-              onClick={() => navigate("/daily-recap")}
-            >
-              How Did It Feel? 💭
-            </button>
-          )}
+          <button
+            className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
+            onClick={() => navigate("/daily-recap")}
+          >
+            Log It Manually 📝
+          </button>
           
           <button
             className="w-full px-6 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition"

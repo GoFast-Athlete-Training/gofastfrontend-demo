@@ -16,6 +16,7 @@ import RacePredictor from "./Pages/Training/RacePredictor";
 import TrainingAnalysis from "./Pages/Training/TrainingAnalysis";
 import GoCrushIt from "./Pages/Training/GoCrushIt";
 import DailyWorkoutRecap from "./Pages/Training/DailyWorkoutRecap";
+import Reflection from "./Pages/Training/Reflection";
 import SeeActivities from "./Pages/Training/SeeActivities";
 import MatchActivity from "./Pages/Training/MatchActivity";
 import GarminConnect from "./Pages/Training/GarminConnect";
@@ -55,6 +56,7 @@ const App = () => (
       <Route path="/training-analysis" element={<TrainingAnalysis />} />
       <Route path="/go-crush-it" element={<GoCrushIt />} />
       <Route path="/daily-recap" element={<DailyWorkoutRecap />} />
+      <Route path="/reflection" element={<Reflection />} />
       <Route path="/see-activities" element={<SeeActivities />} />
       <Route path="/match-activity" element={<MatchActivity />} />
       <Route path="/connect-garmin" element={<GarminConnect />} />

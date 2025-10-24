@@ -64,9 +64,9 @@ const TrainingHub = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* Training Execution */}
+        {/* Main Training Actions */}
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4">Training Execution</h2>
+          <h2 className="text-xl font-bold mb-4">Training</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div
               onClick={() => navigate("/todays-workout")}
@@ -76,39 +76,39 @@ const TrainingHub = () => {
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-200">
                   🏃‍♂️
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Today's Workout</h3>
-                <p className="text-gray-600">Your planned workout for today</p>
+                <h3 className="text-xl font-semibold mb-2">Run Today</h3>
+                <p className="text-gray-600">Your workout for today</p>
               </div>
             </div>
             <div
-              onClick={() => navigate("/week-view")}
+              onClick={() => navigate("/see-activities")}
               className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-200 cursor-pointer group"
             >
               <div className="text-center">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  📅
+                  ⌚
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Week View</h3>
-                <p className="text-gray-600">This week's training plan</p>
+                <h3 className="text-xl font-semibold mb-2">My Runs</h3>
+                <p className="text-gray-600">View all your Garmin activities</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Training Analysis */}
+        {/* Other Training Tools */}
         <div>
-          <h2 className="text-xl font-bold mb-4">Training Analysis</h2>
+          <h2 className="text-xl font-bold mb-4">Training Tools</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
-              onClick={() => navigate("/see-activities")}
+              onClick={() => navigate("/week-view")}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 cursor-pointer group"
             >
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                  ⌚
+                  📅
                 </div>
-                <h3 className="text-lg font-semibold mb-2">My Runs</h3>
-                <p className="text-gray-600 text-sm">View all your Garmin activities</p>
+                <h3 className="text-lg font-semibold mb-2">Week View</h3>
+                <p className="text-gray-600 text-sm">This week's training plan</p>
               </div>
             </div>
             <div

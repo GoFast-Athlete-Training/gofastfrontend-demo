@@ -47,6 +47,7 @@ import RunnerProfile from "./Pages/Settings/RunnerProfile";
 import Settings from "./Pages/Settings/Settings";
 
 // Matching Flow
+import PreOnboarding from "./Pages/Matching/PreOnboarding";
 import Onboarding from "./Pages/Matching/Onboarding";
 import FindMatches from "./Pages/Matching/FindMatches";
 import Crew from "./Pages/Matching/Crew";
@@ -57,10 +58,11 @@ const App = () => (
     <ScrollToTop />
     <Routes>
       {/* Main Dashboard - Default Route */}
-      <Route path="/" element={<Onboarding />} />
+      <Route path="/" element={<PreOnboarding />} />
       <Route path="/dashboard" element={<GoFastDashboard />} />
       
       {/* Matching Flow */}
+      <Route path="/pre-onboarding" element={<PreOnboarding />} />
       <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/find" element={<FindMatches />} />
       <Route path="/crew" element={<Crew />} />

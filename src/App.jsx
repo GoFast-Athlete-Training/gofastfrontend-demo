@@ -4,6 +4,17 @@ import ScrollToTop from "./Components/ScrollToTop";
 
 // Dashboard
 import GoFastDashboard from "./Pages/GoFastDashboard";
+import Start from "./Pages/Start";
+import Connect from "./Pages/Connect";
+
+// Run Crew
+import StartRunCrew from "./Pages/RunCrew/StartRunCrew";
+import JoinOrStartCrew from "./Pages/RunCrew/JoinOrStartCrew";
+import CrewDashboard from "./Pages/RunCrew/CrewDashboard";
+
+// Merch Store
+import GoFastMerch from "./Pages/MerchStore/GoFastMerch";
+import RedeemPoints from "./Pages/MerchStore/RedeemPoints";
 
 // Core Training Modules
 import TrainingHub from "./Pages/Training/TrainingHub";
@@ -80,9 +91,19 @@ const App = () => (
   <Router>
     <ScrollToTop />
     <Routes>
-      {/* Main Dashboard - Default Route */}
-      <Route path="/" element={<PreAthleteProfile />} />
-      <Route path="/dashboard" element={<GoFastDashboard />} />
+              {/* Main Entry Point */}
+              <Route path="/" element={<Start />} />
+              <Route path="/start" element={<Start />} />
+              <Route path="/connect" element={<Connect />} />
+              <Route path="/start-run-crew" element={<StartRunCrew />} />
+              <Route path="/join-or-start-crew" element={<JoinOrStartCrew />} />
+              <Route path="/crew-dashboard" element={<CrewDashboard />} />
+              
+              {/* Merch Store */}
+              <Route path="/merch-store" element={<GoFastMerch />} />
+              <Route path="/redeem-points" element={<RedeemPoints />} />
+              
+              <Route path="/dashboard" element={<GoFastDashboard />} />
       
       {/* Matching Flow */}
       <Route path="/pre-athlete-profile" element={<PreAthleteProfile />} />

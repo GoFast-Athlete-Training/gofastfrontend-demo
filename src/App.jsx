@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop";
 
-// Landing & Dashboard
-import Landing from "./Pages/Landing";
+// Dashboard
 import GoFastDashboard from "./Pages/GoFastDashboard";
 
 // Core Training Modules
@@ -51,10 +50,8 @@ const App = () => (
   <Router>
     <ScrollToTop />
     <Routes>
-      {/* Landing Page */}
-      <Route path="/" element={<Landing />} />
-      
-      {/* Main Dashboard */}
+      {/* Main Dashboard - Default Route */}
+      <Route path="/" element={<GoFastDashboard />} />
       <Route path="/dashboard" element={<GoFastDashboard />} />
       
       {/* Core Training Modules */}

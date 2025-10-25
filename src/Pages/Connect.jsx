@@ -21,7 +21,7 @@ const Connect = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-4">
@@ -46,7 +46,7 @@ const Connect = () => {
             It's better to run together.
           </h1>
           <p className="text-xl text-gray-600">
-            Choose how you want to connect with other runners
+            Find your people, your pace, your accountability.
           </p>
         </div>
 

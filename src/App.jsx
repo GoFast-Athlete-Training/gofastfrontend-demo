@@ -47,26 +47,78 @@ import RunnerProfile from "./Pages/Settings/RunnerProfile";
 import Settings from "./Pages/Settings/Settings";
 
 // Matching Flow
-import PreOnboarding from "./Pages/Matching/PreOnboarding";
-import Onboarding from "./Pages/Matching/Onboarding";
+import PreAthleteProfile from "./Pages/Matching/PreAthleteProfile";
+import MatchingHome from "./Pages/Matching/MatchingHome";
+import ProfileBuild from "./Pages/Matching/ProfileBuild";
+import MatchProfile from "./Pages/Matching/MatchProfile";
+import MatchProfileSuccess from "./Pages/Matching/MatchProfileSuccess";
 import FindMatches from "./Pages/Matching/FindMatches";
 import Crew from "./Pages/Matching/Crew";
 import MatchingProfile from "./Pages/Matching/Profile";
+import RequestSent from "./Pages/Matching/RequestSent";
+import RequestReceived from "./Pages/Matching/RequestReceived";
+import AthleteHome from "./Pages/Matching/AthleteHome";
+import TrophyBoard from "./Pages/Matching/TrophyBoard";
+import LetsGetAfterIt from "./Pages/Matching/LetsGetAfterIt";
+import LinkRunningApp from "./Pages/Matching/LinkRunningApp";
+import LogIntoStrava from "./Pages/Matching/LogIntoStrava";
+import GoFastEarnPoints from "./Pages/Matching/GoFastEarnPoints";
+import HowPointsWork from "./Pages/Matching/HowPointsWork";
+import GoFastShop from "./Pages/Matching/GoFastShop";
+import ProductDetail from "./Pages/Matching/ProductDetail";
+import Cart from "./Pages/Matching/Cart";
+import Checkout from "./Pages/Matching/Checkout";
+import OrderConfirmation from "./Pages/Matching/OrderConfirmation";
+import FindRunningCrews from "./Pages/Matching/FindRunningCrews";
+import RunningCrewDetail from "./Pages/Matching/RunningCrewDetail";
+import GroupChat from "./Pages/Matching/GroupChat";
+
+// Platform
+import GoFastPlatform from "./Pages/GoFastPlatform";
 
 const App = () => (
   <Router>
     <ScrollToTop />
     <Routes>
       {/* Main Dashboard - Default Route */}
-      <Route path="/" element={<PreOnboarding />} />
+      <Route path="/" element={<PreAthleteProfile />} />
       <Route path="/dashboard" element={<GoFastDashboard />} />
       
       {/* Matching Flow */}
-      <Route path="/pre-onboarding" element={<PreOnboarding />} />
-      <Route path="/onboarding" element={<Onboarding />} />
-      <Route path="/find" element={<FindMatches />} />
-      <Route path="/crew" element={<Crew />} />
-      <Route path="/matching-profile" element={<MatchingProfile />} />
+      <Route path="/pre-athlete-profile" element={<PreAthleteProfile />} />
+      <Route path="/matching-home" element={<MatchingHome />} />
+      <Route path="/profile-build" element={<ProfileBuild />} />
+      <Route path="/match-profile" element={<MatchProfile />} />
+      <Route path="/match-profile-success" element={<MatchProfileSuccess />} />
+              <Route path="/find" element={<FindMatches />} />
+              <Route path="/crew" element={<Crew />} />
+              <Route path="/matching-profile" element={<MatchingProfile />} />
+              <Route path="/request-sent" element={<RequestSent />} />
+              <Route path="/request-received" element={<RequestReceived />} />
+              <Route path="/athlete-home" element={<AthleteHome />} />
+              
+              {/* Rewards System */}
+              <Route path="/trophy-board" element={<TrophyBoard />} />
+              <Route path="/lets-get-after-it" element={<LetsGetAfterIt />} />
+              <Route path="/link-running-app" element={<LinkRunningApp />} />
+              <Route path="/log-into-strava" element={<LogIntoStrava />} />
+              <Route path="/gofast-earn-points" element={<GoFastEarnPoints />} />
+              <Route path="/how-points-work" element={<HowPointsWork />} />
+              
+              {/* Shopping Flow */}
+              <Route path="/shop" element={<GoFastShop />} />
+              <Route path="/product-detail/:id" element={<ProductDetail />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/order-confirmation" element={<OrderConfirmation />} />
+              
+              {/* Community/Group Flow */}
+              <Route path="/find-running-crews" element={<FindRunningCrews />} />
+              <Route path="/running-crew/:id" element={<RunningCrewDetail />} />
+              <Route path="/group-chat/:id" element={<GroupChat />} />
+      
+      {/* Platform */}
+      <Route path="/gofast-platform" element={<GoFastPlatform />} />
       
       {/* Core Training Modules */}
       <Route path="/training-hub" element={<TrainingHub />} />

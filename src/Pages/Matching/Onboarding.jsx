@@ -5,10 +5,12 @@ const Onboarding = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
     pace: '',
     distance: '',
     city: '',
-    zip: '',
     timePreference: '',
     goalRace: ''
   });
@@ -39,8 +41,52 @@ const Onboarding = () => {
   const renderStep1 = () => (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">What's your pace?</h2>
-        <p className="text-gray-600">This helps us find runners who match your speed</p>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">Your Contact Details</h2>
+        <p className="text-gray-600">Basic info to connect with other runners</p>
+      </div>
+      
+      <div className="space-y-6">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-3">Name</label>
+          <input 
+            type="text" 
+            value={formData.name} 
+            onChange={(e) => handleInputChange('name', e.target.value)}
+            placeholder="Your first name"
+            className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-3">Email</label>
+          <input 
+            type="email" 
+            value={formData.email} 
+            onChange={(e) => handleInputChange('email', e.target.value)}
+            placeholder="your@email.com"
+            className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-3">Phone (optional)</label>
+          <input 
+            type="tel" 
+            value={formData.phone} 
+            onChange={(e) => handleInputChange('phone', e.target.value)}
+            placeholder="(555) 123-4567"
+            className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+          />
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderStep2 = () => (
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">Runner Baseline & Preferences</h2>
+        <p className="text-gray-600">Help us find runners who match your style</p>
       </div>
       
       <div className="space-y-6">
@@ -81,33 +127,21 @@ const Onboarding = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">City</label>
-            <input 
-              type="text" 
-              value={formData.city} 
-              onChange={(e) => handleInputChange('city', e.target.value)}
-              placeholder="Enter your city"
-              className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">ZIP Code</label>
-            <input 
-              type="text" 
-              value={formData.zip} 
-              onChange={(e) => handleInputChange('zip', e.target.value)}
-              placeholder="12345"
-              className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-            />
-          </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-3">City</label>
+          <input 
+            type="text" 
+            value={formData.city} 
+            onChange={(e) => handleInputChange('city', e.target.value)}
+            placeholder="Enter your city"
+            className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+          />
         </div>
       </div>
     </div>
   );
 
-  const renderStep2 = () => (
+  const renderStep3 = () => (
     <div className="space-y-8">
       <div>
         <h2 className="text-2xl font-bold text-gray-800 mb-2">When do you like to run?</h2>
@@ -151,38 +185,6 @@ const Onboarding = () => {
               </button>
             ))}
           </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderStep3 = () => (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Complete Your Profile</h2>
-        <p className="text-gray-600">Review your preferences and start finding matches</p>
-      </div>
-      
-      <div className="bg-gray-50 rounded-lg p-6 space-y-4">
-        <div className="flex justify-between">
-          <span className="font-medium text-gray-700">Pace:</span>
-          <span className="text-gray-900">{formData.pace} min/mile</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="font-medium text-gray-700">Distance:</span>
-          <span className="text-gray-900">{formData.distance}</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="font-medium text-gray-700">Location:</span>
-          <span className="text-gray-900">{formData.city}, {formData.zip}</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="font-medium text-gray-700">Time:</span>
-          <span className="text-gray-900">{formData.timePreference}</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="font-medium text-gray-700">Goal Race:</span>
-          <span className="text-gray-900">{formData.goalRace}</span>
         </div>
       </div>
     </div>
@@ -240,16 +242,7 @@ const Onboarding = () => {
             
             <button
               onClick={handleNext}
-              disabled={
-                (step === 1 && (!formData.pace || !formData.distance || !formData.city || !formData.zip)) ||
-                (step === 2 && (!formData.timePreference || !formData.goalRace))
-              }
-              className={`px-8 py-3 rounded-lg font-medium transition-all ${
-                (step === 1 && (!formData.pace || !formData.distance || !formData.city || !formData.zip)) ||
-                (step === 2 && (!formData.timePreference || !formData.goalRace))
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-orange-500 text-white hover:bg-orange-600'
-              }`}
+              className="bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition-all"
             >
               {step === 3 ? 'Find Your Match' : 'Next'}
             </button>

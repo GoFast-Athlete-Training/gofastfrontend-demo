@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const PreOnboarding = () => {
+const MatchingHome = () => {
   const navigate = useNavigate();
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
 
@@ -211,4 +211,4 @@ const PreOnboarding = () => {
   );
 };
 
-export default PreOnboarding;
+export default MatchingHome;

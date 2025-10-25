@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const PreOnboarding = () => {
+const MatchingHome = () => {
   const navigate = useNavigate();
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
 
@@ -51,6 +51,16 @@ const PreOnboarding = () => {
 
   const handleGetStarted = () => {
     navigate('/profile-build');
+  };
+
+  const handleStartMatching = () => {
+    // Check if they have match preferences
+    const matchPreferences = localStorage.getItem('matchPreferences');
+    if (matchPreferences) {
+      navigate('/find');
+    } else {
+      navigate('/match-profile');
+    }
   };
 
   const handleSkip = () => {
@@ -165,13 +175,13 @@ const PreOnboarding = () => {
         {/* Bottom CTA */}
         <div className="text-center">
           <button
-            onClick={handleGetStarted}
+            onClick={handleStartMatching}
             className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
           >
-            Get Started - Find Your Matches
+            Start Matching
           </button>
           <p className="text-gray-500 mt-4">
-            Takes 2 minutes • No login required
+            See who's available in your area
           </p>
         </div>
       </div>
@@ -211,4 +221,4 @@ const PreOnboarding = () => {
   );
 };
 
-export default PreOnboarding;
+export default MatchingHome;

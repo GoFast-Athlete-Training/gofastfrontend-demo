@@ -46,6 +46,12 @@ import RaceSetup from "./Pages/Settings/RaceSetup";
 import RunnerProfile from "./Pages/Settings/RunnerProfile";
 import Settings from "./Pages/Settings/Settings";
 
+// Matching Flow
+import Onboarding from "./Pages/Matching/Onboarding";
+import FindMatches from "./Pages/Matching/FindMatches";
+import Crew from "./Pages/Matching/Crew";
+import MatchingProfile from "./Pages/Matching/Profile";
+
 const App = () => (
   <Router>
     <ScrollToTop />
@@ -53,6 +59,12 @@ const App = () => (
       {/* Main Dashboard - Default Route */}
       <Route path="/" element={<GoFastDashboard />} />
       <Route path="/dashboard" element={<GoFastDashboard />} />
+      
+      {/* Matching Flow */}
+      <Route path="/onboarding" element={<Onboarding />} />
+      <Route path="/find" element={<FindMatches />} />
+      <Route path="/crew" element={<Crew />} />
+      <Route path="/matching-profile" element={<MatchingProfile />} />
       
       {/* Core Training Modules */}
       <Route path="/training-hub" element={<TrainingHub />} />
@@ -89,7 +101,7 @@ const App = () => (
       <Route path="/injury-prevention" element={<InjuryPrevention />} />
       
       {/* Setup (Modular) */}
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/profile" element={<MatchingProfile />} />
       <Route path="/goals" element={<Goals />} />
       <Route path="/race-setup" element={<RaceSetup />} />
       <Route path="/runner-profile" element={<RunnerProfile />} />

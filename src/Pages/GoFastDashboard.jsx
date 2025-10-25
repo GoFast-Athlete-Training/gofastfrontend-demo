@@ -243,6 +243,52 @@ const GoFastDashboard = () => {
           </div>
         </div>
 
+        {/* Matching Section */}
+        <div className="mt-8">
+          <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-xl shadow-lg p-6">
+            <h2 className="text-xl font-bold mb-4 text-white">Find Your Running Match</h2>
+            <p className="text-orange-100 mb-6">Connect with runners who share your pace and goals</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div
+                onClick={() => navigate("/onboarding")}
+                className="bg-white/20 backdrop-blur-sm rounded-lg p-4 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
+              >
+                <div className="text-center">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">
+                    🏃‍♂️
+                  </div>
+                  <h3 className="text-sm font-semibold mb-1 text-white">Get Started</h3>
+                  <p className="text-xs text-orange-100">Set your preferences</p>
+                </div>
+              </div>
+              <div
+                onClick={() => navigate("/find")}
+                className="bg-white/20 backdrop-blur-sm rounded-lg p-4 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
+              >
+                <div className="text-center">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">
+                    🔍
+                  </div>
+                  <h3 className="text-sm font-semibold mb-1 text-white">Find Matches</h3>
+                  <p className="text-xs text-orange-100">Discover runners</p>
+                </div>
+              </div>
+              <div
+                onClick={() => navigate("/crew")}
+                className="bg-white/20 backdrop-blur-sm rounded-lg p-4 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
+              >
+                <div className="text-center">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">
+                    👥
+                  </div>
+                  <h3 className="text-sm font-semibold mb-1 text-white">My Crew</h3>
+                  <p className="text-xs text-orange-100">Your running partners</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Race & Beyond - Demo Only */}
         <div className="mt-8">
           <h2 className="text-xl font-bold mb-4 text-gray-500">Race & Beyond (Demo)</h2>

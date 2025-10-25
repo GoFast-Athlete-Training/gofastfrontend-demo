@@ -19,21 +19,26 @@ export default function RaceSetup() {
     try {
       setLoading(true);
 
-      // Get runner profile data
+      // Get racer data
+      const racerId = localStorage.getItem('racerId');
       const runnerProfile = JSON.parse(localStorage.getItem('runnerProfile') || '{}');
 
-      // Create race with ALL data via V2 API
+      // Create race with racerId
       const { createRace } = await import('../../api/raceApi');
       const { generateTrainingPlan, activateTrainingPlan } = await import('../../api/trainingPlanApi');
 
       console.log('🏁 Creating race...');
       const race = await createRace({
-        raceName,
-        raceType,
-        raceDate,
-        goalTime,
-        baseline5k: runnerProfile.baseline5k,
-        baselineWeeklyMileage: runnerProfile.weeklyMileage
+        raceId: `race_${Date.now()}`, // Generate unique race ID
+        name: raceName,
+        distance: raceType,
+        date: raceDate,
+        location: 'TBD', // Will be filled in later
+        racerId: racerId,
+        goalTime: goalTime,
+        baseline5k: runnerProfile.averagePace,
+        baselineWeeklyMileage: runnerProfile.weeklyMileage,
+        age: runnerProfile.age
       });
 
       console.log('✅ Race created:', race);

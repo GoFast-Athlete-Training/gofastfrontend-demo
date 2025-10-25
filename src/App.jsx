@@ -57,7 +57,7 @@ const App = () => (
     <ScrollToTop />
     <Routes>
       {/* Main Dashboard - Default Route */}
-      <Route path="/" element={<GoFastDashboard />} />
+      <Route path="/" element={<Onboarding />} />
       <Route path="/dashboard" element={<GoFastDashboard />} />
       
       {/* Matching Flow */}

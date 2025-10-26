@@ -38,7 +38,7 @@ const Start = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-4">
@@ -130,10 +130,10 @@ const Start = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Train</h2>
               <p className="text-gray-600 mb-6">
-                Track your runs, sync with Garmin, and log your progress
+                Track your runs and log your progress
               </p>
               <div className="text-blue-600 font-medium">
-                Garmin sync + manual log →
+                Training tools →
               </div>
             </div>
           </div>
@@ -149,10 +149,10 @@ const Start = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Earn</h2>
               <p className="text-gray-600 mb-6">
-                Compete on leaderboards and complete challenges
+                Earn points and compete with others
               </p>
               <div className="text-green-600 font-medium">
-                Leaderboard + challenges →
+                Points & rewards →
               </div>
             </div>
           </div>

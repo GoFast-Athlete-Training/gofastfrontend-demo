@@ -9,7 +9,7 @@ const Connect = () => {
   };
 
   const handleStartRunCrew = () => {
-    navigate('/join-or-start-crew');
+    navigate('/crew-explainer');
   };
 
   const handleJoinClub = () => {

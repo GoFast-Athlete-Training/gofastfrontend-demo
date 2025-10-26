@@ -60,7 +60,7 @@ const FormRunCrew = () => {
       members: mockMembers
     }));
 
-    navigate('/crew-dashboard');
+    navigate('/run-crew-success');
   };
 
   const handleBack = () => {

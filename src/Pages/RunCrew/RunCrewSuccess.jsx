@@ -1,0 +1,138 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaCheck, FaCopy, FaShare } from 'react-icons/fa';
+
+const RunCrewSuccess = () => {
+  const navigate = useNavigate();
+  
+  // Get crew data from localStorage
+  const crewData = JSON.parse(localStorage.getItem('currentCrew') || '{}');
+  const crewCode = crewData.crewCode || 'runningfoolsofarlington';
+
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(crewCode);
+    alert('Crew code copied to clipboard!');
+  };
+
+  const handleGoToDashboard = () => {
+    navigate('/crew-dashboard');
+  };
+
+  const handleShareCrew = () => {
+    const shareText = `Join my running crew "${crewData.crewName || 'Morning Warriors'}"! Use code: ${crewCode}`;
+    if (navigator.share) {
+      navigator.share({
+        title: 'Join My Running Crew',
+        text: shareText,
+        url: 'https://runcrewjoin.gofastcrushgoals.com'
+      });
+    } else {
+      navigator.clipboard.writeText(`${shareText}\n\nJoin at: https://runcrewjoin.gofastcrushgoals.com`);
+      alert('Share text copied to clipboard!');
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <div className="bg-white shadow-sm">
+        <div className="max-w-md mx-auto px-6 py-4">
+          <div className="flex items-center justify-center">
+            <img src="/logo.jpg" alt="GoFast" className="w-6 h-6 rounded-full" />
+            <span className="text-xl font-bold text-gray-900 ml-3">GoFast</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-w-md mx-auto px-6 py-8">
+        <div className="text-center">
+          {/* Success Animation */}
+          <div className="mb-8">
+            <div className="w-24 h-24 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+              <FaCheck className="w-12 h-12 text-green-500" />
+            </div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Crew Created!</h1>
+            <p className="text-gray-600">
+              Congratulations! Your running crew is ready to go.
+            </p>
+          </div>
+
+          {/* Crew Code Section */}
+          <div className="bg-orange-50 rounded-xl p-6 mb-8">
+            <h2 className="text-lg font-bold text-gray-900 mb-4">Share This Code</h2>
+            <div className="bg-white rounded-lg p-4 mb-4 border-2 border-orange-200">
+              <div className="text-2xl font-bold text-orange-600 mb-2">{crewCode}</div>
+              <p className="text-sm text-gray-600">Share this code with friends to invite them</p>
+            </div>
+            
+            <div className="flex space-x-3">
+              <button
+                onClick={handleCopyCode}
+                className="flex-1 bg-orange-500 text-white py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2"
+              >
+                <FaCopy className="w-4 h-4" />
+                <span>Copy Code</span>
+              </button>
+              <button
+                onClick={handleShareCrew}
+                className="flex-1 bg-white border-2 border-orange-200 text-orange-600 py-3 rounded-lg font-medium hover:border-orange-400 transition-colors flex items-center justify-center space-x-2"
+              >
+                <FaShare className="w-4 h-4" />
+                <span>Share</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Join Instructions */}
+          <div className="bg-gray-50 rounded-xl p-6 mb-8">
+            <h3 className="text-lg font-bold text-gray-900 mb-4">How Others Join</h3>
+            <div className="space-y-3 text-left">
+              <div className="flex items-start space-x-3">
+                <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-orange-600 font-bold text-xs">1</span>
+                </div>
+                <p className="text-sm text-gray-600">Share the crew code with friends</p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-orange-600 font-bold text-xs">2</span>
+                </div>
+                <p className="text-sm text-gray-600">They go to <strong>runcrewjoin.gofastcrushgoals.com</strong></p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-orange-600 font-bold text-xs">3</span>
+                </div>
+                <p className="text-sm text-gray-600">Enter the code and join your crew!</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="space-y-3">
+            <button
+              onClick={handleGoToDashboard}
+              className="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg"
+            >
+              Go to Crew Dashboard
+            </button>
+            
+            <button
+              onClick={() => navigate('/connect')}
+              className="w-full bg-white border-2 border-orange-200 text-gray-900 py-3 rounded-xl font-medium hover:border-orange-400 transition-colors"
+            >
+              Back to Connect
+            </button>
+          </div>
+
+          <p className="text-gray-500 text-sm mt-6">
+            Your crew is live and ready for members! 🎉
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RunCrewSuccess;

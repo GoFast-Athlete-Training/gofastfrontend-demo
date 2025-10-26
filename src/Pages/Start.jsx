@@ -31,10 +31,10 @@ const Start = () => {
       <div className="max-w-4xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            The Accountability Layer
+            Connect. Belong. GoFast.
           </h1>
           <p className="text-xl text-gray-600">
-            Choose your path to better running
+            GoFast exists to foster the accountability layer so you can PR.
           </p>
         </div>
 

@@ -58,6 +58,7 @@ import RaceSetup from "./Pages/Settings/RaceSetup";
 import Settings from "./Pages/Settings/Settings";
 import AthleteProfile from "./Pages/Athlete/AthleteProfile";
 import ProfileSetupUniversal from "./Pages/Athlete/ProfileSetupUniversal";
+import AthleteHome from "./Pages/Athlete/AthleteHome";
 
 // Matching Flow
 import PreAthleteProfile from "./Pages/Matching/PreAthleteProfile";
@@ -119,6 +120,7 @@ const App = () => (
       <Route path="/crew" element={<Crew />} />
       <Route path="/request-sent" element={<RequestSent />} />
       <Route path="/request-received" element={<RequestReceived />} />
+      <Route path="/athlete-home" element={<AthleteHome />} />
       
       {/* Rewards System */}
       <Route path="/trophy-board" element={<TrophyBoard />} />

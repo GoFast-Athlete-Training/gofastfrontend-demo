@@ -19,7 +19,7 @@
 
 ### Feature-Specific Profiles (Separate "Joining" Profiles)
 
-#### 1. **Training Profile** (`ProfileTrainingSetup.jsx`)
+#### 1. **Training Profile** (`ProfileTrainingSetup.jsx` - NEEDS TO BE CREATED)
 **Purpose**: If you're joining Training module
 
 **Additional Fields**:
@@ -30,10 +30,11 @@
 - Target Race
 
 **Triggers**: When user clicks "Start Training Plan" or adds a race
+**Status**: Needs to be created
 
 ---
 
-#### 2. **Match Profile** (`MatchProfileSetup.jsx`)
+#### 2. **Match Profile** (`MatchProfileSetup.jsx` - ALREADY EXISTS)
 **Purpose**: If you're joining Matching feature
 
 **Additional Fields**:
@@ -45,24 +46,22 @@
 - Social Handle (optional)
 
 **Triggers**: When user clicks "Find Matches" or "Connect with Runners"
+**Status**: ✅ Already exists
 
 ---
 
-#### 3. **Crew Profile** (`CrewProfileSetup.jsx`)
-**Purpose**: If you're joining/starting a Run Crew
+#### 3. **Crew Profile** (NO EXTRA PROFILE NEEDED - Uses Universal Only)
+**Purpose**: Joining/starting a Run Crew
 
-**Additional Fields**:
-- Preferred Nickname (F3 names, etc.)
-- Crew Role (want to be captain, just member?)
-- Availability
-- Pace Range
-- Preferred Meetup Location
+**Additional Fields**: None needed - just uses Universal Profile
+**Why**: Crew membership doesn't require additional "hydration data" for matching/picking
 
 **Triggers**: When user clicks "Join a Crew" or "Start a Crew"
+**Status**: No separate profile component needed
 
 ---
 
-#### 4. **Event Profile** (`EventProfileSetup.jsx`)
+#### 4. **Event Profile** (`ProfileEventSetup.jsx` - NEEDS TO BE CREATED)
 **Purpose**: If you're registering for an event/race
 
 **Additional Fields**:
@@ -73,6 +72,7 @@
 - T-Shirt Size
 
 **Triggers**: When user clicks "Register for Race" or adds event to calendar
+**Status**: Needs to be created
 
 ---
 
@@ -92,6 +92,8 @@
 
 **Access**: User dashboard, profile page, settings
 
+**⚠️ DEPRECATED**: `src/Pages/Matching/Profile.jsx` (MatchProfile.jsx) needs to be merged into this
+
 ---
 
 ## Flow Diagram
@@ -106,8 +108,8 @@ User Picks a Feature
 ┌─────────────────────┬──────────────────┬──────────────────┬──────────────────┐
 │ Join Training       │ Find Matches     │ Join/Start Crew  │ Register Event   │
 │     ↓               │     ↓            │     ↓            │     ↓            │
-│ Training Setup      │ Match Setup      │ Crew Setup       │ Event Setup      │
-│  (pace, mileage)    │ (prefs, bio)     │ (nickname, etc)  │ (goals, info)    │
+│ Training Setup      │ Match Setup      │ No Extra Setup   │ Event Setup      │
+│  (pace, mileage)    │ (prefs, bio)     │ (uses universal) │ (goals, info)    │
 └─────────────────────┴──────────────────┴──────────────────┴──────────────────┘
                             ↓
                     UniversalAthlete Profile
@@ -122,6 +124,7 @@ User Picks a Feature
 2. **No Duplicate Data**: Each field only asked once
 3. **Edit at Any Time**: Users can update any profile section from settings
 4. **Privacy**: Users control what's visible in matching/search features
+5. **Crew Simplicity**: Crew just uses universal profile - no extra hydration needed
 
 ---
 
@@ -129,11 +132,19 @@ User Picks a Feature
 
 ```
 src/Pages/Athlete/
-├── ProfileSetupUniversal.jsx    # Core identity
-├── AthleteProfile.jsx            # Dashboard view
+├── ProfileSetupUniversal.jsx    # Core identity ✅
+├── AthleteProfile.jsx            # Dashboard view ⚠️ Needs to integrate Match Profile
 └── Setup/
-    ├── ProfileTrainingSetup.jsx
-    ├── ProfileCrewSetup.jsx
-    ├── ProfileMatchSetup.jsx
-    └── ProfileEventSetup.jsx
+    ├── ProfileTrainingSetup.jsx  # ❌ Needs to be created
+    ├── ProfileMatchSetup.jsx     # ✅ Already exists (in Matching folder)
+    └── ProfileEventSetup.jsx     # ❌ Needs to be created
 ```
+
+---
+
+## To-Do List
+
+- [ ] Create `ProfileTrainingSetup.jsx`
+- [ ] Create `ProfileEventSetup.jsx`
+- [ ] Merge `MatchProfile.jsx` into `AthleteProfile.jsx` and delete duplicate
+- [ ] Crew: No action needed - just uses universal profile

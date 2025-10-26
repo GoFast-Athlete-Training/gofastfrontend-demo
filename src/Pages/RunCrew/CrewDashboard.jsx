@@ -35,7 +35,7 @@ const CrewDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header */}
+      {/* Navigation Bar */}
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -48,10 +48,26 @@ const CrewDashboard = () => {
               <img src="/logo.jpg" alt="GoFast" className="w-8 h-8 rounded-full" />
               <span className="text-xl font-bold text-gray-900">GoFast</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-2xl">🏆</span>
-              <span className="font-bold text-orange-600">1,250 pts</span>
-              <span className="text-sm text-gray-500">(Personal)</span>
+            
+            {/* Navigation Menu */}
+            <div className="flex items-center space-x-6">
+              <button 
+                onClick={() => navigate('/athlete-home')}
+                className="text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Dashboard
+              </button>
+              <button 
+                onClick={() => navigate('/settings')}
+                className="text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Settings
+              </button>
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl">🏆</span>
+                <span className="font-bold text-orange-600">1,250 pts</span>
+                <span className="text-sm text-gray-500">(Personal)</span>
+              </div>
             </div>
           </div>
         </div>
@@ -78,6 +94,29 @@ const CrewDashboard = () => {
             <div className="text-right">
               <div className="text-sm text-gray-600 mb-1">Join Code</div>
               <div className="text-2xl font-bold text-orange-600 font-mono">{crew.joinCode}</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Personal Stats Section */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Your Stats</h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="bg-orange-50 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-orange-600">38.5</div>
+              <div className="text-sm text-gray-600">Miles This Week</div>
+            </div>
+            <div className="bg-blue-50 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-blue-600">7</div>
+              <div className="text-sm text-gray-600">Runs</div>
+            </div>
+            <div className="bg-green-50 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-green-600">3rd</div>
+              <div className="text-sm text-gray-600">Crew Rank</div>
+            </div>
+            <div className="bg-purple-50 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-purple-600">Dec 13</div>
+              <div className="text-sm text-gray-600">Last Run</div>
             </div>
           </div>
         </div>

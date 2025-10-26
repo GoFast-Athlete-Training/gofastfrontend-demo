@@ -77,6 +77,11 @@ const Start = () => {
               <p className="text-gray-600 mb-6">
                 Build your running community and find accountability partners
               </p>
+              <div className="mt-4">
+                <button className="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors">
+                  Find Running Partners
+                </button>
+              </div>
               
               {expandedCard === 'connect' && (
                 <div className="space-y-4 animate-fade-in">
@@ -132,8 +137,10 @@ const Start = () => {
               <p className="text-gray-600 mb-6">
                 Track your runs and log your progress
               </p>
-              <div className="text-blue-600 font-medium">
-                Training tools →
+              <div className="mt-4">
+                <button className="w-full bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors">
+                  Level Up
+                </button>
               </div>
             </div>
           </div>
@@ -151,8 +158,10 @@ const Start = () => {
               <p className="text-gray-600 mb-6">
                 Earn points and get rewards
               </p>
-              <div className="text-green-600 font-medium">
-                Points & rewards →
+              <div className="mt-4">
+                <button className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors">
+                  Get Points Toward Merch
+                </button>
               </div>
             </div>
           </div>

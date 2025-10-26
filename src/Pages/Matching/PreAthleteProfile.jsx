@@ -5,7 +5,7 @@ const PreAthleteProfile = () => {
   const navigate = useNavigate();
 
   const handleSetupProfile = () => {
-    navigate('/profile-build');
+    navigate('/athlete-profile');
   };
 
   const handleExplorePlatform = () => {

@@ -66,7 +66,7 @@ const Connect = () => {
                 Discover runners who match your pace, goals, and schedule. Perfect for one-on-one accountability.
               </p>
               <div className="text-blue-600 font-medium">
-                Tinder-style matching →
+                Find someone running at your pace →
               </div>
             </div>
           </div>

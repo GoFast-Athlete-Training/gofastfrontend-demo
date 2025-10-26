@@ -10,6 +10,7 @@ import Connect from "./Pages/Connect";
 // Run Crew
 import StartRunCrew from "./Pages/RunCrew/StartRunCrew";
 import JoinOrStartCrew from "./Pages/RunCrew/JoinOrStartCrew";
+import FormRunCrew from "./Pages/RunCrew/FormRunCrew";
 import CrewDashboard from "./Pages/RunCrew/CrewDashboard";
 
 // Merch Store
@@ -56,11 +57,13 @@ import Goals from "./Pages/Setup/Goals";
 import RaceSetup from "./Pages/Settings/RaceSetup";
 import RunnerProfile from "./Pages/Settings/RunnerProfile";
 import Settings from "./Pages/Settings/Settings";
+import AthleteProfile from "./Pages/Athlete/AthleteProfile";
 
 // Matching Flow
 import PreAthleteProfile from "./Pages/Matching/PreAthleteProfile";
 import MatchingHome from "./Pages/Matching/MatchingHome";
-import ProfileBuild from "./Pages/Matching/ProfileBuild";
+import PreMatch from "./Pages/Matching/PreMatch";
+import MatchProfileSetup from "./Pages/Matching/MatchProfileSetup";
 import MatchProfile from "./Pages/Matching/MatchProfile";
 import MatchProfileSuccess from "./Pages/Matching/MatchProfileSuccess";
 import FindMatches from "./Pages/Matching/FindMatches";
@@ -97,6 +100,7 @@ const App = () => (
               <Route path="/connect" element={<Connect />} />
               <Route path="/start-run-crew" element={<StartRunCrew />} />
               <Route path="/join-or-start-crew" element={<JoinOrStartCrew />} />
+              <Route path="/form-run-crew" element={<FormRunCrew />} />
               <Route path="/crew-dashboard" element={<CrewDashboard />} />
               
               {/* Merch Store */}
@@ -107,8 +111,9 @@ const App = () => (
       
       {/* Matching Flow */}
       <Route path="/pre-athlete-profile" element={<PreAthleteProfile />} />
+      <Route path="/pre-match" element={<PreMatch />} />
+      <Route path="/match-profile-setup" element={<MatchProfileSetup />} />
       <Route path="/matching-home" element={<MatchingHome />} />
-      <Route path="/profile-build" element={<ProfileBuild />} />
       <Route path="/match-profile" element={<MatchProfile />} />
       <Route path="/match-profile-success" element={<MatchProfileSuccess />} />
               <Route path="/find" element={<FindMatches />} />
@@ -180,6 +185,7 @@ const App = () => (
       <Route path="/goals" element={<Goals />} />
       <Route path="/race-setup" element={<RaceSetup />} />
       <Route path="/runner-profile" element={<RunnerProfile />} />
+      <Route path="/athlete-profile" element={<AthleteProfile />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>
   </Router>

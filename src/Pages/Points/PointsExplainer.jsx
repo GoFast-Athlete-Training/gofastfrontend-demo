@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LetsGetAfterIt = () => {
+const PointsExplainer = () => {
   const navigate = useNavigate();
   const [currentPoints] = useState(0);
 
-  const handlePairMeNow = () => {
+  const handleFindMatches = () => {
     navigate('/find');
-  };
-
-  const handleConnectFitnessApp = () => {
-    navigate('/link-running-app');
-  };
-
-  const handleReferRunner = () => {
-    alert('Refer a Runner feature coming soon!');
   };
 
   const handleBackToHome = () => {
@@ -43,68 +35,49 @@ const LetsGetAfterIt = () => {
               <span className="text-lg font-medium text-gray-700">Current Points: {currentPoints}</span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              Let's Get After It
+              Earn Points
             </h1>
             <p className="text-gray-600 text-lg">
-              You've unlocked access. Now it's time to move.
+              Stay active and earn rewards for your running.
             </p>
           </div>
 
           {/* Action Sections */}
           <div className="space-y-6 mb-8">
-            {/* Match Up */}
+            {/* Find Running Partners */}
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="text-center">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">🏃‍♂️</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Match Up</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Find Running Partners</h3>
                 <p className="text-gray-600 mb-4">
-                  Pair with someone at your pace. Earn 2x points when you complete a run together.
+                  Connect with runners at your pace and earn points when you run together.
                 </p>
                 <button
-                  onClick={handlePairMeNow}
+                  onClick={handleFindMatches}
                   className="w-full bg-orange-500 text-white py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
                 >
-                  Pair Me Now
+                  Find Running Partners
                 </button>
               </div>
             </div>
 
-            {/* Log My Miles */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            {/* Coming Soon */}
+            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📱</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Log My Miles</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Connect Fitness Apps</h3>
                 <p className="text-gray-600 mb-4">
-                  Solo runs still count. Earn points every time you log a run.
+                  Sync your runs automatically. Coming soon!
                 </p>
                 <button
-                  onClick={handleConnectFitnessApp}
-                  className="w-full bg-orange-500 text-white py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
+                  disabled
+                  className="w-full bg-gray-300 text-gray-500 py-3 rounded-lg font-medium cursor-not-allowed"
                 >
-                  Connect My Fitness App
-                </button>
-              </div>
-            </div>
-
-            {/* Refer a Friend */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">👥</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Refer a Friend</h3>
-                <p className="text-gray-600 mb-4">
-                  Bring someone on board. You both earn 25 bonus points.
-                </p>
-                <button
-                  onClick={handleReferRunner}
-                  className="w-full bg-orange-500 text-white py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
-                >
-                  Refer a Runner
+                  Coming Soon
                 </button>
               </div>
             </div>
@@ -125,4 +98,4 @@ const LetsGetAfterIt = () => {
   );
 };
 
-export default LetsGetAfterIt;
+export default PointsExplainer;

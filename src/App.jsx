@@ -68,7 +68,7 @@ import MatchProfileSetup from "./Pages/Matching/MatchProfileSetup";
 import MatchProfile from "./Pages/Matching/MatchProfile";
 import MatchProfileSuccess from "./Pages/Matching/MatchProfileSuccess";
 import FindMatches from "./Pages/Matching/FindMatches";
-import Crew from "./Pages/Matching/Crew";
+import Crew from "./Pages/Crew/Crew";
 import MatchingProfile from "./Pages/Matching/Profile";
 import RequestSent from "./Pages/Matching/RequestSent";
 import RequestReceived from "./Pages/Matching/RequestReceived";

@@ -7,7 +7,7 @@ const FormRunCrew = () => {
   const [formData, setFormData] = useState({
     crewName: 'Morning Warriors',
     description: 'Early morning runners who love coffee and crushing goals together. We meet at 6 AM sharp!',
-    crewCode: 'runningfoolsofarlington',
+    crewCode: '',
     logo: null,
     logoPreview: null
   });
@@ -49,6 +49,11 @@ const FormRunCrew = () => {
   const handleSubmit = () => {
     if (!formData.crewName.trim()) {
       alert('Please enter a crew name');
+      return;
+    }
+
+    if (!formData.crewCode.trim()) {
+      alert('Please enter a crew code');
       return;
     }
 
@@ -144,7 +149,7 @@ const FormRunCrew = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Crew Code *
+                Create Your Join Code *
               </label>
               <input
                 type="text"
@@ -153,7 +158,7 @@ const FormRunCrew = () => {
                 placeholder="e.g., runningfoolsofarlington"
                 className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-lg"
               />
-              <p className="text-sm text-gray-500 mt-1">Choose something memorable - others will use this to join your crew</p>
+              <p className="text-sm text-gray-500 mt-1">Make it memorable - others will use this to join your crew!</p>
             </div>
 
             <div>
@@ -173,27 +178,6 @@ const FormRunCrew = () => {
               </div>
             </div>
 
-            {/* Join Code Section */}
-            <div className="bg-orange-50 rounded-lg p-6">
-              <h3 className="font-bold text-gray-900 mb-2">Your Join Code</h3>
-              <div className="flex items-center justify-between">
-                <code className="text-3xl font-mono tracking-widest text-orange-600 font-bold">
-                  {formData.crewCode}
-                </code>
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(formData.crewCode);
-                    alert('Code copied to clipboard!');
-                  }}
-                  className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
-                >
-                  Copy
-                </button>
-              </div>
-              <p className="text-sm text-gray-600 mt-2">
-                Share this code with friends to invite them to your crew
-              </p>
-            </div>
           </div>
 
           {/* Submit Button */}

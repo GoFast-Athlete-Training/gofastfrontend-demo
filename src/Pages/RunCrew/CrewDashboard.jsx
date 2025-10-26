@@ -3,63 +3,30 @@ import { useNavigate } from 'react-router-dom';
 
 const CrewDashboard = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('overview');
 
   // Mock crew data
   const crew = {
     name: 'Morning Warriors',
     joinCode: 'ABC123',
-    members: 8,
-    totalRuns: 24,
-    thisWeek: 3
+    members: 8
   };
 
-  const upcomingRuns = [
-    {
-      id: 1,
-      date: 'Tomorrow',
-      time: '7:00 AM',
-      location: 'Central Park',
-      distance: '5K',
-      participants: 5,
-      organizer: 'Sarah'
-    },
-    {
-      id: 2,
-      date: 'Saturday',
-      time: '8:00 AM',
-      location: 'Brooklyn Bridge',
-      distance: '10K',
-      participants: 7,
-      organizer: 'Mike'
-    }
+  const crewMembers = [
+    { id: 1, name: 'Sarah Johnson', avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face', status: 'Active' },
+    { id: 2, name: 'Mike Chen', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', status: 'Active' },
+    { id: 3, name: 'Emma Rodriguez', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face', status: 'Active' },
+    { id: 4, name: 'David Lee', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face', status: 'Active' },
+    { id: 5, name: 'Maria Garcia', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face', status: 'Active' },
+    { id: 6, name: 'James Wilson', avatar: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face', status: 'Active' }
   ];
 
-  const recentActivity = [
-    {
-      id: 1,
-      user: 'Sarah',
-      action: 'completed a 5K run',
-      time: '2 hours ago',
-      distance: '5.2 miles',
-      pace: '8:30/mile'
-    },
-    {
-      id: 2,
-      user: 'Mike',
-      action: 'joined the crew',
-      time: '1 day ago',
-      distance: null,
-      pace: null
-    },
-    {
-      id: 3,
-      user: 'Emma',
-      action: 'completed a 10K run',
-      time: '2 days ago',
-      distance: '10.1 miles',
-      pace: '9:15/mile'
-    }
+  const leaderboard = [
+    { rank: 1, name: 'Emma Rodriguez', miles: 52.1, runs: 9, points: 1250 },
+    { rank: 2, name: 'Sarah Johnson', miles: 45.2, runs: 8, points: 1080 },
+    { rank: 3, name: 'Mike Chen', miles: 38.5, runs: 7, points: 920 },
+    { rank: 4, name: 'David Lee', miles: 32.3, runs: 6, points: 775 },
+    { rank: 5, name: 'Maria Garcia', miles: 28.7, runs: 5, points: 690 },
+    { rank: 6, name: 'James Wilson', miles: 24.1, runs: 4, points: 580 }
   ];
 
   const handleShareCode = () => {
@@ -67,19 +34,15 @@ const CrewDashboard = () => {
     alert(`Join code ${crew.joinCode} copied to clipboard!`);
   };
 
-  const handleJoinRun = (run) => {
-    alert(`Joined ${run.organizer}'s run on ${run.date}!`);
-  };
-
   const handleBack = () => {
     navigate('/connect');
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+    <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <button onClick={handleBack} className="text-gray-600 hover:text-gray-800">
@@ -98,28 +61,24 @@ const CrewDashboard = () => {
         </div>
       </div>
 
-      {/* Crew Header */}
-      <div className="max-w-4xl mx-auto px-6 py-8">
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">{crew.name}</h1>
-            <div className="flex items-center justify-center space-x-6 mb-6">
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl">👥</span>
-                <span className="font-medium">{crew.members} members</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl">🏃‍♂️</span>
-                <span className="font-medium">{crew.totalRuns} total runs</span>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Crew Header */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">{crew.name}</h1>
+              <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xl">👥</span>
+                  <span className="font-medium">{crew.members} members</span>
+                </div>
               </div>
             </div>
-            
-            <div className="bg-orange-100 rounded-lg p-4 mb-6">
-              <div className="flex items-center justify-center space-x-4">
-                <div>
-                  <div className="text-sm text-gray-600">Join Code</div>
-                  <div className="text-2xl font-bold text-orange-600 font-mono">{crew.joinCode}</div>
-                </div>
+            <div className="text-right">
+              <div className="text-sm text-gray-600 mb-1">Join Code</div>
+              <div className="flex items-center space-x-2">
+                <div className="text-2xl font-bold text-orange-600 font-mono">{crew.joinCode}</div>
                 <button
                   onClick={handleShareCode}
                   className="bg-orange-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors"
@@ -131,134 +90,81 @@ const CrewDashboard = () => {
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="mb-8">
-          <div className="flex space-x-1 bg-gray-100 rounded-lg p-1 max-w-md mx-auto">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
-                activeTab === 'overview'
-                  ? 'bg-white text-orange-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Overview
-            </button>
-            <button
-              onClick={() => setActiveTab('runs')}
-              className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
-                activeTab === 'runs'
-                  ? 'bg-white text-orange-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Runs
-            </button>
-            <button
-              onClick={() => setActiveTab('activity')}
-              className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
-                activeTab === 'activity'
-                  ? 'bg-white text-orange-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Activity
-            </button>
-          </div>
-        </div>
-
-        {/* Overview Tab */}
-        {activeTab === 'overview' && (
-          <div className="space-y-6">
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <div className="text-3xl mb-2">👥</div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{crew.members}</div>
-                <div className="text-sm text-gray-600">Active Members</div>
-              </div>
-              <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <div className="text-3xl mb-2">🏃‍♂️</div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{crew.thisWeek}</div>
-                <div className="text-sm text-gray-600">Runs This Week</div>
-              </div>
-              <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <div className="text-3xl mb-2">📈</div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">{crew.totalRuns}</div>
-                <div className="text-sm text-gray-600">Total Runs</div>
-              </div>
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left Column - Crew Members */}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">Crew Members</h2>
+              <span className="text-sm text-gray-600">{crewMembers.length} active</span>
             </div>
-
-            {/* Quick Actions */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button className="bg-orange-500 text-white py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors">
-                  🏃‍♂️ Start a Run
-                </button>
-                <button className="bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition-colors">
-                  📅 Schedule Run
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Runs Tab */}
-        {activeTab === 'runs' && (
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Upcoming Runs</h3>
-            {upcomingRuns.map((run) => (
-              <div key={run.id} className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                      <span className="text-orange-600 font-bold">🏃‍♂️</span>
-                    </div>
+            <div className="space-y-3">
+              {crewMembers.map((member) => (
+                <div 
+                  key={member.id} 
+                  className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center space-x-3">
+                    <img 
+                      src={member.avatar} 
+                      alt={member.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
                     <div>
-                      <div className="font-bold text-gray-900">{run.date} at {run.time}</div>
-                      <div className="text-sm text-gray-600">{run.location} • {run.distance}</div>
-                      <div className="text-sm text-gray-500">{run.participants} going • Organized by {run.organizer}</div>
+                      <p className="font-medium text-gray-900">{member.name}</p>
+                      <p className="text-sm text-green-600">{member.status}</p>
                     </div>
                   </div>
-                  <button
-                    onClick={() => handleJoinRun(run)}
-                    className="bg-orange-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors"
-                  >
-                    Join Run
+                  <button className="text-gray-400 hover:text-gray-600">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </button>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        )}
 
-        {/* Activity Tab */}
-        {activeTab === 'activity' && (
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h3>
-            {recentActivity.map((activity) => (
-              <div key={activity.id} className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                    <span className="text-lg">👤</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium text-gray-900">
-                      <span className="font-bold">{activity.user}</span> {activity.action}
+          {/* Right Column - Leaderboard */}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">Weekly Leaderboard</h2>
+              <span className="text-sm text-gray-600">This Week</span>
+            </div>
+            <div className="space-y-3">
+              {leaderboard.map((member, index) => (
+                <div 
+                  key={index} 
+                  className={`flex items-center justify-between p-4 rounded-lg ${
+                    index === 0 ? 'bg-yellow-50 border-2 border-yellow-300' : 'bg-gray-50 hover:bg-gray-100'
+                  } transition-colors`}
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                      index === 0 ? 'bg-yellow-500 text-white' : 
+                      index === 1 ? 'bg-gray-400 text-white' : 
+                      index === 2 ? 'bg-orange-600 text-white' : 
+                      'bg-gray-300 text-gray-700'
+                    }`}>
+                      {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : member.rank}
                     </div>
-                    {activity.distance && (
-                      <div className="text-sm text-gray-600">
-                        {activity.distance} • {activity.pace}
+                    <div>
+                      <p className="font-medium text-gray-900">{member.name}</p>
+                      <div className="flex items-center space-x-3 text-sm text-gray-600">
+                        <span>{member.miles} mi</span>
+                        <span>•</span>
+                        <span>{member.runs} runs</span>
                       </div>
-                    )}
-                    <div className="text-sm text-gray-500">{activity.time}</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-orange-600">{member.points} pts</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

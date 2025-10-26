@@ -53,7 +53,6 @@ import Nutrition from "./Pages/Maintenance/Nutrition";
 import InjuryPrevention from "./Pages/Maintenance/InjuryPrevention";
 
 // Setup (Modular) - Updated paths
-import Profile from "./Pages/Setup/Profile";
 import Goals from "./Pages/Setup/Goals";
 import RaceSetup from "./Pages/Settings/RaceSetup";
 import RunnerProfile from "./Pages/Settings/RunnerProfile";

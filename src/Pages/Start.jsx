@@ -1,41 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Start = () => {
   const navigate = useNavigate();
-  const [expandedCard, setExpandedCard] = useState(null);
 
   const handleCardClick = (card) => {
-    if (expandedCard === card) {
-      setExpandedCard(null);
-    } else {
-      setExpandedCard(card);
+    if (card === 'connect') {
+      navigate('/connect');
+    } else if (card === 'train') {
+      navigate('/training-hub');
+    } else if (card === 'earn') {
+      navigate('/gofast-earn-points');
     }
   };
 
-  const handleConnectOption = (option) => {
-    switch (option) {
-      case 'friends':
-        navigate('/crews');
-        break;
-      case 'others':
-        navigate('/match');
-        break;
-      case 'groups':
-        navigate('/clubs');
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleTrain = () => {
-    navigate('/train');
-  };
-
-  const handleEarn = () => {
-    navigate('/earn');
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -64,9 +42,7 @@ const Start = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Connect Card */}
           <div 
-            className={`bg-white rounded-2xl shadow-lg p-8 cursor-pointer transition-all duration-300 hover:shadow-xl ${
-              expandedCard === 'connect' ? 'ring-4 ring-orange-500' : ''
-            }`}
+            className="bg-white rounded-2xl shadow-lg p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:ring-4 hover:ring-orange-500"
             onClick={() => handleCardClick('connect')}
           >
             <div className="text-center">
@@ -82,52 +58,13 @@ const Start = () => {
                   Find Running Partners
                 </button>
               </div>
-              
-              {expandedCard === 'connect' && (
-                <div className="space-y-4 animate-fade-in">
-                  <div className="text-left">
-                    <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
-                      It's better to run together.
-                    </h3>
-                    <div className="space-y-3">
-                      <button
-                        onClick={() => handleConnectOption('friends')}
-                        className="w-full flex items-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <span className="text-2xl">👥</span>
-                        <span className="font-medium">Be with Friends</span>
-                      </button>
-                      <button
-                        onClick={() => handleConnectOption('others')}
-                        className="w-full flex items-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <span className="text-2xl">🔍</span>
-                        <span className="font-medium">Find Others</span>
-                      </button>
-                      <button
-                        onClick={() => handleConnectOption('groups')}
-                        className="w-full flex items-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <span className="text-2xl">🏃‍♂️</span>
-                        <span className="font-medium">Find Groups</span>
-                      </button>
-                    </div>
-                    <button
-                      onClick={() => setExpandedCard(null)}
-                      className="w-full mt-4 text-gray-600 hover:text-gray-800 font-medium"
-                    >
-                      Back
-                    </button>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 
           {/* Train Card */}
           <div 
             className="bg-white rounded-2xl shadow-lg p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:ring-4 hover:ring-blue-500"
-            onClick={handleTrain}
+            onClick={() => handleCardClick('train')}
           >
             <div className="text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -148,7 +85,7 @@ const Start = () => {
           {/* Earn Card */}
           <div 
             className="bg-white rounded-2xl shadow-lg p-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:ring-4 hover:ring-green-500"
-            onClick={handleEarn}
+            onClick={() => handleCardClick('earn')}
           >
             <div className="text-center">
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">

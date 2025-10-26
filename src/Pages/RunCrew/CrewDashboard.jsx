@@ -4,6 +4,7 @@ import PersonalStats from '../../Components/PersonalStats';
 
 const CrewDashboard = () => {
   const navigate = useNavigate();
+  const [leaderboardType, setLeaderboardType] = useState('miles'); // 'miles', 'bestSplit', 'calories'
 
   // Mock crew data
   const crew = {
@@ -21,14 +22,32 @@ const CrewDashboard = () => {
     { id: 6, name: 'James Wilson', avatar: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face', status: 'Active' }
   ];
 
-  const leaderboard = [
-    { rank: 1, name: 'Emma Rodriguez', miles: 52.1, runs: 9, lastRun: 'Dec 15' },
-    { rank: 2, name: 'Sarah Johnson', miles: 45.2, runs: 8, lastRun: 'Dec 14' },
-    { rank: 3, name: 'Mike Chen', miles: 38.5, runs: 7, lastRun: 'Dec 13' },
-    { rank: 4, name: 'David Lee', miles: 32.3, runs: 6, lastRun: 'Dec 12' },
-    { rank: 5, name: 'Maria Garcia', miles: 28.7, runs: 5, lastRun: 'Dec 11' },
-    { rank: 6, name: 'James Wilson', miles: 24.1, runs: 4, lastRun: 'Dec 10' }
-  ];
+  const leaderboards = {
+    miles: [
+      { rank: 1, name: 'Emma Rodriguez', value: 52.1, runs: 9, lastRun: 'Dec 15' },
+      { rank: 2, name: 'Sarah Johnson', value: 45.2, runs: 8, lastRun: 'Dec 14' },
+      { rank: 3, name: 'Mike Chen', value: 38.5, runs: 7, lastRun: 'Dec 13' },
+      { rank: 4, name: 'David Lee', value: 32.3, runs: 6, lastRun: 'Dec 12' },
+      { rank: 5, name: 'Maria Garcia', value: 28.7, runs: 5, lastRun: 'Dec 11' },
+      { rank: 6, name: 'James Wilson', value: 24.1, runs: 4, lastRun: 'Dec 10' }
+    ],
+    bestSplit: [
+      { rank: 1, name: 'Sarah Johnson', value: '6:25', runs: 8, lastRun: 'Dec 14' },
+      { rank: 2, name: 'Mike Chen', value: '6:42', runs: 7, lastRun: 'Dec 13' },
+      { rank: 3, name: 'Emma Rodriguez', value: '6:58', runs: 9, lastRun: 'Dec 15' },
+      { rank: 4, name: 'David Lee', value: '7:15', runs: 6, lastRun: 'Dec 12' },
+      { rank: 5, name: 'Maria Garcia', value: '7:32', runs: 5, lastRun: 'Dec 11' },
+      { rank: 6, name: 'James Wilson', value: '7:48', runs: 4, lastRun: 'Dec 10' }
+    ],
+    calories: [
+      { rank: 1, name: 'Emma Rodriguez', value: 3120, runs: 9, lastRun: 'Dec 15' },
+      { rank: 2, name: 'Sarah Johnson', value: 2780, runs: 8, lastRun: 'Dec 14' },
+      { rank: 3, name: 'David Lee', value: 2350, runs: 6, lastRun: 'Dec 12' },
+      { rank: 4, name: 'Mike Chen', value: 2240, runs: 7, lastRun: 'Dec 13' },
+      { rank: 5, name: 'Maria Garcia', value: 1980, runs: 5, lastRun: 'Dec 11' },
+      { rank: 6, name: 'James Wilson', value: 1720, runs: 4, lastRun: 'Dec 10' }
+    ]
+  };
 
   const handleBack = () => {
     navigate('/connect');
@@ -64,11 +83,6 @@ const CrewDashboard = () => {
               >
                 Settings
               </button>
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl">🏆</span>
-                <span className="font-bold text-orange-600">1,250 pts</span>
-                <span className="text-sm text-gray-500">(Personal)</span>
-              </div>
             </div>
           </div>
         </div>
@@ -92,16 +106,18 @@ const CrewDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-600 mb-1">Join Code</div>
-              <div className="text-2xl font-bold text-orange-600 font-mono">{crew.joinCode}</div>
-            </div>
           </div>
         </div>
 
         {/* Personal Stats Section */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Your Stats</h3>
+        <div 
+          className="bg-white rounded-2xl shadow-lg p-6 mb-6 cursor-pointer hover:shadow-xl transition-shadow"
+          onClick={() => navigate('/athlete-activity')}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-gray-900">Your Stats</h3>
+            <span className="text-sm text-orange-600 font-medium">View Details →</span>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-orange-50 rounded-lg p-4 text-center">
               <div className="text-2xl font-bold text-orange-600">38.5</div>
@@ -166,12 +182,44 @@ const CrewDashboard = () => {
 
           {/* Right Column - Leaderboard */}
           <div className="bg-white rounded-2xl shadow-lg p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Miles Leaderboard</h2>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-bold text-gray-900">Crew Leaderboard</h2>
               <span className="text-sm text-gray-600">This Week</span>
             </div>
+            <div className="flex gap-2 mb-4">
+              <button
+                onClick={() => setLeaderboardType('miles')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  leaderboardType === 'miles' 
+                    ? 'bg-orange-500 text-white' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Total Miles
+              </button>
+              <button
+                onClick={() => setLeaderboardType('bestSplit')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  leaderboardType === 'bestSplit' 
+                    ? 'bg-orange-500 text-white' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Best 1-Mile Split
+              </button>
+              <button
+                onClick={() => setLeaderboardType('calories')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  leaderboardType === 'calories' 
+                    ? 'bg-orange-500 text-white' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Most Calories
+              </button>
+            </div>
             <div className="space-y-3">
-              {leaderboard.map((member, index) => (
+              {leaderboards[leaderboardType].map((member, index) => (
                 <div 
                   key={index} 
                   className={`flex items-center justify-between p-4 rounded-lg ${
@@ -197,7 +245,11 @@ const CrewDashboard = () => {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold text-orange-600">{member.miles} mi</p>
+                    <p className="font-bold text-orange-600">
+                      {leaderboardType === 'miles' && `${member.value} mi`}
+                      {leaderboardType === 'bestSplit' && member.value}
+                      {leaderboardType === 'calories' && `${member.value} cal`}
+                    </p>
                   </div>
                 </div>
               ))}

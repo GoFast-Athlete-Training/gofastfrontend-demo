@@ -28,7 +28,6 @@ const PersonalStats = ({
         <div className="bg-purple-50 rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-purple-600">{lastRun}</div>
           <div className="text-sm text-gray-600">Last Run</div>
-          </div>
         </div>
       </div>
     </div>

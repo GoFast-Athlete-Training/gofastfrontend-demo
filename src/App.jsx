@@ -60,17 +60,17 @@ import AthleteProfile from "./Pages/Athlete/AthleteProfile";
 import ProfileSetupUniversal from "./Pages/Athlete/ProfileSetupUniversal";
 import AthleteHome from "./Pages/Athlete/AthleteHome";
 
-// Matching Flow - REMOVED FOR MVP3 (will rebuild in MVP4)
-// import PreAthleteProfile from "./Pages/Matching/PreAthleteProfile";
-// import MatchingHome from "./Pages/Matching/MatchingHome";
-// import PreMatch from "./Pages/Matching/PreMatch";
-// import MatchProfileSetup from "./Pages/Matching/MatchProfileSetup";
-// import MatchProfile from "./Pages/Matching/MatchProfile";
-// import MatchProfileSuccess from "./Pages/Matching/MatchProfileSuccess";
-// import FindMatches from "./Pages/Matching/FindMatches";
+// Matching Flow
+import PreAthleteProfile from "./Pages/Matching/PreAthleteProfile";
+import MatchingHome from "./Pages/Matching/MatchingHome";
+import PreMatch from "./Pages/Matching/PreMatch";
+import MatchProfileSetup from "./Pages/Matching/MatchProfileSetup";
+import MatchProfile from "./Pages/Matching/MatchProfile";
+import MatchProfileSuccess from "./Pages/Matching/MatchProfileSuccess";
+import FindMatches from "./Pages/Matching/FindMatches";
 import Crew from "./Pages/Crew/Crew";
-// import RequestSent from "./Pages/Matching/RequestSent";
-// import RequestReceived from "./Pages/Matching/RequestReceived";
+import RequestSent from "./Pages/Matching/RequestSent";
+import RequestReceived from "./Pages/Matching/RequestReceived";
 import TrophyBoard from "./Pages/Points/TrophyBoard";
 import GoFastEarnPoints from "./Pages/Points/GoFastEarnPoints";
 import HowPointsWork from "./Pages/Points/HowPointsWork";
@@ -109,17 +109,17 @@ const App = () => (
               
               <Route path="/dashboard" element={<GoFastDashboard />} />
       
-      {/* Matching Flow - REMOVED FOR MVP3 (will rebuild in MVP4) */}
-      {/* <Route path="/pre-athlete-profile" element={<PreAthleteProfile />} /> */}
-      {/* <Route path="/pre-match" element={<PreMatch />} /> */}
-      {/* <Route path="/match-profile-setup" element={<MatchProfileSetup />} /> */}
-      {/* <Route path="/matching-home" element={<MatchingHome />} /> */}
-      {/* <Route path="/match-profile" element={<MatchProfile />} /> */}
-      {/* <Route path="/match-profile-success" element={<MatchProfileSuccess />} /> */}
-      {/* <Route path="/find" element={<FindMatches />} /> */}
+      {/* Matching Flow */}
+      <Route path="/pre-athlete-profile" element={<PreAthleteProfile />} />
+      <Route path="/pre-match" element={<PreMatch />} />
+      <Route path="/match-profile-setup" element={<MatchProfileSetup />} />
+      <Route path="/matching-home" element={<MatchingHome />} />
+      <Route path="/match-profile" element={<MatchProfile />} />
+      <Route path="/match-profile-success" element={<MatchProfileSuccess />} />
+      <Route path="/find" element={<FindMatches />} />
       <Route path="/crew" element={<Crew />} />
-      {/* <Route path="/request-sent" element={<RequestSent />} /> */}
-      {/* <Route path="/request-received" element={<RequestReceived />} /> */}
+      <Route path="/request-sent" element={<RequestSent />} />
+      <Route path="/request-received" element={<RequestReceived />} />
       <Route path="/athlete-home" element={<AthleteHome />} />
       
       {/* Rewards System */}

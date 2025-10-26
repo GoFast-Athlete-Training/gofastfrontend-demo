@@ -96,7 +96,7 @@ const App = () => (
               {/* Main Entry Point */}
               <Route path="/" element={<Start />} />
               <Route path="/start" element={<Start />} />
-              <Route path="/connect" element={<CrewExplainer />} />
+              <Route path="/connect" element={<Connect />} />
               <Route path="/crew-explainer" element={<CrewExplainer />} />
               <Route path="/start-run-crew" element={<StartRunCrew />} />
               <Route path="/join-or-start-crew" element={<JoinOrStartCrew />} />

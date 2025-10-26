@@ -18,18 +18,14 @@ const RunCrewSuccess = () => {
     navigate('/crew-dashboard');
   };
 
-  const handleShareCrew = () => {
-    const shareText = `Join my running crew "${crewData.crewName || 'Morning Warriors'}"! Use code: ${crewCode}`;
-    if (navigator.share) {
-      navigator.share({
-        title: 'Join My Running Crew',
-        text: shareText,
-        url: 'https://runcrewjoin.gofastcrushgoals.com'
-      });
-    } else {
-      navigator.clipboard.writeText(`${shareText}\n\nJoin at: https://runcrewjoin.gofastcrushgoals.com`);
-      alert('Share text copied to clipboard!');
-    }
+  const createShareMessage = () => {
+    return `Hi! I created a run crew on GoFast. Go to runcrewjoin.gofastcrushgoals.com, click "Join a Crew", and use this code: ${crewCode}`;
+  };
+
+  const handleCopyMessage = () => {
+    const message = createShareMessage();
+    navigator.clipboard.writeText(message);
+    alert('Share message copied to clipboard!');
   };
 
   return (
@@ -58,28 +54,29 @@ const RunCrewSuccess = () => {
             </p>
           </div>
 
-          {/* Crew Code Section */}
+          {/* Share Message Section */}
           <div className="bg-orange-50 rounded-xl p-6 mb-8">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Share This Code</h2>
+            <h2 className="text-lg font-bold text-gray-900 mb-4">Share Message</h2>
             <div className="bg-white rounded-lg p-4 mb-4 border-2 border-orange-200">
-              <div className="text-2xl font-bold text-orange-600 mb-2">{crewCode}</div>
-              <p className="text-sm text-gray-600">Share this code with friends to invite them</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                {createShareMessage()}
+              </p>
             </div>
             
             <div className="flex space-x-3">
               <button
-                onClick={handleCopyCode}
+                onClick={handleCopyMessage}
                 className="flex-1 bg-orange-500 text-white py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2"
               >
                 <FaCopy className="w-4 h-4" />
-                <span>Copy Code</span>
+                <span>Copy Message</span>
               </button>
               <button
-                onClick={handleShareCrew}
+                onClick={handleCopyCode}
                 className="flex-1 bg-white border-2 border-orange-200 text-orange-600 py-3 rounded-lg font-medium hover:border-orange-400 transition-colors flex items-center justify-center space-x-2"
               >
-                <FaShare className="w-4 h-4" />
-                <span>Share</span>
+                <FaCopy className="w-4 h-4" />
+                <span>Copy Code Only</span>
               </button>
             </div>
           </div>

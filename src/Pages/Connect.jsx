@@ -5,15 +5,15 @@ const Connect = () => {
   const navigate = useNavigate();
 
   const handleMatch = () => {
-    navigate('/match');
+    navigate('/find');
   };
 
   const handleStartRunCrew = () => {
-    navigate('/start-run-crew');
+    navigate('/join-or-start-crew');
   };
 
   const handleJoinClub = () => {
-    navigate('/clubs');
+    navigate('/find-running-crews');
   };
 
   const handleBack = () => {

@@ -116,10 +116,10 @@ const RunCrewSuccess = () => {
             </button>
             
             <button
-              onClick={() => navigate('/connect')}
+              onClick={() => navigate('/athlete-home')}
               className="w-full bg-white border-2 border-orange-200 text-gray-900 py-3 rounded-xl font-medium hover:border-orange-400 transition-colors"
             >
-              Back to Connect
+              Go Back to Athlete Central
             </button>
           </div>
 

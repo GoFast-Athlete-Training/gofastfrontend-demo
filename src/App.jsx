@@ -12,6 +12,7 @@ import StartRunCrew from "./Pages/RunCrew/StartRunCrew";
 import JoinOrStartCrew from "./Pages/RunCrew/JoinOrStartCrew";
 import FormRunCrew from "./Pages/RunCrew/FormRunCrew";
 import CrewDashboard from "./Pages/RunCrew/CrewDashboard";
+import CrewExplainer from "./Pages/RunCrew/CrewExplainer";
 
 // Merch Store
 import GoFastMerch from "./Pages/MerchStore/GoFastMerch";
@@ -98,7 +99,8 @@ const App = () => (
               {/* Main Entry Point */}
               <Route path="/" element={<Start />} />
               <Route path="/start" element={<Start />} />
-              <Route path="/connect" element={<Connect />} />
+              <Route path="/connect" element={<CrewExplainer />} />
+              <Route path="/crew-explainer" element={<CrewExplainer />} />
               <Route path="/start-run-crew" element={<StartRunCrew />} />
               <Route path="/join-or-start-crew" element={<JoinOrStartCrew />} />
               <Route path="/form-run-crew" element={<FormRunCrew />} />

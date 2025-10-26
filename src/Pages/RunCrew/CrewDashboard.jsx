@@ -12,9 +12,9 @@ const CrewDashboard = () => {
   };
 
   const crewMembers = [
-    { id: 1, name: 'Sarah Johnson', avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face', status: 'Active' },
-    { id: 2, name: 'Mike Chen', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', status: 'Active' },
-    { id: 3, name: 'Emma Rodriguez', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face', status: 'Active' },
+    { id: 1, name: 'Emma Rodriguez', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face', status: 'Active', isTopMiler: true },
+    { id: 2, name: 'Sarah Johnson', avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face', status: 'Active' },
+    { id: 3, name: 'Mike Chen', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', status: 'Active' },
     { id: 4, name: 'David Lee', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face', status: 'Active' },
     { id: 5, name: 'Maria Garcia', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face', status: 'Active' },
     { id: 6, name: 'James Wilson', avatar: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face', status: 'Active' }
@@ -28,11 +28,6 @@ const CrewDashboard = () => {
     { rank: 5, name: 'Maria Garcia', miles: 28.7, runs: 5, lastRun: 'Dec 11' },
     { rank: 6, name: 'James Wilson', miles: 24.1, runs: 4, lastRun: 'Dec 10' }
   ];
-
-  const handleShareCode = () => {
-    navigator.clipboard.writeText(crew.joinCode);
-    alert(`Join code ${crew.joinCode} copied to clipboard!`);
-  };
 
   const handleBack = () => {
     navigate('/connect');
@@ -78,15 +73,7 @@ const CrewDashboard = () => {
             </div>
             <div className="text-right">
               <div className="text-sm text-gray-600 mb-1">Join Code</div>
-              <div className="flex items-center space-x-2">
-                <div className="text-2xl font-bold text-orange-600 font-mono">{crew.joinCode}</div>
-                <button
-                  onClick={handleShareCode}
-                  className="bg-orange-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors"
-                >
-                  Share
-                </button>
-              </div>
+              <div className="text-2xl font-bold text-orange-600 font-mono">{crew.joinCode}</div>
             </div>
           </div>
         </div>
@@ -106,11 +93,18 @@ const CrewDashboard = () => {
                   className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
                 >
                   <div className="flex items-center space-x-3">
-                    <img 
-                      src={member.avatar} 
-                      alt={member.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
+                    <div className="relative">
+                      <img 
+                        src={member.avatar} 
+                        alt={member.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      {member.isTopMiler && (
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+                          <span className="text-yellow-800 text-xs">👑</span>
+                        </div>
+                      )}
+                    </div>
                     <div>
                       <p className="font-medium text-gray-900">{member.name}</p>
                       <p className="text-sm text-green-600">{member.status}</p>
@@ -163,6 +157,27 @@ const CrewDashboard = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Want More Members Section */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
+          <div className="text-center">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Want More Members?</h3>
+            <p className="text-gray-600 mb-4">Share your crew code to invite friends</p>
+            <div className="flex items-center justify-center space-x-4">
+              <div className="text-3xl font-bold text-orange-600 font-mono">{crew.joinCode}</div>
+              <button
+                onClick={() => {
+                  const message = `Hi! I created a run crew on GoFast. Go to runcrewjoin.gofastcrushgoals.com, click "Join a Crew", and use this code: ${crew.joinCode}`;
+                  navigator.clipboard.writeText(message);
+                  alert('Share message copied to clipboard!');
+                }}
+                className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
+              >
+                Share Invite
+              </button>
             </div>
           </div>
         </div>

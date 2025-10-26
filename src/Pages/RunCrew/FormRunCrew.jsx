@@ -5,20 +5,12 @@ const FormRunCrew = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const [formData, setFormData] = useState({
-    crewName: '',
-    description: '',
+    crewName: 'Morning Warriors',
+    description: 'Early morning runners who love coffee and crushing goals together. We meet at 6 AM sharp!',
+    crewCode: 'runningfoolsofarlington',
     logo: null,
     logoPreview: null
   });
-  const [joinCode] = useState('ABC123'); // This would be generated server-side
-  const [showMembers, setShowMembers] = useState(false);
-
-  // Mock member data
-  const mockMembers = [
-    { id: 1, name: 'Sarah Johnson', avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face', miles: 45.2, runs: 8 },
-    { id: 2, name: 'Mike Chen', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', miles: 38.5, runs: 7 },
-    { id: 3, name: 'Emma Rodriguez', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face', miles: 52.1, runs: 9 }
-  ];
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -76,7 +68,7 @@ const FormRunCrew = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-4">
@@ -152,6 +144,20 @@ const FormRunCrew = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
+                Crew Code *
+              </label>
+              <input
+                type="text"
+                value={formData.crewCode}
+                onChange={(e) => handleInputChange('crewCode', e.target.value)}
+                placeholder="e.g., runningfoolsofarlington"
+                className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-lg"
+              />
+              <p className="text-sm text-gray-500 mt-1">Choose something memorable - others will use this to join your crew</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Description
               </label>
               <textarea
@@ -190,43 +196,6 @@ const FormRunCrew = () => {
             </div>
           </div>
 
-          {/* Members Section */}
-          <div className="mt-8 border-t pt-8">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-gray-900">Members</h3>
-              <button
-                onClick={() => setShowMembers(!showMembers)}
-                className="text-orange-600 hover:text-orange-700 font-medium"
-              >
-                {showMembers ? 'Hide' : 'Show'} ({mockMembers.length})
-              </button>
-            </div>
-
-            {showMembers && (
-              <div className="space-y-3">
-                {mockMembers.map((member) => (
-                  <div key={member.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                    <div className="flex items-center space-x-3">
-                      <img 
-                        src={member.avatar} 
-                        alt={member.name}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="font-medium text-gray-900">{member.name}</p>
-                        <p className="text-sm text-gray-500">{member.runs} runs this week</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-bold text-orange-600">{member.miles} mi</p>
-                      <p className="text-xs text-gray-500">This week</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
 
         {/* Submit Button */}
         <div className="text-center">
@@ -243,3 +212,4 @@ const FormRunCrew = () => {
 };
 
 export default FormRunCrew;
+

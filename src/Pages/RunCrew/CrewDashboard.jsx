@@ -21,12 +21,12 @@ const CrewDashboard = () => {
   ];
 
   const leaderboard = [
-    { rank: 1, name: 'Emma Rodriguez', miles: 52.1, runs: 9, points: 1250 },
-    { rank: 2, name: 'Sarah Johnson', miles: 45.2, runs: 8, points: 1080 },
-    { rank: 3, name: 'Mike Chen', miles: 38.5, runs: 7, points: 920 },
-    { rank: 4, name: 'David Lee', miles: 32.3, runs: 6, points: 775 },
-    { rank: 5, name: 'Maria Garcia', miles: 28.7, runs: 5, points: 690 },
-    { rank: 6, name: 'James Wilson', miles: 24.1, runs: 4, points: 580 }
+    { rank: 1, name: 'Emma Rodriguez', miles: 52.1, runs: 9, lastRun: 'Dec 15' },
+    { rank: 2, name: 'Sarah Johnson', miles: 45.2, runs: 8, lastRun: 'Dec 14' },
+    { rank: 3, name: 'Mike Chen', miles: 38.5, runs: 7, lastRun: 'Dec 13' },
+    { rank: 4, name: 'David Lee', miles: 32.3, runs: 6, lastRun: 'Dec 12' },
+    { rank: 5, name: 'Maria Garcia', miles: 28.7, runs: 5, lastRun: 'Dec 11' },
+    { rank: 6, name: 'James Wilson', miles: 24.1, runs: 4, lastRun: 'Dec 10' }
   ];
 
   const handleShareCode = () => {
@@ -56,6 +56,7 @@ const CrewDashboard = () => {
             <div className="flex items-center space-x-2">
               <span className="text-2xl">🏆</span>
               <span className="font-bold text-orange-600">1,250 pts</span>
+              <span className="text-sm text-gray-500">(Personal)</span>
             </div>
           </div>
         </div>
@@ -128,7 +129,7 @@ const CrewDashboard = () => {
           {/* Right Column - Leaderboard */}
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Weekly Leaderboard</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Miles Leaderboard</h2>
               <span className="text-sm text-gray-600">This Week</span>
             </div>
             <div className="space-y-3">
@@ -151,14 +152,14 @@ const CrewDashboard = () => {
                     <div>
                       <p className="font-medium text-gray-900">{member.name}</p>
                       <div className="flex items-center space-x-3 text-sm text-gray-600">
-                        <span>{member.miles} mi</span>
-                        <span>•</span>
                         <span>{member.runs} runs</span>
+                        <span>•</span>
+                        <span>Last: {member.lastRun}</span>
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold text-orange-600">{member.points} pts</p>
+                    <p className="font-bold text-orange-600">{member.miles} mi</p>
                   </div>
                 </div>
               ))}

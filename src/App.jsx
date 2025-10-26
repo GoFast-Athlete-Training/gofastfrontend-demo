@@ -73,6 +73,7 @@ import RequestReceived from "./Pages/Matching/RequestReceived";
 import TrophyBoard from "./Pages/Points/TrophyBoard";
 import GoFastEarnPoints from "./Pages/Points/GoFastEarnPoints";
 import HowPointsWork from "./Pages/Points/HowPointsWork";
+import PointsExplainer from "./Pages/Points/PointsExplainer";
 import LinkRunningApp from "./Pages/Settings/LinkRunningApp";
 import LogIntoStrava from "./Pages/Settings/LogIntoStrava";
 import GoFastShop from "./Pages/Shopping/GoFastShop";
@@ -121,6 +122,7 @@ const App = () => (
       
       {/* Rewards System */}
       <Route path="/trophy-board" element={<TrophyBoard />} />
+      <Route path="/lets-get-after-it" element={<PointsExplainer />} />
               <Route path="/link-running-app" element={<LinkRunningApp />} />
               <Route path="/log-into-strava" element={<LogIntoStrava />} />
               <Route path="/gofast-earn-points" element={<GoFastEarnPoints />} />

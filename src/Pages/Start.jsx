@@ -149,7 +149,7 @@ const Start = () => {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Earn</h2>
               <p className="text-gray-600 mb-6">
-                Earn points and compete with others
+                Earn points and get rewards
               </p>
               <div className="text-green-600 font-medium">
                 Points & rewards →

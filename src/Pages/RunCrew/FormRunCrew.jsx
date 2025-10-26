@@ -56,8 +56,8 @@ const FormRunCrew = () => {
     localStorage.setItem('currentCrew', JSON.stringify({
       ...formData,
       logoPreview: null, // Don't store blob URLs
-      joinCode,
-      members: mockMembers
+      joinCode: formData.crewCode,
+      members: []
     }));
 
     navigate('/run-crew-success');
@@ -178,11 +178,11 @@ const FormRunCrew = () => {
               <h3 className="font-bold text-gray-900 mb-2">Your Join Code</h3>
               <div className="flex items-center justify-between">
                 <code className="text-3xl font-mono tracking-widest text-orange-600 font-bold">
-                  {joinCode}
+                  {formData.crewCode}
                 </code>
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText(joinCode);
+                    navigator.clipboard.writeText(formData.crewCode);
                     alert('Code copied to clipboard!');
                   }}
                   className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
@@ -196,15 +196,15 @@ const FormRunCrew = () => {
             </div>
           </div>
 
-
-        {/* Submit Button */}
-        <div className="text-center">
-          <button
-            onClick={handleSubmit}
-            className="bg-orange-500 text-white py-4 px-12 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg"
-          >
-            Create Crew
-          </button>
+          {/* Submit Button */}
+          <div className="text-center">
+            <button
+              onClick={handleSubmit}
+              className="bg-orange-500 text-white py-4 px-12 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg"
+            >
+              Create Crew
+            </button>
+          </div>
         </div>
       </div>
     </div>

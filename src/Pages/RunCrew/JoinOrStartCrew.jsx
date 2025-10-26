@@ -103,6 +103,5 @@ const JoinOrStartCrew = () => {
     </div>
   );
 };
-};
 
 export default JoinOrStartCrew;

@@ -63,7 +63,11 @@ const CrewDashboard = () => {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{crew.name}</h1>
+              <div className="flex items-center space-x-3 mb-2">
+                <span className="text-2xl">🏃‍♂️</span>
+                <h1 className="text-3xl font-bold text-gray-900">RunCrew Central</h1>
+              </div>
+              <h2 className="text-xl text-orange-600 font-semibold mb-2">{crew.name}</h2>
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-2">
                   <span className="text-xl">👥</span>

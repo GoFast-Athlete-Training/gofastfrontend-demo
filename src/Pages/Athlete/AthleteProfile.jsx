@@ -12,6 +12,7 @@ export default function AthleteProfile() {
   const [weeklyMileage, setWeeklyMileage] = useState("");
   const [handle, setHandle] = useState("");
   const [personalMessage, setPersonalMessage] = useState("");
+  const [goal, setGoal] = useState("");
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [profilePhotoPreview, setProfilePhotoPreview] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -209,7 +210,22 @@ export default function AthleteProfile() {
             </div>
           </div>
 
-
+          <div className="space-y-2">
+            <label className="font-semibold text-gray-700">Your Running Goal</label>
+            <select
+              value={goal}
+              onChange={(e) => setGoal(e.target.value)}
+              className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+            >
+              <option value="">Select a goal</option>
+              <option value="Stay consistent">Stay consistent</option>
+              <option value="Run a 5K">Run a 5K</option>
+              <option value="Run a 10K">Run a 10K</option>
+              <option value="Crush a Half Marathon PR">Crush a Half Marathon PR</option>
+              <option value="Complete a Marathon">Complete a Marathon</option>
+              <option value="Find my running crew">Find my running crew</option>
+            </select>
+          </div>
 
           <div className="border-t-2 border-gray-200 pt-6 mt-6">
             <h3 className="text-lg font-bold text-gray-800 mb-4">Your Current Fitness</h3>

@@ -58,6 +58,7 @@ import RaceSetup from "./Pages/Settings/RaceSetup";
 import RunnerProfile from "./Pages/Settings/RunnerProfile";
 import Settings from "./Pages/Settings/Settings";
 import AthleteProfile from "./Pages/Athlete/AthleteProfile";
+import ProfileSetupUniversal from "./Pages/Athlete/ProfileSetupUniversal";
 
 // Matching Flow
 import PreAthleteProfile from "./Pages/Matching/PreAthleteProfile";
@@ -186,6 +187,7 @@ const App = () => (
       <Route path="/race-setup" element={<RaceSetup />} />
       <Route path="/runner-profile" element={<RunnerProfile />} />
       <Route path="/athlete-profile" element={<AthleteProfile />} />
+      <Route path="/profile-setup" element={<ProfileSetupUniversal />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>
   </Router>

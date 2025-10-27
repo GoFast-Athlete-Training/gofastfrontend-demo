@@ -60,22 +60,22 @@ const StartHereExplainer = () => {
           </p>
         </div>
 
-        {/* Main Features - Just 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {/* Main Features - Bigger Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {mainFeatures.map((feature, index) => (
             <div 
               key={index}
               onClick={() => navigate(feature.path)}
-              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 text-center"
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 text-center"
             >
-              <div className="text-6xl mb-6">{feature.icon}</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <div className="text-5xl mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 text-lg mb-6">
+              <p className="text-gray-600 mb-4">
                 {feature.description}
               </p>
-              <div className={`${feature.color} text-white px-6 py-3 rounded-lg font-bold text-lg`}>
+              <div className={`${feature.color} text-white px-4 py-2 rounded-lg font-bold`}>
                 Get Started
               </div>
             </div>

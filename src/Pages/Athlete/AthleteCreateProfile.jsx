@@ -83,10 +83,10 @@ const AthleteCreateProfile = () => {
         <div className="text-center mb-8">
           <img src="/logo.jpg" alt="GoFast" className="w-16 h-16 rounded-full mx-auto mb-4" />
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome to GoFast!</h1>
-          <p className="text-gray-600 mb-4">At GoFast, we believe in community. The more info you provide here, the more it fosters connections with other athletes looking to GoFast and PR.</p>
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-            <p className="text-orange-800 text-sm font-medium">💡 <strong>Pro tip:</strong> Complete profiles get 3x more crew invites and running partner matches!</p>
-          </div>
+                  <p className="text-gray-600 mb-4">At GoFast, we believe in community. The more info you provide here, the more it fosters connections with other athletes looking to GoFast and PR.</p>
+                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <p className="text-orange-800 text-sm font-medium">💡 <strong>Community Tip:</strong> Complete profiles get 3x more crew invites and running partner matches!</p>
+                  </div>
         </div>
 
         {/* Form */}
@@ -122,79 +122,72 @@ const AthleteCreateProfile = () => {
             />
           </div>
 
-          {/* First Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              First Name <span className="text-red-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              value={formData.firstName} 
-              onChange={(e) => handleInputChange('firstName', e.target.value)}
-              placeholder="Sarah"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
+                  {/* First Name and Last Name */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        First Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.firstName}
+                        onChange={(e) => handleInputChange('firstName', e.target.value)}
+                        placeholder="Enter your first name"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Last Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.lastName}
+                        onChange={(e) => handleInputChange('lastName', e.target.value)}
+                        placeholder="Enter your last name"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                        required
+                      />
+                    </div>
+                  </div>
 
-          {/* Last Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Last Name <span className="text-red-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              value={formData.lastName} 
-              onChange={(e) => handleInputChange('lastName', e.target.value)}
-              placeholder="Johnson"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
+                  {/* Short Bio */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Short Bio
+                    </label>
+                    <textarea
+                      value={formData.bio}
+                      onChange={(e) => handleInputChange('bio', e.target.value)}
+                      placeholder="Tell us about your running goals, favorite routes, or what motivates you..."
+                      maxLength="250"
+                      rows="3"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                    <p className="text-sm text-gray-500 mt-1">{formData.bio.length}/250 characters</p>
+                  </div>
 
-          {/* GoFast Handle */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              GoFast Handle <span className="text-red-500">*</span>
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-gray-500 text-sm">@</span>
-              </div>
-              <input 
-                type="text" 
-                value={formData.gofastHandle} 
-                onChange={(e) => handleInputChange('gofastHandle', e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
-                placeholder="sarah_runs"
-                className="w-full pl-8 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                required
-              />
-            </div>
-            <p className="text-xs text-gray-400 mt-1">🏷️ This is for quick lookup and tagging others. We recommend using your first name but make it fun!</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <button 
-                type="button"
-                onClick={() => handleInputChange('gofastHandle', `${formData.firstName.toLowerCase()}_runs`)}
-                className="text-xs bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded text-gray-600"
-              >
-                {formData.firstName ? `${formData.firstName.toLowerCase()}_runs` : 'sarah_runs'}
-              </button>
-              <button 
-                type="button"
-                onClick={() => handleInputChange('gofastHandle', `${formData.firstName.toLowerCase()}${formData.lastName.toLowerCase()}`)}
-                className="text-xs bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded text-gray-600"
-              >
-                {formData.firstName && formData.lastName ? `${formData.firstName.toLowerCase()}${formData.lastName.toLowerCase()}` : 'sarahjohnson'}
-              </button>
-              <button 
-                type="button"
-                onClick={() => handleInputChange('gofastHandle', `${formData.firstName.toLowerCase()}_gofast`)}
-                className="text-xs bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded text-gray-600"
-              >
-                {formData.firstName ? `${formData.firstName.toLowerCase()}_gofast` : 'sarah_gofast'}
-              </button>
-            </div>
-          </div>
+                  {/* GoFast Handle */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      GoFast Handle <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span className="text-gray-500 text-sm">@</span>
+                      </div>
+                      <input
+                        type="text"
+                        value={formData.gofastHandle}
+                        onChange={(e) => handleInputChange('gofastHandle', e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
+                        placeholder="your_handle"
+                        className="w-full pl-8 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                        required
+                      />
+                    </div>
+                    <p className="text-xs text-gray-400 mt-1">This is for quick lookup and tagging others</p>
+                  </div>
 
           {/* Birthday */}
           <div>
@@ -298,37 +291,35 @@ const AthleteCreateProfile = () => {
             <p className="text-xs text-gray-400 mt-1">🎯 This helps us match you with the right community!</p>
           </div>
 
-          {/* Bio */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Short Bio <span className="text-orange-500">(Recommended)</span>
-            </label>
-            <textarea 
-              value={formData.bio} 
-              onChange={(e) => handleInputChange('bio', e.target.value)}
-              placeholder="Tell us about your running goals, favorite routes, or what motivates you..."
-              maxLength="250"
-              rows="3"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-            />
-            <p className="text-sm text-gray-500 mt-1">{formData.bio.length}/250 characters</p>
-            <p className="text-xs text-gray-400 mt-1">💬 This helps other athletes connect with you!</p>
-          </div>
+                  {/* Bio */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Short Bio
+                    </label>
+                    <textarea
+                      value={formData.bio}
+                      onChange={(e) => handleInputChange('bio', e.target.value)}
+                      placeholder="Tell us about your running goals, favorite routes, or what motivates you..."
+                      maxLength="250"
+                      rows="3"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                    <p className="text-sm text-gray-500 mt-1">{formData.bio.length}/250 characters</p>
+                  </div>
 
-          {/* Instagram */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Instagram Handle <span className="text-orange-500">(Recommended)</span>
-            </label>
-            <input 
-              type="text" 
-              value={formData.instagram} 
-              onChange={(e) => handleInputChange('instagram', e.target.value)}
-              placeholder="@your_handle"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-            />
-            <p className="text-xs text-gray-400 mt-1">📸 Share your running journey and connect with the community!</p>
-          </div>
+                  {/* Instagram */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Instagram Handle
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.instagram}
+                      onChange={(e) => handleInputChange('instagram', e.target.value)}
+                      placeholder="@your_handle"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    />
+                  </div>
 
           {/* Submit Button */}
           <div className="pt-4">

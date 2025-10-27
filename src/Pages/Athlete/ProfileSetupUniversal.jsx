@@ -67,8 +67,8 @@ const ProfileSetupUniversal = () => {
       profilePhotoPreview: null // Don't store blob URLs
     }));
 
-    // Navigate to start/dashboard
-    navigate('/start');
+    // Navigate to athlete home after profile setup
+    navigate('/athlete-home');
   };
 
   return (

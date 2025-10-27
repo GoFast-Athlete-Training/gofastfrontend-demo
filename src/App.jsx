@@ -4,7 +4,6 @@ import ScrollToTop from "./Components/ScrollToTop";
 
 // Dashboard
 import GoFastDashboard from "./Pages/GoFastDashboard";
-import Start from "./Pages/Start";
 import Connect from "./Pages/Connect";
 
 // Run Crew
@@ -83,11 +82,8 @@ import ProductDetail from "./Pages/Shopping/ProductDetail";
 import Cart from "./Pages/Shopping/Cart";
 import Checkout from "./Pages/Shopping/Checkout";
 import OrderConfirmation from "./Pages/Shopping/OrderConfirmation";
-import FindRunningClubs from "./Pages/Crew/FindRunningClubs";
-import RunningCrewDetail from "./Pages/Crew/RunningCrewDetail";
-import GroupChat from "./Pages/Crew/GroupChat";
-import ProfileSetupPlatform from "./Pages/ProfileSetupPlatform";
-import ProfileSetupSuccess from "./Pages/ProfileSetupSuccess";
+import FindRunningClubs from "./Pages/RunCrew/FindRunningClubs";
+import ClubDetail from "./Pages/RunCrew/ClubDetail";
 
 // Platform
 import GoFastPlatform from "./Pages/GoFastPlatform";
@@ -97,8 +93,7 @@ const App = () => (
     <ScrollToTop />
     <Routes>
               {/* Main Entry Point */}
-              <Route path="/" element={<Start />} />
-              <Route path="/start" element={<Start />} />
+              <Route path="/" element={<GoFastPlatform />} />
               <Route path="/connect" element={<Connect />} />
               <Route path="/crew-explainer" element={<CrewExplainer />} />
               <Route path="/start-run-crew" element={<StartRunCrew />} />
@@ -142,13 +137,8 @@ const App = () => (
               <Route path="/order-confirmation" element={<OrderConfirmation />} />
               
               {/* Community/Group Flow */}
-              <Route path="/find-running-crews" element={<FindRunningClubs />} />
-              <Route path="/running-crew/:id" element={<RunningCrewDetail />} />
-              <Route path="/group-chat/:id" element={<GroupChat />} />
-              
-              {/* Profile Setup Flow */}
-              <Route path="/profile-setup-platform" element={<ProfileSetupPlatform />} />
-              <Route path="/profile-setup-success" element={<ProfileSetupSuccess />} />
+              <Route path="/find-your-club" element={<FindRunningClubs />} />
+              <Route path="/club-detail/:id" element={<ClubDetail />} />
       
       {/* Platform */}
       <Route path="/gofast-platform" element={<GoFastPlatform />} />

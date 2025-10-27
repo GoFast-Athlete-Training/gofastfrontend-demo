@@ -9,7 +9,7 @@ const GoFastPlatform = () => {
       title: "Setup Profile",
       description: "Complete your profile to get personalized recommendations",
       icon: "👤",
-      path: "/profile-setup-platform",
+      path: "/profile-setup-universal",
       priority: true
     },
     {

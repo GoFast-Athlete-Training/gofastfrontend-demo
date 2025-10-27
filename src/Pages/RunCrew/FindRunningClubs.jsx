@@ -49,11 +49,12 @@ const FindRunningClubs = () => {
   ];
 
   const handleClubClick = (club) => {
-    navigate(`/running-crew/${club.id}`);
+    navigate(`/club-detail/${club.id}`);
   };
 
-  const handleSubmitGroup = () => {
-    alert('Submit a Group feature coming soon!');
+  const handleStartClub = () => {
+    // Redirect to club admin site for club creation
+    window.open('https://club.growyourrunclub.com', '_blank');
   };
 
   return (
@@ -72,8 +73,12 @@ const FindRunningClubs = () => {
               <span className="text-xl font-bold text-gray-900">GoFast</span>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-2xl">🏆</span>
-              <span className="font-bold text-orange-600">1,250 pts</span>
+              <button
+                onClick={() => navigate('/athlete-profile')}
+                className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors"
+              >
+                <span className="text-lg">👤</span>
+              </button>
             </div>
           </div>
         </div>
@@ -168,13 +173,13 @@ const FindRunningClubs = () => {
         <div className="bg-white rounded-xl shadow-lg p-6 text-center">
           <h3 className="text-xl font-bold text-gray-900 mb-2">Don't see your club?</h3>
           <p className="text-gray-600 mb-4">
-            Add your running club to help others discover it!
+            Tell your club leaders to register and get your club on GoFast!
           </p>
           <button
-            onClick={handleSubmitGroup}
+            onClick={handleStartClub}
             className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
           >
-            Add Your Club
+            Start a Club
           </button>
         </div>
       </div>

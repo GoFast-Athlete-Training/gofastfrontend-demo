@@ -13,7 +13,7 @@ const Connect = () => {
   };
 
   const handleJoinClub = () => {
-    navigate('/find-running-crews');
+    navigate('/find-your-club');
   };
 
   const handleBack = () => {

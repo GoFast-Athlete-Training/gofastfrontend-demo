@@ -150,7 +150,7 @@ const App = () => (
               <Route path="/club-detail/:id" element={<ClubDetail />} />
       
       {/* Platform */}
-      <Route path="/gofast-platform" element={<GoFastPlatform />} />
+      <Route path="/gofast-platform" element={<StartHereExplainer />} />
       
       {/* Core Training Modules */}
       <Route path="/training-hub" element={<TrainingHub />} />
@@ -188,7 +188,7 @@ const App = () => (
       
       {/* Setup (Modular) */}
       <Route path="/athlete-profile" element={<AthleteProfile />} />
-      <Route path="/profile-setup-universal" element={<ProfileSetupUniversal />} />
+      <Route path="/profile-setup-universal" element={<AthleteCreateProfile />} />
       <Route path="/settings" element={<Settings />} />
       
       {/* Training Flow */}

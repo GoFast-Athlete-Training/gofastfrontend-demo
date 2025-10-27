@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const GoFastPlatform = () => {
+const StartHereExplainer = () => {
   const navigate = useNavigate();
 
   const mainFeatures = [
     {
       title: "Connect",
       description: "Find your running crew and accountability partners",
-      icon: "👥",
+      icon: "🤝",
       path: "/connect",
       color: "bg-orange-500"
     },
@@ -22,7 +22,7 @@ const GoFastPlatform = () => {
     {
       title: "Shop",
       description: "Earn points and redeem exclusive running gear",
-      icon: "🛍️",
+      icon: "🛒",
       path: "/shop",
       color: "bg-green-500"
     }
@@ -36,7 +36,7 @@ const GoFastPlatform = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <img src="/logo.jpg" alt="GoFast" className="w-8 h-8 rounded-full" />
-              <span className="text-xl font-bold text-gray-900">GoFast Platform</span>
+              <span className="text-xl font-bold text-gray-900">GoFast App</span>
             </div>
             {/* Profile Setup Button - Bottom Right */}
             <button
@@ -53,10 +53,10 @@ const GoFastPlatform = () => {
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Your Complete Running Platform
+            Welcome to GoFast
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Connect, Train, and Shop - everything you need to level up your running
+            Connect with your crew, track your progress, and earn rewards
           </p>
         </div>
 
@@ -124,24 +124,9 @@ const GoFastPlatform = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Ready to Level Up Your Running?
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Join thousands of runners who are already using GoFast to achieve their goals
-          </p>
-          <button
-            onClick={() => navigate('/connect')}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
-          >
-            Get Started Now
-          </button>
-        </div>
       </div>
     </div>
   );
 };
 
-export default GoFastPlatform;
+export default StartHereExplainer;

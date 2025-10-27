@@ -54,7 +54,7 @@ import InjuryPrevention from "./Pages/Training/InjuryPrevention";
 
 // Athlete Pages
 import AthleteProfile from "./Pages/Athlete/AthleteProfile";
-import ProfileSetupUniversal from "./Pages/Athlete/ProfileSetupUniversal";
+import AthleteCreateProfile from "./Pages/Athlete/AthleteCreateProfile";
 import AthleteHome from "./Pages/Athlete/AthleteHome";
 
 // Matching Flow
@@ -94,14 +94,14 @@ import TrainingPlanSetup from "./Pages/Training/TrainingPlanSetup";
 import TrainingPlan from "./Pages/Training/TrainingPlan";
 
 // Platform
-import GoFastPlatform from "./Pages/GoFastPlatform";
+import StartHereExplainer from "./Pages/StartHereExplainer";
 
 const App = () => (
   <Router>
     <ScrollToTop />
     <Routes>
               {/* Main Entry Point */}
-              <Route path="/" element={<GoFastPlatform />} />
+              <Route path="/" element={<StartHereExplainer />} />
               <Route path="/connect" element={<Connect />} />
               <Route path="/crew-explainer" element={<CrewExplainer />} />
               <Route path="/start-run-crew" element={<StartRunCrew />} />

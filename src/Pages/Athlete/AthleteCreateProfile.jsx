@@ -103,9 +103,9 @@ const AthleteCreateProfile = () => {
                   alt="Profile preview" 
                   className="w-24 h-24 rounded-full object-cover"
                 />
-              ) : (
-                <span className="text-4xl">👤</span>
-              )}
+                      ) : (
+                        <span className="text-4xl">📷</span>
+                      )}
             </div>
             <div className="flex items-center justify-center text-orange-500 text-sm cursor-pointer hover:text-orange-600" onClick={handleImageClick}>
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -173,6 +173,7 @@ const AthleteCreateProfile = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       GoFast Handle <span className="text-red-500">*</span>
                     </label>
+                    <p className="text-xs text-gray-400 mb-2">This is for quick lookup and tagging others. We recommend using your first name but you can make it however you like.</p>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <span className="text-gray-500 text-sm">@</span>
@@ -186,7 +187,6 @@ const AthleteCreateProfile = () => {
                         required
                       />
                     </div>
-                    <p className="text-xs text-gray-400 mt-1">This is for quick lookup and tagging others. We recommend using your first name but you can make it however you like.</p>
                   </div>
 
           {/* Birthday */}
@@ -296,6 +296,7 @@ const AthleteCreateProfile = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Instagram Handle
                     </label>
+                    <p className="text-xs text-gray-400 mb-2">In case people want to discover the real you outside of your primary sport.</p>
                     <input
                       type="text"
                       value={formData.instagram}
@@ -303,7 +304,6 @@ const AthleteCreateProfile = () => {
                       placeholder="@your_handle"
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
-                    <p className="text-xs text-gray-400 mt-1">In case people want to discover the real you outside of your primary sport.</p>
                   </div>
 
           {/* Submit Button */}

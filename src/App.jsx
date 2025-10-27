@@ -86,6 +86,8 @@ import OrderConfirmation from "./Pages/Shopping/OrderConfirmation";
 import FindRunningClubs from "./Pages/Crew/FindRunningClubs";
 import RunningCrewDetail from "./Pages/Crew/RunningCrewDetail";
 import GroupChat from "./Pages/Crew/GroupChat";
+import ProfileSetupPlatform from "./Pages/ProfileSetupPlatform";
+import ProfileSetupSuccess from "./Pages/ProfileSetupSuccess";
 
 // Platform
 import GoFastPlatform from "./Pages/GoFastPlatform";
@@ -143,6 +145,10 @@ const App = () => (
               <Route path="/find-running-crews" element={<FindRunningClubs />} />
               <Route path="/running-crew/:id" element={<RunningCrewDetail />} />
               <Route path="/group-chat/:id" element={<GroupChat />} />
+              
+              {/* Profile Setup Flow */}
+              <Route path="/profile-setup-platform" element={<ProfileSetupPlatform />} />
+              <Route path="/profile-setup-success" element={<ProfileSetupSuccess />} />
       
       {/* Platform */}
       <Route path="/gofast-platform" element={<GoFastPlatform />} />

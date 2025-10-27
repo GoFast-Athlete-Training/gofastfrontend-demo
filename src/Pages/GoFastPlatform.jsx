@@ -6,6 +6,13 @@ const GoFastPlatform = () => {
 
   const features = [
     {
+      title: "Setup Profile",
+      description: "Complete your profile to get personalized recommendations",
+      icon: "👤",
+      path: "/profile-setup-platform",
+      priority: true
+    },
+    {
       title: "Training Hub",
       description: "Personalized workout plans and progress tracking",
       icon: "🏃‍♂️",
@@ -80,11 +87,24 @@ const GoFastPlatform = () => {
             <div 
               key={index}
               onClick={() => navigate(feature.path)}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105"
+              className={`rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 ${
+                feature.priority ? 'bg-gradient-to-br from-orange-500 to-orange-600 text-white' : 'bg-white'
+              }`}
             >
               <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className={`text-xl font-bold mb-2 ${feature.priority ? 'text-white' : 'text-gray-900'}`}>
+                {feature.title}
+              </h3>
+              <p className={feature.priority ? 'text-orange-100' : 'text-gray-600'}>
+                {feature.description}
+              </p>
+              {feature.priority && (
+                <div className="mt-4">
+                  <span className="bg-white text-orange-600 px-3 py-1 rounded-full text-sm font-bold">
+                    START HERE
+                  </span>
+                </div>
+              )}
             </div>
           ))}
         </div>

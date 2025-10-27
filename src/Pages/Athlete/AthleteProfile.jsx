@@ -28,9 +28,15 @@ const AthleteProfile = () => {
 
             {/* Stats */}
             <div className="flex gap-8 mb-4">
-              <div>
+              <div className="flex items-center">
                 <span className="font-bold text-gray-900">1,285</span>
                 <span className="text-gray-600 ml-2">GoFast Points</span>
+                <button
+                  onClick={() => navigate('/points-explainer')}
+                  className="ml-3 text-orange-500 hover:text-orange-600 font-medium text-sm"
+                >
+                  Learn More →
+                </button>
               </div>
               <div>
                 <span className="font-bold text-gray-900">38.5</span>

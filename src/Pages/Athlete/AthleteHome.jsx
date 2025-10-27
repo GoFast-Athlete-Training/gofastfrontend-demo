@@ -52,6 +52,30 @@ const AthleteHome = () => {
           </button>
         </div>
 
+        {/* Shopping Section */}
+        <div className="mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Shopping</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+              onClick={() => navigate('/shop')}
+              className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow text-left"
+            >
+              <div className="text-4xl mb-3">🛍️</div>
+              <h3 className="text-xl font-bold mb-1">Get New Gear</h3>
+              <p className="text-blue-100 text-sm">Running shoes, watches, apparel</p>
+            </button>
+            
+            <button
+              onClick={() => navigate('/merch-store')}
+              className="bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow text-left"
+            >
+              <div className="text-4xl mb-3">🎁</div>
+              <h3 className="text-xl font-bold mb-1">Use Your Points</h3>
+              <p className="text-orange-100 text-sm">GoFast merch & exclusive items</p>
+            </button>
+          </div>
+        </div>
+
         {/* Upcoming Section */}
         <div className="mb-8">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Upcoming</h2>
@@ -101,6 +125,8 @@ const AthleteHome = () => {
                 </div>
               </div>
             </div>
+
+
           </div>
         </div>
       </div>

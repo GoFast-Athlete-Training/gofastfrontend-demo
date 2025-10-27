@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop";
 
 // Dashboard
-import GoFastDashboard from "./Pages/GoFastDashboard";
+import GoFastTrainingDashboard from "./Pages/GoFastTrainingDashboard";
 import Connect from "./Pages/Connect";
 
 // Run Crew
@@ -14,9 +14,9 @@ import CrewDashboard from "./Pages/RunCrew/CrewDashboard";
 import CrewExplainer from "./Pages/RunCrew/CrewExplainer";
 import RunCrewSuccess from "./Pages/RunCrew/RunCrewSuccess";
 
-// Merch Store
-import GoFastMerch from "./Pages/MerchStore/GoFastMerch";
-import RedeemPoints from "./Pages/MerchStore/RedeemPoints";
+// Merch Store (now in Shopping)
+import GoFastMerch from "./Pages/Shopping/GoFastMerch";
+import RedeemPoints from "./Pages/Shopping/RedeemPoints";
 
 // Core Training Modules
 import TrainingHub from "./Pages/Training/TrainingHub";
@@ -35,27 +35,24 @@ import MatchActivity from "./Pages/Training/MatchActivity";
 import GarminConnect from "./Pages/Training/GarminConnect";
 import GarminConnected from "./Pages/Training/GarminConnected";
 
-// Race Modules
-import RaceHub from "./Pages/Race/RaceHub";
-import MyRaces from "./Pages/Race/MyRaces";
-import CourseVisualization from "./Pages/Race/CourseVisualization";
-import HotelTravel from "./Pages/Race/HotelTravel";
-import RaceStrategy from "./Pages/Race/RaceStrategy";
-import RaceChecklist from "./Pages/Race/RaceChecklist";
-import RaceDetail from "./Pages/Race/RaceDetail";
-import RaceMorning from "./Pages/Race/RaceMorning";
-import RaceFeedback from "./Pages/Race/RaceFeedback";
-import PostRaceHub from "./Pages/PostRace/PostRaceHub";
-import RecoveryPlan from "./Pages/PostRace/RecoveryPlan";
-import NextGoals from "./Pages/PostRace/NextGoals";
-import MentalHub from "./Pages/Mental/MentalHub";
-import Nutrition from "./Pages/Maintenance/Nutrition";
-import InjuryPrevention from "./Pages/Maintenance/InjuryPrevention";
+// Race Modules (now in Training)
+import RaceHub from "./Pages/Training/RaceHub";
+import MyRaces from "./Pages/Training/MyRaces";
+import CourseVisualization from "./Pages/Training/CourseVisualization";
+import HotelTravel from "./Pages/Training/HotelTravel";
+import RaceStrategy from "./Pages/Training/RaceStrategy";
+import RaceChecklist from "./Pages/Training/RaceChecklist";
+import RaceDetail from "./Pages/Training/RaceDetail";
+import RaceMorning from "./Pages/Training/RaceMorning";
+import RaceFeedback from "./Pages/Training/RaceFeedback";
+import PostRaceHub from "./Pages/Training/PostRaceHub";
+import RecoveryPlan from "./Pages/Training/RecoveryPlan";
+import NextGoals from "./Pages/Training/NextGoals";
+import MentalHub from "./Pages/Training/MentalHub";
+import Nutrition from "./Pages/Training/Nutrition";
+import InjuryPrevention from "./Pages/Training/InjuryPrevention";
 
-// Setup (Modular) - Updated paths
-import Goals from "./Pages/Setup/Goals";
-import RaceSetup from "./Pages/Settings/RaceSetup";
-import Settings from "./Pages/Settings/Settings";
+// Athlete Pages
 import AthleteProfile from "./Pages/Athlete/AthleteProfile";
 import ProfileSetupUniversal from "./Pages/Athlete/ProfileSetupUniversal";
 import AthleteHome from "./Pages/Athlete/AthleteHome";
@@ -68,22 +65,33 @@ import MatchProfileSetup from "./Pages/Matching/MatchProfileSetup";
 import MatchProfile from "./Pages/Matching/MatchProfile";
 import MatchProfileSuccess from "./Pages/Matching/MatchProfileSuccess";
 import FindMatches from "./Pages/Matching/FindMatches";
-import Crew from "./Pages/Crew/Crew";
 import RequestSent from "./Pages/Matching/RequestSent";
 import RequestReceived from "./Pages/Matching/RequestReceived";
-import TrophyBoard from "./Pages/Points/TrophyBoard";
-import GoFastEarnPoints from "./Pages/Points/GoFastEarnPoints";
-import HowPointsWork from "./Pages/Points/HowPointsWork";
-import PointsExplainer from "./Pages/Points/PointsExplainer";
-import LinkRunningApp from "./Pages/Settings/LinkRunningApp";
-import LogIntoStrava from "./Pages/Settings/LogIntoStrava";
+import YourePaired from "./Pages/Matching/YourePaired";
+import ReviewProposedMeetup from "./Pages/Matching/ReviewProposedMeetup";
+
+// Settings
+import Settings from "./Pages/Settings/Settings";
+import LinkGamin from "./Pages/Settings/LinkGamin";
+import LinkStrava from "./Pages/Settings/LinkStrava";
+
+// Shopping/Points
+import TrophyBoard from "./Pages/Shopping/TrophyBoard";
+import PointsExplainer from "./Pages/Shopping/PointsExplainer";
 import GoFastShop from "./Pages/Shopping/GoFastShop";
 import ProductDetail from "./Pages/Shopping/ProductDetail";
 import Cart from "./Pages/Shopping/Cart";
 import Checkout from "./Pages/Shopping/Checkout";
 import OrderConfirmation from "./Pages/Shopping/OrderConfirmation";
+
+// RunCrew/Clubs
 import FindRunningClubs from "./Pages/RunCrew/FindRunningClubs";
 import ClubDetail from "./Pages/RunCrew/ClubDetail";
+
+// Training Flow
+import TrainingExplainer from "./Pages/Training/TrainingExplainer";
+import TrainingPlanSetup from "./Pages/Training/TrainingPlanSetup";
+import TrainingPlan from "./Pages/Training/TrainingPlan";
 
 // Platform
 import GoFastPlatform from "./Pages/GoFastPlatform";
@@ -106,7 +114,7 @@ const App = () => (
               <Route path="/merch-store" element={<GoFastMerch />} />
               <Route path="/redeem-points" element={<RedeemPoints />} />
               
-              <Route path="/dashboard" element={<GoFastDashboard />} />
+              <Route path="/dashboard" element={<GoFastTrainingDashboard />} />
       
       {/* Matching Flow */}
       <Route path="/pre-athlete-profile" element={<PreAthleteProfile />} />
@@ -115,19 +123,20 @@ const App = () => (
       <Route path="/matching-home" element={<MatchingHome />} />
       <Route path="/match-profile" element={<MatchProfile />} />
       <Route path="/match-profile-success" element={<MatchProfileSuccess />} />
-      <Route path="/find" element={<FindMatches />} />
-      <Route path="/crew" element={<Crew />} />
+      <Route path="/find-matches" element={<FindMatches />} />
       <Route path="/request-sent" element={<RequestSent />} />
       <Route path="/request-received" element={<RequestReceived />} />
+      <Route path="/youre-paired" element={<YourePaired />} />
+      <Route path="/review-proposed-meetup" element={<ReviewProposedMeetup />} />
       <Route path="/athlete-home" element={<AthleteHome />} />
       
       {/* Rewards System */}
       <Route path="/trophy-board" element={<TrophyBoard />} />
-      <Route path="/lets-get-after-it" element={<PointsExplainer />} />
-              <Route path="/link-running-app" element={<LinkRunningApp />} />
-              <Route path="/log-into-strava" element={<LogIntoStrava />} />
-              <Route path="/gofast-earn-points" element={<GoFastEarnPoints />} />
-              <Route path="/how-points-work" element={<HowPointsWork />} />
+      <Route path="/points-explainer" element={<PointsExplainer />} />
+      
+      {/* Settings */}
+      <Route path="/link-garmin" element={<LinkGamin />} />
+      <Route path="/link-strava" element={<LinkStrava />} />
               
               {/* Shopping Flow */}
               <Route path="/shop" element={<GoFastShop />} />
@@ -178,11 +187,14 @@ const App = () => (
       <Route path="/injury-prevention" element={<InjuryPrevention />} />
       
       {/* Setup (Modular) */}
-      <Route path="/goals" element={<Goals />} />
-      <Route path="/race-setup" element={<RaceSetup />} />
       <Route path="/athlete-profile" element={<AthleteProfile />} />
-      <Route path="/profile-setup" element={<ProfileSetupUniversal />} />
+      <Route path="/profile-setup-universal" element={<ProfileSetupUniversal />} />
       <Route path="/settings" element={<Settings />} />
+      
+      {/* Training Flow */}
+      <Route path="/training-explainer" element={<TrainingExplainer />} />
+      <Route path="/training-plan-setup" element={<TrainingPlanSetup />} />
+      <Route path="/training-plan" element={<TrainingPlan />} />
     </Routes>
   </Router>
 );

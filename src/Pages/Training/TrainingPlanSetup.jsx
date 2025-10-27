@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const TrainingPlanSetup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    raceName: '',
     raceDistance: '',
     targetTime: '',
     raceDate: '',
@@ -33,7 +34,7 @@ const TrainingPlanSetup = () => {
     e.preventDefault();
     
     // Validate required fields
-    if (!formData.raceDistance || !formData.targetTime || !formData.raceDate || 
+    if (!formData.raceName || !formData.raceDistance || !formData.targetTime || !formData.raceDate || 
         !formData.currentPace || !formData.weeklyMileage || !formData.experience ||
         formData.trainingDays.length === 0) {
       alert('Please fill in all required fields');
@@ -43,8 +44,8 @@ const TrainingPlanSetup = () => {
     // Save to localStorage (demo)
     localStorage.setItem('trainingPlan', JSON.stringify(formData));
 
-    // Navigate to success page
-    navigate('/training-plan-success');
+    // Navigate to training plan page
+    navigate('/training-plan');
   };
 
   const handleBack = () => {
@@ -65,6 +66,21 @@ const TrainingPlanSetup = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Race Name */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Race Name <span className="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              value={formData.raceName} 
+              onChange={(e) => handleInputChange('raceName', e.target.value)}
+              placeholder="e.g., Boston Marathon, NYC Half Marathon"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+
           {/* Race Distance */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">

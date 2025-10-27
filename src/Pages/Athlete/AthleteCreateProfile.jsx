@@ -186,7 +186,7 @@ const AthleteCreateProfile = () => {
                         required
                       />
                     </div>
-                    <p className="text-xs text-gray-400 mt-1">This is for quick lookup and tagging others</p>
+                    <p className="text-xs text-gray-400 mt-1">This is for quick lookup and tagging others. We recommend using your first name but you can make it however you like.</p>
                   </div>
 
           {/* Birthday */}
@@ -291,22 +291,6 @@ const AthleteCreateProfile = () => {
             <p className="text-xs text-gray-400 mt-1">🎯 This helps us match you with the right community!</p>
           </div>
 
-                  {/* Bio */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Short Bio
-                    </label>
-                    <textarea
-                      value={formData.bio}
-                      onChange={(e) => handleInputChange('bio', e.target.value)}
-                      placeholder="Tell us about your running goals, favorite routes, or what motivates you..."
-                      maxLength="250"
-                      rows="3"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    />
-                    <p className="text-sm text-gray-500 mt-1">{formData.bio.length}/250 characters</p>
-                  </div>
-
                   {/* Instagram */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -319,6 +303,7 @@ const AthleteCreateProfile = () => {
                       placeholder="@your_handle"
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
+                    <p className="text-xs text-gray-400 mt-1">In case people want to discover the real you outside of your primary sport.</p>
                   </div>
 
           {/* Submit Button */}

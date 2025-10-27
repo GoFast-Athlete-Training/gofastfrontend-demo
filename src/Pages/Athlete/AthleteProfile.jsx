@@ -1,275 +1,214 @@
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import NavBar from '../../Components/NavBar';
 
-export default function AthleteProfile() {
-  const navigate = useNavigate();
-  const fileInputRef = useRef(null);
-  const [name, setName] = useState("");
-  const [goesBy, setGoesBy] = useState("");
-  const [age, setAge] = useState("");
-  const [city, setCity] = useState("");
-  const [averagePace, setAveragePace] = useState("");
-  const [weeklyMileage, setWeeklyMileage] = useState("");
-  const [handle, setHandle] = useState("");
-  const [personalMessage, setPersonalMessage] = useState("");
-  const [goal, setGoal] = useState("");
-  const [profilePhoto, setProfilePhoto] = useState(null);
-  const [profilePhotoPreview, setProfilePhotoPreview] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      // Validate file type
-      if (!file.type.startsWith('image/')) {
-        alert('Please select a valid image file');
-        return;
-      }
-      
-      // Validate file size (5MB max)
-      if (file.size > 5 * 1024 * 1024) {
-        alert('Image size must be less than 5MB');
-        return;
-      }
-
-      // Create preview URL
-      const previewUrl = URL.createObjectURL(file);
-      
-      setProfilePhoto(file);
-      setProfilePhotoPreview(previewUrl);
-    }
-  };
-
-  const handleImageClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!name || !goesBy || !age || !city || !averagePace || !weeklyMileage) {
-      alert("Please fill in all fields");
-      return;
-    }
-
-    try {
-      setLoading(true);
-
-      // Save to localStorage only (demo mode)
-      localStorage.setItem('runnerProfile', JSON.stringify({
-        name,
-        goesBy,
-        age: parseInt(age),
-        city,
-        averagePace,
-        weeklyMileage: parseInt(weeklyMileage),
-        handle,
-        personalMessage,
-        profilePhotoPreview: null // Don't store blob URLs
-      }));
-      console.log("💾 Runner profile saved to localStorage");
-
-      // Route to dashboard
-      navigate("/dashboard");
-      
-    } catch (error) {
-      console.error("❌ Profile save failed:", error);
-      alert("Failed to save profile. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+const AthleteProfile = () => {
+  const [activeSection, setActiveSection] = useState('profile');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-400 via-red-400 to-pink-500 flex items-center justify-center p-6">
-      <div className="max-w-2xl w-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/20">
-        {/* Header */}
-        <div className="text-center space-y-4 mb-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full mx-auto flex items-center justify-center shadow-lg">
-            <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
+    <div className="min-h-screen bg-white">
+      <NavBar />
+
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Profile Header - Instagram Style */}
+        <div className="flex gap-8 mb-8">
+          {/* Profile Photo */}
+          <div className="flex-shrink-0">
+            <div className="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center text-6xl">
+              👤
+            </div>
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-            Welcome to GoFast! 🏃‍♂️
-          </h1>
-          <p className="text-gray-600 text-lg leading-relaxed">
-            Just tell us a bit about yourself and we'll get started!
-          </p>
+
+          {/* Profile Info */}
+          <div className="flex-1">
+            <div className="mb-4">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Sarah Johnson</h1>
+              <p className="text-gray-600 mb-2">@runner_sarah • Arlington, VA</p>
+              <p className="text-gray-600">Racing for: <span className="font-medium">Run a 5K</span></p>
+            </div>
+
+            {/* Stats */}
+            <div className="flex gap-8 mb-4">
+              <div>
+                <span className="font-bold text-gray-900">1,285</span>
+                <span className="text-gray-600 ml-2">GoFast Points</span>
+              </div>
+              <div>
+                <span className="font-bold text-gray-900">38.5</span>
+                <span className="text-gray-600 ml-2">Miles This Week</span>
+              </div>
+              <div>
+                <span className="font-bold text-gray-900">23:45</span>
+                <span className="text-gray-600 ml-2">5K PR</span>
+              </div>
+            </div>
+
+            {/* Edit Button */}
+            <button className="bg-orange-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors">
+              Edit Profile
+            </button>
+          </div>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Profile Photo */}
-          <div className="text-center">
-            <div 
-              className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-2 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition-colors"
-              onClick={handleImageClick}
-            >
-              {profilePhotoPreview ? (
-                <img 
-                  src={profilePhotoPreview} 
-                  alt="Profile preview" 
-                  className="w-24 h-24 rounded-full object-cover"
-                />
-              ) : (
-                <span className="text-4xl">👤</span>
-              )}
-            </div>
-            <div className="flex items-center justify-center text-orange-500 text-sm cursor-pointer hover:text-orange-600" onClick={handleImageClick}>
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-              </svg>
-              {profilePhoto ? 'Change Photo' : 'Add Photo'}
-            </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
-          </div>
+        {/* Settings Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Settings Sidebar - Left */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 sticky top-4">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Settings</h3>
+              <div className="space-y-1">
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase">Account</div>
+                <button 
+                  onClick={() => setActiveSection('profile')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'profile' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  Edit Profile
+                </button>
+                
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase mt-3">Preferences</div>
+                <button 
+                  onClick={() => setActiveSection('preferences')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'preferences' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  Run Preferences
+                </button>
+                <button 
+                  onClick={() => setActiveSection('matching')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'matching' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  Match Preferences
+                </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="font-semibold text-gray-700">Full Name</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g., Sarah Johnson"
-                className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                required
-              />
-            </div>
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase mt-3">Connections</div>
+                <button 
+                  onClick={() => setActiveSection('devices')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'devices' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  Connected Devices
+                </button>
 
-            <div className="space-y-2">
-              <label className="font-semibold text-gray-700">Goes By</label>
-              <input
-                type="text"
-                value={goesBy}
-                onChange={(e) => setGoesBy(e.target.value)}
-                placeholder="e.g., Sarah, F3 names, etc."
-                className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                required
-              />
-              <p className="text-sm text-gray-500">What should we call you?</p>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-                <label className="font-semibold text-gray-700">Age</label>
-                <input
-                  type="number"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  placeholder="e.g., 32"
-                  className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                  required
-                />
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase mt-3">Privacy & Security</div>
+                <button 
+                  onClick={() => setActiveSection('security')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'security' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  Security & Password
+                </button>
               </div>
+            </div>
+          </div>
 
+          {/* Main Content */}
+          <div className="lg:col-span-2">
+            {/* Trophies */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 mb-6">
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Trophies 🏆</h2>
+              <div className="grid grid-cols-4 gap-4">
+                {['50K Club', 'Speed Demon', 'Marathon', 'Crew Leader'].map((trophy, index) => (
+                  <div key={index} className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg">
+                      <span className="text-3xl">🏆</span>
+                    </div>
+                    <p className="text-sm font-medium text-gray-700">{trophy}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Recent Activity */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Achievements</h2>
+              <div className="space-y-3">
+                {[
+                  { icon: '🚀', title: 'New 5K PR!', desc: '23:45 (+50 points)', date: '2 days ago' },
+                  { icon: '🤝', title: 'Crew Member Joined', desc: 'Mike joined your crew (+25 points)', date: '3 days ago' },
+                  { icon: '🎯', title: 'Crew Challenge Completed', desc: '7-day streak (+100 points)', date: '5 days ago' },
+                ].map((achievement, index) => (
+                  <div key={index} className="flex items-center p-4 bg-gray-50 rounded-xl">
+                    <span className="text-3xl mr-4">{achievement.icon}</span>
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-900">{achievement.title}</p>
+                      <p className="text-sm text-gray-600">{achievement.desc}</p>
+                    </div>
+                    <span className="text-sm text-gray-500">{achievement.date}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Settings Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 sticky top-4">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Settings</h3>
               <div className="space-y-2">
-                <label className="font-semibold text-gray-700">City</label>
-                <input
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  placeholder="e.g., Charlotte, NC"
-                  className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                  required
-                />
-                <p className="text-sm text-gray-500">Your current city and state</p>
-              </div>
-
-          <div className="space-y-2">
-            <label className="font-semibold text-gray-700">Handle</label>
-            <input
-              type="text"
-              value={handle}
-              onChange={(e) => setHandle(e.target.value)}
-              placeholder="e.g., @runner_sarah"
-              className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-            />
-            <p className="text-sm text-gray-500">Your social handle</p>
-          </div>
-
-          <div className="space-y-2">
-            <label className="font-semibold text-gray-700">Personal Message</label>
-            <textarea
-              value={personalMessage}
-              onChange={(e) => setPersonalMessage(e.target.value)}
-              placeholder="Tell us about yourself as a runner..."
-              rows="3"
-              maxLength="200"
-              className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-            />
-            <div className="text-right text-sm text-gray-500">
-              {personalMessage.length}/200
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="font-semibold text-gray-700">Your Running Goal</label>
-            <select
-              value={goal}
-              onChange={(e) => setGoal(e.target.value)}
-              className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-            >
-              <option value="">Select a goal</option>
-              <option value="Stay consistent">Stay consistent</option>
-              <option value="Run a 5K">Run a 5K</option>
-              <option value="Run a 10K">Run a 10K</option>
-              <option value="Crush a Half Marathon PR">Crush a Half Marathon PR</option>
-              <option value="Complete a Marathon">Complete a Marathon</option>
-              <option value="Find my running crew">Find my running crew</option>
-            </select>
-          </div>
-
-          <div className="border-t-2 border-gray-200 pt-6 mt-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">Your Current Fitness</h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="font-semibold text-gray-700">Average Pace (5K)</label>
-                  <input
-                    type="text"
-                    value={averagePace}
-                    onChange={(e) => setAveragePace(e.target.value)}
-                    placeholder="e.g., 8:30"
-                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                    required
-                  />
-                  <p className="text-sm text-gray-500">Per mile (MM:SS format)</p>
-                </div>
-
-              <div className="space-y-2">
-                <label className="font-semibold text-gray-700">Weekly Mileage</label>
-                <input
-                  type="number"
-                  value={weeklyMileage}
-                  onChange={(e) => setWeeklyMileage(e.target.value)}
-                  placeholder="e.g., 25"
-                  className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                  required
-                />
-                <p className="text-sm text-gray-500">Miles per week</p>
+                <button 
+                  onClick={() => setActiveSection('profile')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'profile' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  ✏️ Edit Profile Data
+                </button>
+                <button 
+                  onClick={() => setActiveSection('preferences')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'preferences' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  🏃 Edit Run Preferences
+                </button>
+                <button 
+                  onClick={() => setActiveSection('matching')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'matching' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  💪 Edit Match Preferences
+                </button>
+                <button 
+                  onClick={() => setActiveSection('devices')}
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeSection === 'devices' 
+                      ? 'bg-orange-50 text-orange-600 font-medium' 
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  📱 Connected Devices
+                </button>
               </div>
             </div>
           </div>
-
-          {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-              >
-                {loading ? "Saving..." : "Save & Continue"}
-              </button>
-        </form>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default AthleteProfile;
 

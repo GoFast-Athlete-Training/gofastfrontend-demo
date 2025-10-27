@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const FindRunningCrews = () => {
+const FindRunningClubs = () => {
   const navigate = useNavigate();
   const [searchLocation, setSearchLocation] = useState('');
 
@@ -83,10 +83,10 @@ const FindRunningCrews = () => {
       <div className="bg-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Find Local Running Crews
+            Find Local Running Clubs
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Discover real-world run clubs near you. Join a crew, show up to a meetup, and <span className="text-orange-600 font-bold">GoFast</span> together.
+            Discover real-world running clubs near you. Join a club, show up to a meetup, and <span className="text-orange-600 font-bold">GoFast</span> together.
           </p>
           
           {/* Search Bar */}
@@ -109,35 +109,46 @@ const FindRunningCrews = () => {
         </div>
       </div>
 
-      {/* Running Crews Grid */}
+      {/* Hydration Status */}
+      <div className="max-w-4xl mx-auto px-4 py-6">
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="text-sm font-medium text-blue-900">Live Data</span>
+            <span className="text-sm text-blue-700">• Synced from local running clubs and meetup groups</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Running Clubs Grid */}
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {runningCrews.map((crew) => (
+          {runningCrews.map((club) => (
             <div
-              key={crew.id}
-              onClick={() => handleCrewClick(crew)}
+              key={club.id}
+              onClick={() => handleCrewClick(club)}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
             >
               <div className="flex items-start space-x-4">
-                <div className={`w-16 h-16 ${crew.color} rounded-full flex items-center justify-center`}>
-                  <span className="text-2xl">{crew.logo}</span>
+                <div className={`w-16 h-16 ${club.color} rounded-full flex items-center justify-center`}>
+                  <span className="text-2xl">{club.logo}</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{crew.name}</h3>
-                  <p className="text-gray-600 mb-2">{crew.location}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">{club.name}</h3>
+                  <p className="text-gray-600 mb-2">{club.location}</p>
                   <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
                     <div className="flex items-center space-x-1">
                       <span>👥</span>
-                      <span>{crew.members}+ Members</span>
+                      <span>{club.members}+ Members</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <span>🏃‍♂️</span>
-                      <span>{crew.nextRun}</span>
+                      <span>{club.nextRun}</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
-                      {crew.vibe}
+                      {club.vibe}
                     </span>
                     <div className="text-orange-500">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,18 +163,18 @@ const FindRunningCrews = () => {
         </div>
       </div>
 
-      {/* Submit Group CTA */}
+      {/* Add Your Club CTA */}
       <div className="max-w-4xl mx-auto px-4 pb-8">
         <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">Don't see your crew?</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Don't see your club?</h3>
           <p className="text-gray-600 mb-4">
-            Submit your running group to help others discover it!
+            Add your running club to help others discover it!
           </p>
           <button
             onClick={handleSubmitGroup}
-            className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+            className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors"
           >
-            Submit a Group
+            Add Your Club
           </button>
         </div>
       </div>

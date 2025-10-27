@@ -4,49 +4,27 @@ import { useNavigate } from 'react-router-dom';
 const GoFastPlatform = () => {
   const navigate = useNavigate();
 
-  const features = [
+  const mainFeatures = [
     {
-      title: "Setup Profile",
-      description: "Complete your profile to get personalized recommendations",
-      icon: "👤",
-      path: "/profile-setup-universal",
-      priority: true
-    },
-    {
-      title: "Training Hub",
-      description: "Personalized workout plans and progress tracking",
-      icon: "🏃‍♂️",
-      path: "/training-hub"
-    },
-    {
-      title: "Race Planning",
-      description: "Race selection, strategy, and preparation tools",
-      icon: "🏁",
-      path: "/race-hub"
-    },
-    {
-      title: "Run Crew",
-      description: "Find and connect with local running groups",
+      title: "Connect",
+      description: "Find your running crew and accountability partners",
       icon: "👥",
-      path: "/crew"
+      path: "/connect",
+      color: "bg-orange-500"
     },
     {
-      title: "Matching",
-      description: "Find your perfect running partner",
-      icon: "💕",
-      path: "/pre-match"
+      title: "Train", 
+      description: "Personalized training plans and progress tracking",
+      icon: "🏃‍♂️",
+      path: "/training-hub",
+      color: "bg-blue-500"
     },
     {
-      title: "Merch Store",
-      description: "Earn points and redeem exclusive gear",
+      title: "Shop",
+      description: "Earn points and redeem exclusive running gear",
       icon: "🛍️",
-      path: "/merch-store"
-    },
-    {
-      title: "Mental Training",
-      description: "Mindset and motivation tools",
-      icon: "🧠",
-      path: "/mental-hub"
+      path: "/shop",
+      color: "bg-green-500"
     }
   ];
 
@@ -60,11 +38,12 @@ const GoFastPlatform = () => {
               <img src="/logo.jpg" alt="GoFast" className="w-8 h-8 rounded-full" />
               <span className="text-xl font-bold text-gray-900">GoFast Platform</span>
             </div>
+            {/* Profile Setup Button - Bottom Right */}
             <button
-              onClick={() => navigate('/dashboard')}
-              className="text-gray-600 hover:text-gray-800"
+              onClick={() => navigate('/profile-setup-universal')}
+              className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition"
             >
-              Dashboard
+              Setup Profile
             </button>
           </div>
         </div>
@@ -77,40 +56,34 @@ const GoFastPlatform = () => {
             Your Complete Running Platform
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Everything you need to train, race, and connect with the running community
+            Connect, Train, and Shop - everything you need to level up your running
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
+        {/* Main Features - Just 3 Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {mainFeatures.map((feature, index) => (
             <div 
               key={index}
               onClick={() => navigate(feature.path)}
-              className={`rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 ${
-                feature.priority ? 'bg-gradient-to-br from-orange-500 to-orange-600 text-white' : 'bg-white'
-              }`}
+              className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all cursor-pointer transform hover:scale-105 text-center"
             >
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className={`text-xl font-bold mb-2 ${feature.priority ? 'text-white' : 'text-gray-900'}`}>
+              <div className="text-6xl mb-6">{feature.icon}</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {feature.title}
               </h3>
-              <p className={feature.priority ? 'text-orange-100' : 'text-gray-600'}>
+              <p className="text-gray-600 text-lg mb-6">
                 {feature.description}
               </p>
-              {feature.priority && (
-                <div className="mt-4">
-                  <span className="bg-white text-orange-600 px-3 py-1 rounded-full text-sm font-bold">
-                    START HERE
-                  </span>
-                </div>
-              )}
+              <div className={`${feature.color} text-white px-6 py-3 rounded-lg font-bold text-lg`}>
+                Get Started
+              </div>
             </div>
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-16">
+        <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Ready to Level Up Your Running?
           </h2>
@@ -118,7 +91,7 @@ const GoFastPlatform = () => {
             Join thousands of runners who are already using GoFast to achieve their goals
           </p>
           <button
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate('/connect')}
             className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
           >
             Get Started Now

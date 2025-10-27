@@ -83,7 +83,7 @@ import ProductDetail from "./Pages/Shopping/ProductDetail";
 import Cart from "./Pages/Shopping/Cart";
 import Checkout from "./Pages/Shopping/Checkout";
 import OrderConfirmation from "./Pages/Shopping/OrderConfirmation";
-import FindRunningCrews from "./Pages/Crew/FindRunningCrews";
+import FindRunningClubs from "./Pages/Crew/FindRunningClubs";
 import RunningCrewDetail from "./Pages/Crew/RunningCrewDetail";
 import GroupChat from "./Pages/Crew/GroupChat";
 
@@ -140,7 +140,7 @@ const App = () => (
               <Route path="/order-confirmation" element={<OrderConfirmation />} />
               
               {/* Community/Group Flow */}
-              <Route path="/find-running-crews" element={<FindRunningCrews />} />
+              <Route path="/find-running-crews" element={<FindRunningClubs />} />
               <Route path="/running-crew/:id" element={<RunningCrewDetail />} />
               <Route path="/group-chat/:id" element={<GroupChat />} />
       

@@ -5,7 +5,7 @@ const FindRunningClubs = () => {
   const navigate = useNavigate();
   const [searchLocation, setSearchLocation] = useState('');
 
-  const runningCrews = [
+  const runningClubs = [
     {
       id: 1,
       name: 'Capital Striders',
@@ -28,9 +28,9 @@ const FindRunningClubs = () => {
     },
     {
       id: 3,
-      name: 'Portland Running Club',
-      location: 'Portland, OR',
-      logo: '👟',
+      name: 'Potomac River Runners',
+      location: 'Georgetown, DC',
+      logo: '🌊',
       color: 'bg-green-100',
       members: 95,
       vibe: 'Chill',
@@ -38,9 +38,9 @@ const FindRunningClubs = () => {
     },
     {
       id: 4,
-      name: 'Boston Running Club',
-      location: 'Boston, MA',
-      logo: '🏃‍♂️',
+      name: 'National Mall Striders',
+      location: 'Downtown DC',
+      logo: '🏛️',
       color: 'bg-orange-100',
       members: 150,
       vibe: 'All Paces',
@@ -48,8 +48,8 @@ const FindRunningClubs = () => {
     }
   ];
 
-  const handleCrewClick = (crew) => {
-    navigate(`/running-crew/${crew.id}`);
+  const handleClubClick = (club) => {
+    navigate(`/running-crew/${club.id}`);
   };
 
   const handleSubmitGroup = () => {
@@ -83,10 +83,10 @@ const FindRunningClubs = () => {
       <div className="bg-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Find Local Running Clubs
+            DC Running Clubs
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Discover real-world running clubs near you. Join a club, show up to a meetup, and <span className="text-orange-600 font-bold">GoFast</span> together.
+            Discover running clubs in the DC area. Join a club, show up to a meetup, and <span className="text-orange-600 font-bold">GoFast</span> together.
           </p>
           
           {/* Search Bar */}
@@ -123,10 +123,10 @@ const FindRunningClubs = () => {
       {/* Running Clubs Grid */}
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {runningCrews.map((club) => (
+          {runningClubs.map((club) => (
             <div
               key={club.id}
-              onClick={() => handleCrewClick(club)}
+              onClick={() => handleClubClick(club)}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
             >
               <div className="flex items-start space-x-4">
@@ -182,4 +182,4 @@ const FindRunningClubs = () => {
   );
 };
 
-export default FindRunningCrews;
+export default FindRunningClubs;

@@ -50,19 +50,8 @@ const Connect = () => {
           </p>
         </div>
 
-        {/* Main CTA */}
-        <div className="text-center mb-12">
-          <button
-            onClick={handleMatch}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-6 px-12 rounded-2xl text-2xl shadow-xl transform hover:scale-105 transition-all duration-200 mb-6"
-          >
-            Find Your Running Partner
-          </button>
-          <p className="text-gray-600 text-lg">Start here to find runners who match your pace and goals</p>
-        </div>
-
-        {/* Secondary Options */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Main Options */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* Start a Run Crew */}
           <button
             onClick={handleStartRunCrew}
@@ -79,7 +68,7 @@ const Connect = () => {
             </div>
           </button>
 
-          {/* Join a Club */}
+          {/* Join a Run Club */}
           <button
             onClick={handleJoinClub}
             className="bg-white border-2 border-orange-200 hover:border-orange-400 text-gray-900 font-bold py-6 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 text-left"
@@ -89,8 +78,24 @@ const Connect = () => {
                 <span className="text-2xl">🏃‍♂️</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Join a Club</h3>
+                <h3 className="text-xl font-bold mb-2">Join a Run Club</h3>
                 <p className="text-gray-600">Find existing running groups</p>
+              </div>
+            </div>
+          </button>
+
+          {/* Find a Running Partner */}
+          <button
+            onClick={handleMatch}
+            className="bg-white border-2 border-orange-200 hover:border-orange-400 text-gray-900 font-bold py-6 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 text-left"
+          >
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl">💪</span>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Find a Running Partner</h3>
+                <p className="text-gray-600">Connect with individual runners</p>
               </div>
             </div>
           </button>

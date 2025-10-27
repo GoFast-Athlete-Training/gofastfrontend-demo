@@ -188,7 +188,7 @@ const App = () => (
       
       {/* Setup (Modular) */}
       <Route path="/athlete-profile" element={<AthleteProfile />} />
-      <Route path="/profile-setup-universal" element={<AthleteCreateProfile />} />
+      <Route path="/athlete-create-profile" element={<AthleteCreateProfile />} />
       <Route path="/settings" element={<Settings />} />
       
       {/* Training Flow */}

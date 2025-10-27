@@ -40,7 +40,7 @@ const StartHereExplainer = () => {
             </div>
             {/* Profile Setup Button - Bottom Right */}
             <button
-              onClick={() => navigate('/profile-setup-universal')}
+              onClick={() => navigate('/athlete-create-profile')}
               className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition"
             >
               Setup Profile
@@ -82,47 +82,6 @@ const StartHereExplainer = () => {
           ))}
         </div>
 
-        {/* Walkthrough Section */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            How GoFast Works
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Connect</h3>
-              <p className="text-gray-600">
-                Join RunCrews, find running partners, and build your running community
-              </p>
-            </div>
-            
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Train</h3>
-              <p className="text-gray-600">
-                Sync your Garmin, track activities, and compete on leaderboards
-              </p>
-            </div>
-            
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Earn</h3>
-              <p className="text-gray-600">
-                Earn points for activities and redeem exclusive running gear
-              </p>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>

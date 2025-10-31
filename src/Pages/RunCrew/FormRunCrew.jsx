@@ -9,8 +9,11 @@ const FormRunCrew = () => {
     description: 'Early morning runners who love coffee and crushing goals together. We meet at 6 AM sharp!',
     crewCode: 'FAST123', // DEMO: Pre-filled so you can click through
     logo: null,
-    logoPreview: null
+    logoPreview: null,
+    icon: '👥' // Default icon option
   });
+
+  const iconOptions = ['👥', '🏃‍♂️', '🔥', '⚡', '🎯', '💪', '🌟', '🚀', '🏔️', '🌅'];
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -101,35 +104,62 @@ const FormRunCrew = () => {
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-          {/* Crew Logo */}
+          {/* Crew Logo/Icon */}
           <div className="text-center mb-8">
-            <div 
-              className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition-colors"
-              onClick={handleImageClick}
-            >
-              {formData.logoPreview ? (
-                <img 
-                  src={formData.logoPreview} 
-                  alt="Crew logo preview" 
-                  className="w-32 h-32 rounded-full object-cover"
-                />
-              ) : (
-                <span className="text-5xl">👥</span>
-              )}
+            <label className="block text-sm font-medium text-gray-700 mb-4">Crew Logo or Icon</label>
+            
+            {/* Logo Upload Option */}
+            <div className="mb-4">
+              <div 
+                className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition-colors"
+                onClick={handleImageClick}
+              >
+                {formData.logoPreview ? (
+                  <img 
+                    src={formData.logoPreview} 
+                    alt="Crew logo preview" 
+                    className="w-32 h-32 rounded-full object-cover"
+                  />
+                ) : (
+                  <span className="text-5xl">{formData.icon}</span>
+                )}
+              </div>
+              <button
+                onClick={handleImageClick}
+                className="text-orange-500 text-sm font-medium hover:text-orange-600 mb-2"
+              >
+                {formData.logo ? 'Change Logo' : 'Upload Logo (Optional)'}
+              </button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
             </div>
-            <button
-              onClick={handleImageClick}
-              className="text-orange-500 text-sm font-medium hover:text-orange-600"
-            >
-              {formData.logo ? 'Change Logo' : 'Add Logo'}
-            </button>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
+
+            {/* Icon Picker */}
+            {!formData.logoPreview && (
+              <div>
+                <p className="text-sm text-gray-600 mb-3">Or choose an icon:</p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  {iconOptions.map((icon) => (
+                    <button
+                      key={icon}
+                      onClick={() => handleInputChange('icon', icon)}
+                      className={`w-12 h-12 rounded-full text-2xl flex items-center justify-center transition-all ${
+                        formData.icon === icon
+                          ? 'bg-orange-500 scale-110 ring-2 ring-orange-300'
+                          : 'bg-gray-100 hover:bg-gray-200'
+                      }`}
+                    >
+                      {icon}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Form Fields */}

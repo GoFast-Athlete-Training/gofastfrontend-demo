@@ -50,24 +50,43 @@ See `gofastbackendv2-fall2025/architecturebuildprocess.md` for the complete sche
 ### Example: Company Outlook
 **Source of Truth**: `gofastbackendv2-fall2025/COMPANY_OUTLOOK_ARCHITECTURE.md`
 
-```
-Backend Models:
-- Company → CompanyAdminNav (main hub)
-- CompanyRoadmapItem → ProductRoadmap (HydratedPage)
-- Task (companyId) → CompanyTasks (HydratedPage) → CompanyTaskDetail (ViewDetail)
-- CompanyCrmContact → CompanyCrmList (HydratedPage) → CompanyCrmDetail (ViewDetail)
+**Schema Models** (Items vs Totals pattern):
+- `Company` → Main container
+- `CompanyFounder` → Junction (founderId → Founder → Athlete)
+- `CompanyEmployee` → Email-based employees (NO athleteId)
+- `CompanyRoadmapItem` → Product/GTM roadmap items
+- `CompanyFinancialSpend` → **Individual items** (transactions we ingest)
+- `CompanyFinancialProjection` → **Total values** (budgets we ingest as totals)
+- `CompanyCrmContact` → BD/clubs contacts
+- `Task` → Unified tasks (companyId OR founderId)
 
-Hydration:
+**Frontend Pages** (Models = Pages, 3-layer pattern):
+- `CompanyAdminNav.jsx` (/) → Main hub
+- `ProductRoadmap.jsx` (HydratedPage) → From CompanyRoadmapItem
+- `CompanyTasks.jsx` (HydratedPage) → From Task where companyId
+  - `CompanyTaskCreate.jsx` (CreatePage)
+  - `CompanyTaskDetail.jsx` (ViewDetail)
+- `FinancialSpends.jsx` (HydratedPage) → From CompanyFinancialSpend (items)
+  - `FinancialSpendCreate.jsx` (CreatePage) → Ingest individual transaction
+  - `FinancialSpendDetail.jsx` (ViewDetail)
+- `FinancialProjections.jsx` (HydratedPage) → From CompanyFinancialProjection (totals)
+  - `FinancialProjectionCreate.jsx` (CreatePage) → Ingest total values
+  - `FinancialProjectionDetail.jsx` (ViewDetail)
+- `CompanyCrmList.jsx` (HydratedPage) → From CompanyCrmContact
+  - `CompanyCrmCreate.jsx` (CreatePage)
+  - `CompanyCrmDetail.jsx` (ViewDetail)
+
+**Hydration Routes**:
 - GET /api/company/:companyId/hydrate → Hydrates CompanyAdminNav
 - GET /api/company/:companyId/roadmap → Hydrates ProductRoadmap
 - GET /api/company/:companyId/tasks → Hydrates CompanyTasks
+- GET /api/company/:companyId/financial/spends → Hydrates FinancialSpends (items)
+- GET /api/company/:companyId/financial/projections → Hydrates FinancialProjections (totals)
 - GET /api/company-crm?companyId=X → Hydrates CompanyCrmList
 
-Upsert:
-- POST /api/admin/upsert?model=company → Creates Company record
-```
-
-**Note**: Always reference architecture docs (like `COMPANY_OUTLOOK_ARCHITECTURE.md`) as source of truth, not proposals.
+**Key Architecture Pattern**: 
+- **Items Model** (Spend) → Ingest individual transactions, calculate totals
+- **Totals Model** (Projection) → Ingest total values directly
 
 **When Scaffolding**: 
 1. **Work with Adam** to determine which models need pages

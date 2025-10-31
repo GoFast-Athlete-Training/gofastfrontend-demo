@@ -8,18 +8,16 @@ import Connect from "./Pages/Connect";
 
 // Run Crew
 import StartRunCrew from "./Pages/RunCrew/StartRunCrew";
-import JoinOrStartCrew from "./Pages/RunCrew/JoinOrStartCrew";
+import JoinOrStartCrewNoExplainer from "./Pages/RunCrew/JoinOrStartCrewNoExplainer";
 import FormRunCrew from "./Pages/RunCrew/FormRunCrew";
-import CrewDashboard from "./Pages/RunCrew/CrewDashboard";
+import RunCrewCentral from "./Pages/RunCrew/RunCrewCentral";
 import CrewExplainer from "./Pages/RunCrew/CrewExplainer";
 import RunCrewSuccess from "./Pages/RunCrew/RunCrewSuccess";
 import RunCrewDemoNav from "./Pages/RunCrew/RunCrewDemoNav";
-import RunCrewHome from "./Pages/RunCrew/RunCrewHome";
 import RunCrewJoin from "./Pages/RunCrew/RunCrewJoin";
-import JoinCrew from "./Pages/RunCrew/JoinCrew";
-import CreateCrew from "./Pages/RunCrew/CreateCrew";
-import RunCrewMembers from "./Pages/RunCrew/RunCrewMembers";
+import RunCrewJoinSuccess from "./Pages/RunCrew/RunCrewJoinSuccess";
 import RunCrewMembershipManage from "./Pages/RunCrew/RunCrewMembershipManage";
+import RunCrewSettings from "./Pages/RunCrew/RunCrewSettings";
 
 // Merch Store (now in Shopping)
 import GoFastMerch from "./Pages/Shopping/GoFastMerch";
@@ -112,17 +110,17 @@ const App = () => (
               <Route path="/connect" element={<Connect />} />
               <Route path="/crew-explainer" element={<CrewExplainer />} />
               <Route path="/start-run-crew" element={<StartRunCrew />} />
-              <Route path="/join-or-start-crew" element={<JoinOrStartCrew />} />
+              <Route path="/join-or-start-crew" element={<JoinOrStartCrewNoExplainer />} />
               <Route path="/form-run-crew" element={<FormRunCrew />} />
               <Route path="/run-crew-success" element={<RunCrewSuccess />} />
-              <Route path="/crew-dashboard" element={<CrewDashboard />} />
+              <Route path="/runcrew-central" element={<RunCrewCentral />} />
               <Route path="/runcrew-demo-nav" element={<RunCrewDemoNav />} />
-              <Route path="/runcrew-home" element={<RunCrewHome />} />
               <Route path="/run-crew-join" element={<RunCrewJoin />} />
-              <Route path="/join-crew" element={<JoinCrew />} />
-              <Route path="/create-crew" element={<CreateCrew />} />
-              <Route path="/runcrew-members" element={<RunCrewMembers />} />
+              <Route path="/run-crew-join-success" element={<RunCrewJoinSuccess />} />
               <Route path="/runcrew-membership-manage" element={<RunCrewMembershipManage />} />
+              <Route path="/runcrew-settings" element={<RunCrewSettings />} />
+              {/* Legacy route redirects */}
+              <Route path="/crew-dashboard" element={<RunCrewCentral />} />
               
               {/* Merch Store */}
               <Route path="/merch-store" element={<GoFastMerch />} />

@@ -14,8 +14,8 @@ const RunCrewSuccess = () => {
     alert('Crew code copied to clipboard!');
   };
 
-  const handleGoToDashboard = () => {
-    navigate('/crew-dashboard');
+  const handleGoToCentral = () => {
+    navigate('/runcrew-central');
   };
 
   const createShareMessage = () => {
@@ -109,10 +109,10 @@ const RunCrewSuccess = () => {
           {/* Action Buttons */}
           <div className="space-y-3">
             <button
-              onClick={handleGoToDashboard}
+              onClick={handleGoToCentral}
               className="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg"
             >
-              Go to Crew Dashboard
+              Go to Run Crew Central
             </button>
             
             <button

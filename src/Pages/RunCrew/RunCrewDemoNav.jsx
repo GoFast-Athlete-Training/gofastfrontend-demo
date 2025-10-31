@@ -17,7 +17,6 @@ export default function RunCrewDemoNav() {
         { name: "Join or Start Crew", path: "/join-or-start-crew", description: "Decision page" },
         { name: "Start RunCrew", path: "/start-run-crew", description: "Start flow entry" },
         { name: "Create Crew Form", path: "/form-run-crew", description: "Form to create crew" },
-        { name: "Create Crew", path: "/create-crew", description: "Alternative create page" },
         { name: "RunCrew Success", path: "/run-crew-success", description: "Post-creation success" },
       ]
     },
@@ -27,7 +26,7 @@ export default function RunCrewDemoNav() {
       color: "green",
       pages: [
         { name: "RunCrew Join", path: "/run-crew-join", description: "Join with code entry" },
-        { name: "Join Crew", path: "/join-crew", description: "Alternative join page" },
+        { name: "Join Success", path: "/run-crew-join-success", description: "Post-join success page" },
       ]
     },
     // Crew Views
@@ -35,10 +34,9 @@ export default function RunCrewDemoNav() {
       category: "Crew Views",
       color: "blue",
       pages: [
-        { name: "Crew Dashboard", path: "/crew-dashboard", description: "Main crew dashboard" },
-        { name: "RunCrew Home", path: "/runcrew-home", description: "Crew home/chat view" },
-        { name: "RunCrew Members", path: "/runcrew-members", description: "Members list view" },
-        { name: "Membership Manage", path: "/runcrew-membership-manage", description: "Manage memberships" },
+        { name: "Run Crew Central", path: "/runcrew-central", description: "Main crew experience hub" },
+        { name: "RunCrew Settings", path: "/runcrew-settings", description: "Admin settings (admin only)" },
+        { name: "Membership Manage", path: "/runcrew-membership-manage", description: "Manage memberships (admin card)" },
       ]
     },
   ];

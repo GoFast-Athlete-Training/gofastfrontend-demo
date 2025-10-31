@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PersonalStats from '../../Components/PersonalStats';
 
-const CrewDashboard = () => {
+export default function RunCrewCentral() {
   const navigate = useNavigate();
   const [leaderboardType, setLeaderboardType] = useState('miles'); // 'miles', 'bestSplit', 'calories'
+  const [activeTab, setActiveTab] = useState('feed'); // 'feed', 'members', 'leaderboard', 'events'
 
   // Mock crew data
   const crew = {
@@ -49,8 +49,11 @@ const CrewDashboard = () => {
     ]
   };
 
+  // Mock admin status (would come from crew data)
+  const isAdmin = true;
+  
   const handleBack = () => {
-    navigate('/connect');
+    navigate('/athlete-home');
   };
 
   return (
@@ -75,14 +78,16 @@ const CrewDashboard = () => {
                 onClick={() => navigate('/athlete-home')}
                 className="text-gray-600 hover:text-gray-900 font-medium"
               >
-                Dashboard
+                Return to Athlete Home
               </button>
-              <button 
-                onClick={() => navigate('/settings')}
-                className="text-gray-600 hover:text-gray-900 font-medium"
-              >
-                Settings
-              </button>
+              {isAdmin && (
+                <button 
+                  onClick={() => navigate('/runcrew-settings')}
+                  className="text-gray-600 hover:text-gray-900 font-medium"
+                >
+                  Crew Settings
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -109,38 +114,78 @@ const CrewDashboard = () => {
           </div>
         </div>
 
-        {/* Personal Stats Section */}
-        <div 
-          className="bg-white rounded-2xl shadow-lg p-6 mb-6 cursor-pointer hover:shadow-xl transition-shadow"
-          onClick={() => navigate('/athlete-activity')}
-        >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-bold text-gray-900">Your Stats</h3>
-            <span className="text-sm text-orange-600 font-medium">View Details →</span>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-orange-50 rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-orange-600">38.5</div>
-              <div className="text-sm text-gray-600">Miles This Week</div>
-            </div>
-            <div className="bg-blue-50 rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-blue-600">7</div>
-              <div className="text-sm text-gray-600">Runs</div>
-            </div>
-            <div className="bg-green-50 rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-green-600">3rd</div>
-              <div className="text-sm text-gray-600">Crew Rank</div>
-            </div>
-            <div className="bg-purple-50 rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-purple-600">Dec 13</div>
-              <div className="text-sm text-gray-600">Last Run</div>
+        {/* Tabs for Group Unity Features */}
+        <div className="bg-white rounded-2xl shadow-lg mb-6">
+          <div className="border-b border-gray-200">
+            <div className="flex space-x-1 px-6">
+              <button
+                onClick={() => setActiveTab('feed')}
+                className={`px-4 py-3 font-medium ${
+                  activeTab === 'feed'
+                    ? 'border-b-2 border-orange-500 text-orange-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Feed (Posts & Messages)
+              </button>
+              <button
+                onClick={() => setActiveTab('members')}
+                className={`px-4 py-3 font-medium ${
+                  activeTab === 'members'
+                    ? 'border-b-2 border-orange-500 text-orange-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Members
+              </button>
+              <button
+                onClick={() => setActiveTab('leaderboard')}
+                className={`px-4 py-3 font-medium ${
+                  activeTab === 'leaderboard'
+                    ? 'border-b-2 border-orange-500 text-orange-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Leaderboard
+              </button>
+              <button
+                onClick={() => setActiveTab('events')}
+                className={`px-4 py-3 font-medium ${
+                  activeTab === 'events'
+                    ? 'border-b-2 border-orange-500 text-orange-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Run Times & Events
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Two Column Layout */}
+        {/* Content based on active tab */}
+        {activeTab === 'feed' && (
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <div className="text-center py-12">
+              <p className="text-gray-500 mb-4">Forum/Posts feature coming soon</p>
+              <p className="text-sm text-gray-400">Share banter, motivation, and updates with your crew</p>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'events' && (
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <div className="text-center py-12">
+              <p className="text-gray-500 mb-4">Run Times & Events feature coming soon</p>
+              <p className="text-sm text-gray-400">Schedule group runs and coordinate meetups</p>
+            </div>
+          </div>
+        )}
+
+        {/* Two Column Layout for Members and Leaderboard */}
+        {activeTab === 'members' || activeTab === 'leaderboard' ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left Column - Crew Members */}
+          {activeTab === 'members' && (
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900">Crew Members</h2>
@@ -179,8 +224,10 @@ const CrewDashboard = () => {
               ))}
             </div>
           </div>
+          )}
 
           {/* Right Column - Leaderboard */}
+          {activeTab === 'leaderboard' && (
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold text-gray-900">Crew Leaderboard</h2>
@@ -255,7 +302,9 @@ const CrewDashboard = () => {
               ))}
             </div>
           </div>
+          )}
         </div>
+        )}
 
         {/* Want More Members Section */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mt-6">
@@ -280,6 +329,4 @@ const CrewDashboard = () => {
       </div>
     </div>
   );
-};
-
-export default CrewDashboard;
+}

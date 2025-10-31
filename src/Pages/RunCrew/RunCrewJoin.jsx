@@ -20,7 +20,7 @@ const RunCrewJoin = () => {
       joinedAt: new Date().toISOString()
     }));
     
-    navigate('/crew-dashboard');
+    navigate('/run-crew-join-success');
   };
 
   const handleStartCrew = () => {

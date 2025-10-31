@@ -18,6 +18,7 @@ import RunCrewJoin from "./Pages/RunCrew/RunCrewJoin";
 import RunCrewJoinSuccess from "./Pages/RunCrew/RunCrewJoinSuccess";
 import RunCrewMembershipManage from "./Pages/RunCrew/RunCrewMembershipManage";
 import RunCrewSettings from "./Pages/RunCrew/RunCrewSettings";
+import RunCrewRunDetail from "./Pages/RunCrew/RunCrewRunDetail";
 
 // Merch Store (now in Shopping)
 import GoFastMerch from "./Pages/Shopping/GoFastMerch";
@@ -119,6 +120,7 @@ const App = () => (
               <Route path="/run-crew-join-success" element={<RunCrewJoinSuccess />} />
               <Route path="/runcrew-membership-manage" element={<RunCrewMembershipManage />} />
               <Route path="/runcrew-settings" element={<RunCrewSettings />} />
+              <Route path="/runcrew-run-detail/:runId?" element={<RunCrewRunDetail />} />
               {/* Legacy route redirects */}
               <Route path="/crew-dashboard" element={<RunCrewCentral />} />
               

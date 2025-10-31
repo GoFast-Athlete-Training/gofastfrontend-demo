@@ -5,6 +5,7 @@ export default function RunCrewCentral() {
   const navigate = useNavigate();
   const [leaderboardType, setLeaderboardType] = useState('miles');
   const [messageInput, setMessageInput] = useState('');
+  const [activeTopic, setActiveTopic] = useState('general');
 
   // Mock crew data
   const crew = {
@@ -49,8 +50,155 @@ export default function RunCrewCentral() {
     ]
   };
 
-  // Real chat messages - like iMessage group chat
-  const chatMessages = [
+  // Topic-specific messages - organized by topic
+  const topicMessages = {
+    general: [
+      { 
+        id: 1, 
+        author: 'Emma Rodriguez', 
+        initials: 'ER',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face', 
+        message: 'Just crushed a 5.2 mile run! Who else is feeling the Friday energy? 💪', 
+        time: '2 hours ago',
+        reactions: [{ emoji: '❤️', count: 5 }, { emoji: '🔥', count: 3 }]
+      },
+      { 
+        id: 2, 
+        author: 'Sarah Johnson', 
+        initials: 'SJ',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face', 
+        message: 'Crushed my fastest mile today: 6:25! Who else is pushing for PRs this week? ⚡', 
+        time: '5 hours ago',
+        reactions: [{ emoji: '⚡', count: 8 }, { emoji: '👏', count: 4 }]
+      },
+      { 
+        id: 3, 
+        author: 'Mike Chen', 
+        initials: 'MC',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', 
+        message: 'Morning run done! 4.8 miles through the park. Coffee time ☕', 
+        time: '8 hours ago',
+        reactions: [{ emoji: '☕', count: 6 }]
+      }
+    ],
+    tips: [
+      { 
+        id: 1, 
+        author: 'David Lee', 
+        initials: 'DL',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face', 
+        message: 'Pro tip: Always warm up for 5-10 min before speed work. Your body will thank you! 🏃‍♂️', 
+        time: '1 day ago',
+        reactions: [{ emoji: '👍', count: 12 }]
+      },
+      { 
+        id: 2, 
+        author: 'Maria Garcia', 
+        initials: 'MG',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face', 
+        message: 'For anyone hitting the wall on long runs - try a gel every 45 min. Game changer! 💪', 
+        time: '2 days ago',
+        reactions: [{ emoji: '💡', count: 8 }]
+      },
+      { 
+        id: 3, 
+        author: 'James Wilson', 
+        initials: 'JW',
+        avatar: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face', 
+        message: 'Remember to replace your shoes every 300-500 miles. Old shoes = injuries waiting to happen 👟', 
+        time: '3 days ago',
+        reactions: [{ emoji: '👍', count: 5 }]
+      }
+    ],
+    social: [
+      { 
+        id: 1, 
+        author: 'Sarah Johnson', 
+        initials: 'SJ',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face', 
+        message: 'Post-run brunch this Sunday? Who\'s in? 🥞☕', 
+        time: '5 hours ago',
+        reactions: [{ emoji: '🍳', count: 6 }]
+      },
+      { 
+        id: 2, 
+        author: 'Mike Chen', 
+        initials: 'MC',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', 
+        message: 'Anyone want to catch the marathon coverage together this weekend? 🎬', 
+        time: '1 day ago',
+        reactions: [{ emoji: '👍', count: 4 }]
+      }
+    ],
+    training: [
+      { 
+        id: 1, 
+        author: 'David Lee', 
+        initials: 'DL',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face', 
+        message: 'Who\'s running tomorrow at 6am? Let\'s meet at the usual spot!', 
+        time: '12 hours ago',
+        reactions: [{ emoji: '👍', count: 7 }]
+      },
+      { 
+        id: 2, 
+        author: 'Maria Garcia', 
+        initials: 'MG',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face', 
+        message: 'Count me in! See you all at the trailhead 🏃‍♀️', 
+        time: '11 hours ago',
+        reactions: [{ emoji: '❤️', count: 3 }]
+      },
+      { 
+        id: 3, 
+        author: 'James Wilson', 
+        initials: 'JW',
+        avatar: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face', 
+        message: 'I\'m down! Bringing the energy tomorrow morning 🔥', 
+        time: '10 hours ago',
+        reactions: [{ emoji: '🔥', count: 4 }]
+      }
+    ],
+    goals: [
+      { 
+        id: 1, 
+        author: 'Emma Rodriguez', 
+        initials: 'ER',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face', 
+        message: '2024 goal: Sub-20 min 5K. Starting training block next week! Who\'s with me? 🎯', 
+        time: '3 days ago',
+        reactions: [{ emoji: '💪', count: 10 }]
+      }
+    ],
+    food: [
+      { 
+        id: 1, 
+        author: 'Sarah Johnson', 
+        initials: 'SJ',
+        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face', 
+        message: 'Best post-run meal? I swear by eggs + avocado toast + coffee. Perfect recovery combo! 🥑☕', 
+        time: '2 days ago',
+        reactions: [{ emoji: '🍳', count: 5 }]
+      }
+    ],
+    recovery: [
+      { 
+        id: 1, 
+        author: 'Mike Chen', 
+        initials: 'MC',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face', 
+        message: 'Just did my first ice bath. Brutal but my legs feel amazing! Who\'s tried it? 🧊', 
+        time: '1 day ago',
+        reactions: [{ emoji: '🧊', count: 3 }]
+      }
+    ]
+  };
+
+  // Get messages for active topic
+  const chatMessages = topicMessages[activeTopic] || topicMessages.general;
+
+  // Real chat messages - like iMessage group chat (legacy - keeping for reference)
+  const legacyChatMessages = [
     { 
       id: 1, 
       author: 'Emma Rodriguez', 
@@ -223,26 +371,69 @@ export default function RunCrewCentral() {
                 </div>
               )}
 
-              {/* Topics Section */}
+              {/* Topics Section - Slack-style channels */}
               <div className="border-b border-gray-200 p-4 bg-gray-50">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900 text-sm">Topics</h3>
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 className="font-semibold text-gray-900 text-sm mb-1">Topics</h3>
+                    <p className="text-xs text-gray-500">Organize conversations by topic</p>
+                  </div>
                   <button className="text-sm text-orange-600 hover:text-orange-700 font-medium">
                     + New Topic
                   </button>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  <button className="px-3 py-1.5 bg-white border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-50">
-                    # General
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  <button className="px-3 py-2 bg-white border-2 border-orange-500 rounded-lg text-xs font-semibold text-orange-600 hover:bg-orange-50 transition-colors">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <span>💬</span>
+                      <span>General</span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-normal">Hoot & holler</p>
                   </button>
-                  <button className="px-3 py-1.5 bg-white border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-50">
-                    # Runs & Training
+                  <button className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <span>💡</span>
+                      <span>Tips</span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-normal">Training advice</p>
                   </button>
-                  <button className="px-3 py-1.5 bg-white border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-50">
-                    # Motivation
+                  <button className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <span>🎉</span>
+                      <span>Social</span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-normal">Hangouts & events</p>
                   </button>
-                  <button className="px-3 py-1.5 bg-white border border-gray-300 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-50">
-                    # Events
+                  <button className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <span>🏃‍♀️</span>
+                      <span>Training</span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-normal">Runs & workouts</p>
+                  </button>
+                </div>
+                {/* Additional topics row */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
+                  <button className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <span>🎯</span>
+                      <span>Goals</span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-normal">PRs & milestones</p>
+                  </button>
+                  <button className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <span>🍕</span>
+                      <span>Food & Fuel</span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-normal">Nutrition chat</p>
+                  </button>
+                  <button className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <span>🏥</span>
+                      <span>Injury & Recovery</span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-normal">Health support</p>
                   </button>
                 </div>
               </div>
@@ -320,7 +511,7 @@ export default function RunCrewCentral() {
           {/* Right Sidebar */}
           <div className="space-y-6">
             {/* Next Run */}
-            <div className="bg-white rounded-lg shadow-sm p-4">
+            <div className="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate('/runcrew-run-detail')}>
               <h3 className="font-bold text-gray-900 mb-3">Next Run</h3>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
@@ -351,8 +542,14 @@ export default function RunCrewCentral() {
                       />
                     ))}
                   </div>
-                  <button className="w-full mt-3 bg-orange-500 text-white py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors text-sm">
-                    I'm Going
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/runcrew-run-detail');
+                    }}
+                    className="w-full mt-3 bg-orange-500 text-white py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors text-sm"
+                  >
+                    View Details & RSVP
                   </button>
                 </div>
               </div>

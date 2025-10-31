@@ -181,11 +181,8 @@ export default function RunCrewCentral() {
           </div>
         )}
 
-        {/* Two Column Layout for Members and Leaderboard */}
-        {activeTab === 'members' || activeTab === 'leaderboard' ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left Column - Crew Members */}
-          {activeTab === 'members' && (
+        {/* Members Tab */}
+        {activeTab === 'members' && (
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900">Crew Members</h2>
@@ -224,10 +221,10 @@ export default function RunCrewCentral() {
               ))}
             </div>
           </div>
-          )}
+        )}
 
-          {/* Right Column - Leaderboard */}
-          {activeTab === 'leaderboard' && (
+        {/* Leaderboard Tab */}
+        {activeTab === 'leaderboard' && (
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold text-gray-900">Crew Leaderboard</h2>
@@ -302,8 +299,6 @@ export default function RunCrewCentral() {
               ))}
             </div>
           </div>
-          )}
-        </div>
         )}
 
         {/* Want More Members Section */}

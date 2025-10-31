@@ -85,9 +85,9 @@ import Cart from "./Pages/Shopping/Cart";
 import Checkout from "./Pages/Shopping/Checkout";
 import OrderConfirmation from "./Pages/Shopping/OrderConfirmation";
 
-// RunCrew/Clubs
-import FindRunningClubs from "./Pages/RunCrew/FindRunningClubs";
-import ClubDetail from "./Pages/RunCrew/ClubDetail";
+// Clubs
+import FindRunningClubs from "./Pages/Clubs/FindRunningClubs";
+import ClubDetail from "./Pages/Clubs/ClubDetail";
 
 // Training Flow
 import TrainingExplainer from "./Pages/Training/TrainingExplainer";

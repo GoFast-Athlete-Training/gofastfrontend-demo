@@ -1,31 +1,28 @@
 {
-  "name": "gofastbackendv2-fall2025",
+  "name": "gofastfrontend-demo",
   "version": "1.0.0",
-  "description": "GoFast Backend v2 - Clean Render-friendly structure",
-  "main": "index.js",
+  "type": "module",
+  "description": "GoFast Frontend Demo - UX Source of Truth",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "postinstall": "npx prisma generate",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": ["gofast", "backend", "api"],
+  "keywords": ["gofast", "frontend", "react", "demo"],
   "author": "GoFast Team",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.18.0",
-    "axios": "^1.12.2",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "firebase-admin": "^13.5.0",
-    "openai": "^6.7.0",
-    "prisma": "^6.18.0"
+    "axios": "^1.9.0",
+    "firebase": "^10.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "vite": "^5.0.0"
   }
 }

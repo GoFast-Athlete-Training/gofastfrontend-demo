@@ -14,6 +14,12 @@ import CrewDashboard from "./Pages/RunCrew/CrewDashboard";
 import CrewExplainer from "./Pages/RunCrew/CrewExplainer";
 import RunCrewSuccess from "./Pages/RunCrew/RunCrewSuccess";
 import RunCrewDemoNav from "./Pages/RunCrew/RunCrewDemoNav";
+import RunCrewHome from "./Pages/RunCrew/RunCrewHome";
+import RunCrewJoin from "./Pages/RunCrew/RunCrewJoin";
+import JoinCrew from "./Pages/RunCrew/JoinCrew";
+import CreateCrew from "./Pages/RunCrew/CreateCrew";
+import RunCrewMembers from "./Pages/RunCrew/RunCrewMembers";
+import RunCrewMembershipManage from "./Pages/RunCrew/RunCrewMembershipManage";
 
 // Merch Store (now in Shopping)
 import GoFastMerch from "./Pages/Shopping/GoFastMerch";
@@ -85,9 +91,9 @@ import Cart from "./Pages/Shopping/Cart";
 import Checkout from "./Pages/Shopping/Checkout";
 import OrderConfirmation from "./Pages/Shopping/OrderConfirmation";
 
-// Clubs
-import FindRunningClubs from "./Pages/Clubs/FindRunningClubs";
-import ClubDetail from "./Pages/Clubs/ClubDetail";
+// RunClub
+import FindRunningClubs from "./Pages/RunClub/FindRunningClubs";
+import ClubDetail from "./Pages/RunClub/ClubDetail";
 
 // Training Flow
 import TrainingExplainer from "./Pages/Training/TrainingExplainer";
@@ -111,6 +117,12 @@ const App = () => (
               <Route path="/run-crew-success" element={<RunCrewSuccess />} />
               <Route path="/crew-dashboard" element={<CrewDashboard />} />
               <Route path="/runcrew-demo-nav" element={<RunCrewDemoNav />} />
+              <Route path="/runcrew-home" element={<RunCrewHome />} />
+              <Route path="/run-crew-join" element={<RunCrewJoin />} />
+              <Route path="/join-crew" element={<JoinCrew />} />
+              <Route path="/create-crew" element={<CreateCrew />} />
+              <Route path="/runcrew-members" element={<RunCrewMembers />} />
+              <Route path="/runcrew-membership-manage" element={<RunCrewMembershipManage />} />
               
               {/* Merch Store */}
               <Route path="/merch-store" element={<GoFastMerch />} />

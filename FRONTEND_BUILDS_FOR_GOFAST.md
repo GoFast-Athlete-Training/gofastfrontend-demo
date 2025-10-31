@@ -207,6 +207,8 @@ When scaffolding individual pages, **Cursor should ask Adam a series of prompts*
 }
 ```
 
+**Note**: Older repos (`gofastfrontend-mvp1`, `gofastfrontend-demo`) use React 18 + Vite 5, which still works. New repos should use React 19 + Vite 7 for latest features.
+
 #### `vite.config.js`
 ```javascript
 import { defineConfig } from 'vite';
@@ -236,27 +238,33 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 ```
 
-#### `src/main.jsx`
-```javascript
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App.jsx';
+#### `src/main.jsx` (React Entry Point - ALL Apps)
+**Location**: `/[project-root]/src/main.jsx`
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+**STANDARD PATTERN**: Simple entry point - just renders App
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
-);
+  </React.StrictMode>
+)
 ```
 
-#### `src/App.jsx` (Main routing component)
+#### `src/App.jsx` (Main routing component - ALL Apps)
 **Location**: `/[project-root]/src/App.jsx`
 
 **KEY PATTERN**: Route `/` ALWAYS points to the main hub page (Home/Welcome/AdminNav)
 
+**STANDARD PATTERN**: BrowserRouter goes in App.jsx, not main.jsx
+
 ```javascript
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import './index.css';
 
 // Import pages
@@ -282,9 +290,13 @@ export default App;
 ```
 
 **Important**: 
+- ✅ **main.jsx** is simple - just renders `<App />`
+- ✅ **App.jsx** has BrowserRouter + Routes + Layout
 - ✅ Route `/` → Always main hub (Home/Welcome/[AppName]Nav)
 - ✅ All other routes → Feature pages
 - ✅ Hub page provides navigation cards to other features
+
+**Standard Pattern**: BrowserRouter in App.jsx, main.jsx is just the render entry point
 
 #### `tailwind.config.js`
 ```javascript
@@ -338,18 +350,22 @@ export default {
 - ✅ Use as both favicon and apple-touch-icon
 
 ### Folder Structure
+
+**Standard (lowercase)**:
 ```
 src/
 ├── api/              # API calls (axiosConfig.js, etc.)
-├── components/        # Reusable components
+├── components/        # Reusable components (lowercase - STANDARD)
 │   └── ui/           # shadcn/ui components (button, card, etc.)
-├── pages/            # Page components
+├── pages/            # Page components (lowercase - STANDARD)
 ├── utils/            # Utility functions
 ├── App.jsx           # Main app component with routing
 ├── main.jsx          # Entry point
 ├── firebase.js       # Firebase config (REQUIRED for production apps)
 └── index.css         # Global styles + Tailwind imports
 ```
+
+**Note**: Older repos use `src/Pages/` and `src/Components/` (capital letters). New repos should use lowercase for consistency.
 
 ### Authentication Pattern
 **DO NOT USE AuthContext** - Use Firebase directly:
@@ -387,6 +403,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 - **React Router** (routing)
 - **Tailwind CSS** (styling)
 - **Lucide React** (icons)
+- **shadcn/ui** (button, card via radix-ui)
 - **NO Firebase** ❌
 - **NO Authentication** ❌
 
@@ -397,7 +414,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 {
   "name": "gofast-[demo-name]",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -405,31 +422,90 @@ import { onAuthStateChanged } from 'firebase/auth';
     "preview": "vite preview"
   },
   "dependencies": {
-    "lucide-react": "^0.548.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.3"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.472.0",
+    "tailwind-merge": "^2.5.2",
+    "@radix-ui/react-slot": "^1.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.4",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.18",
-    "vite": "^7.1.7"
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "vite": "^5.4.10"
   }
 }
 ```
 
-**Key Differences:**
+**Key Differences from Pattern 1:**
 - ❌ No `firebase` dependency
 - ❌ No `axios` (unless testing API calls)
-- ✅ Minimal dependencies
+- ✅ shadcn/ui dependencies (class-variance-authority, clsx, tailwind-merge, @radix-ui/react-slot)
+- ✅ Minimal, optimized dependencies
 
-#### `vite.config.js` (Same as Pattern 1)
+#### `vite.config.js`
+```javascript
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-#### `src/main.jsx` (Same as Pattern 1)
+export default defineConfig({
+  plugins: [react()],
+});
+```
 
-#### `src/App.jsx` (Same as Pattern 1)
+#### `src/main.jsx` (React Entry Point)
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
+```
+
+#### `src/App.jsx` (Main routing component)
+```javascript
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import './index.css';
+
+// Import pages
+import CompanyAdminNav from './pages/CompanyAdminNav'; // Main hub (required)
+import ProductRoadmap from './pages/ProductRoadmap';
+import CompanyTasks from './pages/CompanyTasks';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* KEY: "/" always routes to main hub page */}
+        <Route path="/" element={<CompanyAdminNav />} />
+        {/* Feature routes */}
+        <Route path="/product-roadmap" element={<ProductRoadmap />} />
+        <Route path="/company-tasks" element={<CompanyTasks />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+**Important**: 
+- ✅ **main.jsx** is simple - just renders `<App />`
+- ✅ **App.jsx** has BrowserRouter + Routes + Layout
+- ✅ Route `/` → Always main hub (Home/Welcome/[AppName]Nav)
+- ✅ All other routes → Feature pages
+- ✅ Hub page provides navigation cards to other features
+
+**Standard Pattern**: BrowserRouter in App.jsx, main.jsx is just the render entry point
 
 #### `tailwind.config.js` (Same as Pattern 1)
 
@@ -496,7 +572,9 @@ src/
 
 ### Page Components
 
-All pages go in: **`src/pages/`**
+**Key Convention**: All pages go in: **`src/pages/`** (lowercase)
+
+**Note**: Older repos (`gofastfrontend-demo`, `gofastfrontend-mvp1`) use `src/Pages/` (capital P) - this is **legacy**. New repos should use lowercase `src/pages/` for consistency.
 
 #### Main Hub Page (Required)
 Every app needs a **Home/Welcome/AdminDashboard** page - the main navigation hub.
@@ -879,7 +957,15 @@ http://localhost:3001
 
 **Last Updated**: January 2025  
 **Pattern Status**: ✅ Standardized and documented  
+
+**Important Build Notes**:
+- ✅ **Pattern 2** (Demo/Scaffold): Use React 18 + Vite 5 (`gofastfounderoutlook`, `gofastcompanyoutlook` are correct)
+- ✅ **Pattern 1** (Production): Can use React 19 + Vite 7 OR React 18 + Vite 5 (both work)
+- ✅ **vite.config.js**: Simple config with just `plugins: [react()]` - no path aliases
+- ⚠️ **Legacy repos**: `gofastfrontend-demo` and `gofastfrontend-mvp1` use React 18 + Vite 5 (still working)
+- ✅ **Latest repo**: `gofast-user-dashboard` uses React 19 + Vite 7 (recommended for new repos)
+
 **Working Examples**: 
-- Production: `gofastfrontend-mvp1`, `gofast-user-dashboard`
-- Scaffold: `gofastfounderoutlook`
+- Production: `gofastfrontend-mvp1` (React 18), `gofast-user-dashboard` (React 19)
+- Scaffold: `gofastfounderoutlook`, `gofastcompanyoutlook` (React 18)
 

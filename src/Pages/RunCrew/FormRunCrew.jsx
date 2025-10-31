@@ -7,7 +7,7 @@ const FormRunCrew = () => {
   const [formData, setFormData] = useState({
     crewName: 'Morning Warriors',
     description: 'Early morning runners who love coffee and crushing goals together. We meet at 6 AM sharp!',
-    crewCode: '',
+    crewCode: 'FAST123', // DEMO: Pre-filled so you can click through
     logo: null,
     logoPreview: null
   });

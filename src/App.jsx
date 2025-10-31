@@ -13,6 +13,7 @@ import FormRunCrew from "./Pages/RunCrew/FormRunCrew";
 import CrewDashboard from "./Pages/RunCrew/CrewDashboard";
 import CrewExplainer from "./Pages/RunCrew/CrewExplainer";
 import RunCrewSuccess from "./Pages/RunCrew/RunCrewSuccess";
+import RunCrewDemoNav from "./Pages/RunCrew/RunCrewDemoNav";
 
 // Merch Store (now in Shopping)
 import GoFastMerch from "./Pages/Shopping/GoFastMerch";
@@ -109,6 +110,7 @@ const App = () => (
               <Route path="/form-run-crew" element={<FormRunCrew />} />
               <Route path="/run-crew-success" element={<RunCrewSuccess />} />
               <Route path="/crew-dashboard" element={<CrewDashboard />} />
+              <Route path="/runcrew-demo-nav" element={<RunCrewDemoNav />} />
               
               {/* Merch Store */}
               <Route path="/merch-store" element={<GoFastMerch />} />

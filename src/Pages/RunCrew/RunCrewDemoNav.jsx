@@ -41,15 +41,6 @@ export default function RunCrewDemoNav() {
         { name: "Membership Manage", path: "/runcrew-membership-manage", description: "Manage memberships" },
       ]
     },
-    // RunClub (Related)
-    {
-      category: "RunClub",
-      color: "purple",
-      pages: [
-        { name: "Find Running Clubs", path: "/find-your-club", description: "Browse clubs" },
-        { name: "Club Detail", path: "/club-detail/1", description: "Club detail page" },
-      ]
-    }
   ];
 
   const getColorClasses = (color) => {

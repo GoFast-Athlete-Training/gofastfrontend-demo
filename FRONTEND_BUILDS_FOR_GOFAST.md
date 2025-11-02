@@ -712,12 +712,108 @@ CompanyTasks.jsx (HydratedPage)
 
 ## Common Patterns Across All Apps
 
+### Page Header Component (Standardized Top-of-Page Pattern)
+
+**REQUIRED**: All pages should use the standardized `PageHeader` component for consistent top-of-page structure.
+
+**Location**: `src/components/PageHeader.jsx`
+
+**Component Structure**:
+```javascript
+import PageHeader from '../components/PageHeader';
+
+export default function MyPage() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <PageHeader
+        title="Page Title"
+        subtitle="Optional subtitle text"
+        backTo="/previous-page"
+        backLabel="Back to Previous"
+        actions={<button>Optional Action</button>}
+      />
+      
+      {/* Page content below */}
+    </div>
+  );
+}
+```
+
+**Props**:
+- `title` (required): Main page title (h1, 4xl font-bold)
+- `subtitle` (optional): Description text below title (text-lg, gray-600)
+- `backTo` (optional): Route path for back navigation link
+- `backLabel` (optional): Text for back link (default: "Back")
+- `actions` (optional): React elements for action buttons (right side of header)
+
+**Standard Pattern**:
+1. ✅ **Back Link**: Always include if not on main hub (`/`)
+2. ✅ **Title**: Large, bold, descriptive page title
+3. ✅ **Subtitle**: Brief description of page purpose (optional but recommended)
+4. ✅ **Actions**: Optional action buttons on right side (Save, Export, etc.)
+
+**Example Implementation**:
+```javascript
+// src/components/PageHeader.jsx
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
+
+export default function PageHeader({ 
+  title, 
+  subtitle, 
+  backTo, 
+  backLabel = 'Back',
+  actions
+}) {
+  return (
+    <div className="mb-8">
+      {backTo && (
+        <Link
+          to={backTo}
+          className="text-sm text-gray-600 hover:text-gray-900 mb-6 inline-flex items-center gap-1"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {backLabel}
+        </Link>
+      )}
+      
+      <div className="flex items-start justify-between">
+        <div className="flex-1">
+          <h1 className="text-4xl font-bold mb-2">{title}</h1>
+          {subtitle && <p className="text-gray-600 text-lg">{subtitle}</p>}
+        </div>
+        
+        {actions && <div className="flex items-center gap-3">{actions}</div>}
+      </div>
+    </div>
+  );
+}
+```
+
+**Why This Pattern?**:
+- ✅ Consistent top-of-page structure across all pages
+- ✅ Standardized back navigation
+- ✅ Clear visual hierarchy (title → subtitle → content)
+- ✅ Space for action buttons when needed
+- ✅ Responsive layout (stacks on mobile)
+
+**When to Use**:
+- ✅ **All feature pages** (not main hub pages)
+- ✅ **Detail pages** (view/edit individual items)
+- ✅ **Form pages** (create/edit forms)
+- ✅ **Dashboard pages** (analytics, overview pages)
+
+**When NOT to Use**:
+- ❌ Main hub page (`/`) - hub pages have their own header style
+- ❌ Auth/login pages - special layout
+
 ### UI Components (shadcn/ui)
 Standard component library used across all apps:
 - `components/ui/button.jsx`
 - `components/ui/card.jsx`
 - `components/ui/input.jsx`
 - `components/ui/table.jsx`
+- `components/PageHeader.jsx` ⭐ **Standardized page header**
 
 ### Styling
 - **Tailwind CSS** for all styling

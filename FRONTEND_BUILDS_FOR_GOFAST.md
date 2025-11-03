@@ -848,31 +848,61 @@ User clicks "Company Tasks" card → "/company-tasks" route
 - Use `fetch` or `axios` for API calls
 - Store hydrated data in `localStorage` for caching
 
-### Hydration Hooks Pattern
+### Data Loading Patterns
 
-**CRITICAL**: Hydration hooks MUST call backend APIs, not use mock data.
-
-**Standard Pattern**:
+**FOR DEMO APPS** (User-Facing Demo, no backend):
 ```javascript
-// ❌ DON'T: Mock data in hooks
-const mockData = { ... };
-const data = mockData; // NO!
+// ✅ DO: Just hardcode data directly in the component
+const Dashboard = () => {
+  const currentLesson = {
+    week: 7,
+    weekFocus: 'Dependability & Loyalty',
+    date: 'Wednesday, Nov. 5',
+    school: 'Discovery Elementary',
+    // ... rest of data
+  };
 
-// ✅ DO: Call backend API
-import { apiRequest } from '../lib/api.js';
-const url = parentApi.hydrate(parentId);
-const data = await apiRequest(url);
+  return (
+    <div>
+      <h1>{currentLesson.title}</h1>
+      {/* render UI */}
+    </div>
+  );
+};
 ```
 
-**Hook Structure**:
+**FOR PRODUCTION APPS** (with backend integration):
+```javascript
+// ✅ DO: Use hooks that call backend APIs
+import { useHydrateParent } from '../hooks/useHydrateParent.js';
+
+const Dashboard = () => {
+  const { currentLesson, loading } = useHydrateParent(parentId);
+  
+  if (loading) return <Loading />;
+  
+  return (
+    <div>
+      <h1>{currentLesson.title}</h1>
+      {/* render UI */}
+    </div>
+  );
+};
+```
+
+**Hydration Hooks Pattern** (Production apps only):
+
+**CRITICAL**: Only create hooks if you're building a production app with real backend integration. For demos, just hardcode data in the component.
+
+**Hook Structure** (Production):
 1. **Check localStorage cache first** (for fast initial render)
 2. **Call backend API** (to get fresh data)
 3. **Cache response to localStorage** (for future loads)
 4. **Handle errors gracefully** (fallback to cache if API fails)
 
-**Example Hook**:
+**Example Hook** (Production):
 ```javascript
-// src/hooks/useHydrateParent.js
+// src/hooks/useHydrateParent.js - ONLY for production apps
 import { useState, useEffect } from 'react';
 import { parentApi, apiRequest } from '../lib/api.js';
 
@@ -915,13 +945,13 @@ export const useHydrateParent = (parentId) => {
 ```
 
 **Key Points**:
+- ✅ **Demos**: Hardcode data directly in component - NO hooks needed
+- ✅ **Production**: Use hooks that call backend APIs
 - ✅ Use `lib/api.js` helpers (`apiRequest`, entity-specific API functions)
 - ✅ Entity-specific routes (not generic `/api/hydrate?type=X`)
 - ✅ localStorage cache key pattern: `{entity}_{id}_data`
 - ✅ Always hydrate on page load (cache is just for fast initial render)
 - ✅ Error handling with cache fallback
-
-**File Location**: `src/hooks/useHydrate[Entity].js`
 
 ---
 

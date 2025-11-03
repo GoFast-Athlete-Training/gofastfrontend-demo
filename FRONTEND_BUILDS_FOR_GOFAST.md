@@ -848,6 +848,81 @@ User clicks "Company Tasks" card → "/company-tasks" route
 - Use `fetch` or `axios` for API calls
 - Store hydrated data in `localStorage` for caching
 
+### Hydration Hooks Pattern
+
+**CRITICAL**: Hydration hooks MUST call backend APIs, not use mock data.
+
+**Standard Pattern**:
+```javascript
+// ❌ DON'T: Mock data in hooks
+const mockData = { ... };
+const data = mockData; // NO!
+
+// ✅ DO: Call backend API
+import { apiRequest } from '../lib/api.js';
+const url = parentApi.hydrate(parentId);
+const data = await apiRequest(url);
+```
+
+**Hook Structure**:
+1. **Check localStorage cache first** (for fast initial render)
+2. **Call backend API** (to get fresh data)
+3. **Cache response to localStorage** (for future loads)
+4. **Handle errors gracefully** (fallback to cache if API fails)
+
+**Example Hook**:
+```javascript
+// src/hooks/useHydrateParent.js
+import { useState, useEffect } from 'react';
+import { parentApi, apiRequest } from '../lib/api.js';
+
+export const useHydrateParent = (parentId) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const hydrate = async () => {
+      const cacheKey = `bgr_parent_${parentId}_data`;
+      
+      // 1. Check cache for fast render
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        setData(JSON.parse(cached));
+      }
+
+      try {
+        // 2. Call backend API
+        const url = parentApi.hydrate(parentId);
+        const data = await apiRequest(url);
+        
+        // 3. Set state and cache
+        setData(data);
+        localStorage.setItem(cacheKey, JSON.stringify(data));
+      } catch (err) {
+        // 4. Handle errors (use cache if available)
+        console.error('Hydration error:', err);
+        if (!cached) throw err;
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    hydrate();
+  }, [parentId]);
+
+  return { data, loading };
+};
+```
+
+**Key Points**:
+- ✅ Use `lib/api.js` helpers (`apiRequest`, entity-specific API functions)
+- ✅ Entity-specific routes (not generic `/api/hydrate?type=X`)
+- ✅ localStorage cache key pattern: `{entity}_{id}_data`
+- ✅ Always hydrate on page load (cache is just for fast initial render)
+- ✅ Error handling with cache fallback
+
+**File Location**: `src/hooks/useHydrate[Entity].js`
+
 ---
 
 ## CRM Frontend Build Pattern

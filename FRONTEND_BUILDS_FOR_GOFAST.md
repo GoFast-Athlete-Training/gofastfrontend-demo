@@ -892,7 +892,10 @@ const Dashboard = () => {
 
 **Hydration Hooks Pattern** (Production apps only):
 
-**CRITICAL**: Only create hooks if you're building a production app with real backend integration. For demos, just hardcode data in the component.
+**CRITICAL**: 
+- Only create hooks if you're building a production app with real backend integration
+- For demos, just hardcode data in the component
+- **NO AUTHENTICATION REQUIRED FOR HYDRATION** - hydration should be simple data fetching, not gated by auth
 
 **Hook Structure** (Production):
 1. **Check localStorage cache first** (for fast initial render)
@@ -903,6 +906,7 @@ const Dashboard = () => {
 **Example Hook** (Production):
 ```javascript
 // src/hooks/useHydrateParent.js - ONLY for production apps
+// NOTE: NO AUTHENTICATION - hydration is just data fetching
 import { useState, useEffect } from 'react';
 import { parentApi, apiRequest } from '../lib/api.js';
 
@@ -921,7 +925,7 @@ export const useHydrateParent = (parentId) => {
       }
 
       try {
-        // 2. Call backend API
+        // 2. Call backend API (NO AUTH REQUIRED - just fetch data)
         const url = parentApi.hydrate(parentId);
         const data = await apiRequest(url);
         

@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../api/axiosConfig';
 
 const FormRunCrew = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     crewName: 'Morning Warriors',
     description: 'Early morning runners who love coffee and crushing goals together. We meet at 6 AM sharp!',
@@ -49,7 +51,7 @@ const FormRunCrew = () => {
     fileInputRef.current?.click();
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.crewName.trim()) {
       alert('Please enter a crew name');
       return;
@@ -60,15 +62,77 @@ const FormRunCrew = () => {
       return;
     }
 
-    // Save to localStorage (demo)
-    localStorage.setItem('currentCrew', JSON.stringify({
-      ...formData,
-      logoPreview: null, // Don't store blob URLs
-      joinCode: formData.crewCode,
-      members: []
-    }));
+    // Get athleteId - try localStorage first, then check if we can get from auth
+    const athleteId = localStorage.getItem('athleteId');
+    
+    // If no athleteId, fallback to demo mode
+    if (!athleteId) {
+      console.warn('No athleteId found - using demo mode');
+      localStorage.setItem('currentCrew', JSON.stringify({
+        ...formData,
+        logoPreview: null, // Don't store blob URLs
+        joinCode: formData.crewCode,
+        members: []
+      }));
+      navigate('/run-crew-success');
+      return;
+    }
 
-    navigate('/run-crew-success');
+    setIsSubmitting(true);
+
+    try {
+      // Call API to create run crew
+      const response = await axiosInstance.post('/api/runcrew/create', {
+        name: formData.crewName.trim(),
+        joinCode: formData.crewCode.trim(),
+        description: formData.description?.trim() || null,
+        icon: formData.logoPreview ? null : formData.icon, // Use icon if no logo
+        logo: formData.logoPreview ? formData.logoPreview : null, // TODO: Upload logo if needed
+        athleteId: athleteId
+      });
+
+      if (response.data.success && response.data.runCrew) {
+        // Store created crew data
+        localStorage.setItem('currentCrew', JSON.stringify({
+          id: response.data.runCrew.id,
+          name: response.data.runCrew.name,
+          joinCode: response.data.runCrew.joinCode,
+          description: response.data.runCrew.description,
+          icon: response.data.runCrew.icon,
+          logo: response.data.runCrew.logo,
+          members: response.data.runCrew.memberships || [],
+          crewCode: response.data.runCrew.joinCode
+        }));
+
+        navigate('/run-crew-success');
+      } else {
+        throw new Error('Failed to create crew');
+      }
+    } catch (error) {
+      console.error('Error creating crew:', error);
+      
+      // Handle specific error cases
+      if (error.response?.status === 409) {
+        alert(error.response.data?.message || 'This join code is already taken. Please choose another.');
+      } else if (error.response?.status === 403) {
+        alert('Unauthorized. Please make sure you are logged in.');
+      } else if (error.response?.status === 400) {
+        alert(error.response.data?.message || 'Please check your input and try again.');
+      } else {
+        // Network error or backend down - fallback to demo mode
+        console.warn('API call failed - using demo mode fallback');
+        alert('Backend is currently unavailable. Using demo mode.');
+        localStorage.setItem('currentCrew', JSON.stringify({
+          ...formData,
+          logoPreview: null,
+          joinCode: formData.crewCode,
+          members: []
+        }));
+        navigate('/run-crew-success');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBack = () => {
@@ -214,9 +278,14 @@ const FormRunCrew = () => {
           <div className="text-center">
             <button
               onClick={handleSubmit}
-              className="bg-orange-500 text-white py-4 px-12 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg"
+              disabled={isSubmitting}
+              className={`bg-orange-500 text-white py-4 px-12 rounded-xl font-bold text-lg transition-colors shadow-lg ${
+                isSubmitting 
+                  ? 'opacity-50 cursor-not-allowed' 
+                  : 'hover:bg-orange-600'
+              }`}
             >
-              Create Crew
+              {isSubmitting ? 'Creating...' : 'Create Crew'}
             </button>
           </div>
         </div>

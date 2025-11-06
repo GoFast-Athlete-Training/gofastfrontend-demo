@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAuth } from 'firebase/auth';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://gofastbackend.onrender.com',
+  baseURL: 'https://gofastbackendv2-fall2025.onrender.com',
 });
 
 // Add Firebase token to all requests

@@ -54,7 +54,7 @@ const MatchingHome = () => {
         {/* Quick Actions */}
         <div className="space-y-4 mb-8">
           <button
-            onClick={() => navigate('/find')}
+            onClick={() => navigate('/find-matches')}
             className="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg flex items-center justify-center space-x-2"
           >
             <FaRunning className="w-5 h-5" />

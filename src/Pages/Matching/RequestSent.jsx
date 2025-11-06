@@ -6,7 +6,7 @@ const RequestSent = () => {
   const navigate = useNavigate();
 
   const handleBackToMatches = () => {
-    navigate('/find');
+    navigate('/find-matches');
   };
 
   const handleGoHome = () => {

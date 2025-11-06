@@ -54,7 +54,7 @@ const PreMatch = () => {
   };
 
   const handleSkip = () => {
-    navigate('/find');
+    navigate('/find-matches');
   };
 
   return (

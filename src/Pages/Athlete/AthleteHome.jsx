@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../../Components/NavBar';
+import axiosInstance from '../../api/axiosConfig';
 
 const AthleteHome = () => {
   const navigate = useNavigate();
+  const [hasCrews, setHasCrews] = useState(false);
+  const [myCrews, setMyCrews] = useState([]);
+  const [loadingCrews, setLoadingCrews] = useState(true);
+
+  // Fetch user's crews on component mount
+  useEffect(() => {
+    const fetchMyCrews = async () => {
+      try {
+        setLoadingCrews(true);
+        const response = await axiosInstance.get('/api/runcrew/mine');
+        
+        if (response.data.success && response.data.count > 0) {
+          setHasCrews(true);
+          setMyCrews(response.data.runCrews);
+        } else {
+          setHasCrews(false);
+          setMyCrews([]);
+        }
+      } catch (error) {
+        console.error('Error fetching crews:', error);
+        // If error, assume no crews and show create/join buttons
+        setHasCrews(false);
+        setMyCrews([]);
+      } finally {
+        setLoadingCrews(false);
+      }
+    };
+
+    fetchMyCrews();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -15,14 +46,36 @@ const AthleteHome = () => {
         
         {/* Main Navigation Grid */}
         <div className="grid grid-cols-2 gap-4 mb-8">
-          <button
-            onClick={() => navigate('/crew')}
-            className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow text-left"
-          >
-            <div className="text-4xl mb-3">👥</div>
-            <h3 className="text-xl font-bold mb-1">My Crew</h3>
-            <p className="text-blue-100 text-sm">Arlington Running Club</p>
-          </button>
+          {/* RunCrew Card - Conditional based on whether user has crews */}
+          {loadingCrews ? (
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-lg text-left">
+              <div className="text-4xl mb-3">👥</div>
+              <h3 className="text-xl font-bold mb-1">Loading...</h3>
+              <p className="text-blue-100 text-sm">Checking your crews</p>
+            </div>
+          ) : hasCrews ? (
+            <button
+              onClick={() => navigate('/runcrew-central')}
+              className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow text-left"
+            >
+              <div className="text-4xl mb-3">👥</div>
+              <h3 className="text-xl font-bold mb-1">My Run Crew</h3>
+              <p className="text-blue-100 text-sm">
+                {myCrews.length === 1 
+                  ? myCrews[0].name 
+                  : `${myCrews.length} Crews`}
+              </p>
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate('/join-or-start-crew')}
+              className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow text-left"
+            >
+              <div className="text-4xl mb-3">👥</div>
+              <h3 className="text-xl font-bold mb-1">Start Your Crew</h3>
+              <p className="text-blue-100 text-sm">Create or join a RunCrew</p>
+            </button>
+          )}
 
           <button
             onClick={() => navigate('/matching-home')}

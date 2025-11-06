@@ -81,7 +81,7 @@ const RequestReceived = () => {
             <h3 className="text-lg font-bold text-gray-900 mb-2">No requests yet</h3>
             <p className="text-gray-600 mb-6">Keep swiping to find matches!</p>
             <button
-              onClick={() => navigate('/find')}
+              onClick={() => navigate('/find-matches')}
               className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600"
             >
               Find Matches

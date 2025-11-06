@@ -16,7 +16,7 @@ const YourePaired = () => {
   };
 
   const handleFindMore = () => {
-    navigate('/find');
+    navigate('/find-matches');
   };
 
   return (

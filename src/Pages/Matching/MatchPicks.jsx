@@ -167,7 +167,7 @@ const MatchPicks = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-8">
           <button
-            onClick={() => navigate('/find')}
+            onClick={() => navigate('/find-matches')}
             className="bg-white text-gray-900 py-3 px-6 rounded-lg hover:bg-gray-50 transition-colors shadow-sm border border-gray-200"
           >
             Browse More Matches

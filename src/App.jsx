@@ -109,6 +109,7 @@ const App = () => (
               {/* Main Entry Point */}
               <Route path="/" element={<StartHereExplainer />} />
               <Route path="/connect" element={<Connect />} />
+              <Route path="/crew" element={<JoinOrStartCrewNoExplainer />} />
               <Route path="/crew-explainer" element={<CrewExplainer />} />
               <Route path="/start-run-crew" element={<StartRunCrew />} />
               <Route path="/join-or-start-crew" element={<JoinOrStartCrewNoExplainer />} />

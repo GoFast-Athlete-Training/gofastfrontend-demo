@@ -27,7 +27,7 @@ const MatchProfile = () => {
   };
 
   const handleBack = () => {
-    navigate('/find');
+    navigate('/find-matches');
   };
 
   return (

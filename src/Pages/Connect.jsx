@@ -5,11 +5,7 @@ const Connect = () => {
   const navigate = useNavigate();
 
   const handleMatch = () => {
-    navigate('/find');
-  };
-
-  const handleStartRunCrew = () => {
-    navigate('/crew-explainer');
+    navigate('/find-matches');
   };
 
   const handleJoinClub = () => {
@@ -17,7 +13,7 @@ const Connect = () => {
   };
 
   const handleBack = () => {
-    navigate('/start');
+    navigate('/');
   };
 
   return (
@@ -51,23 +47,7 @@ const Connect = () => {
         </div>
 
         {/* Main Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {/* Start a Run Crew */}
-          <button
-            onClick={handleStartRunCrew}
-            className="bg-white border-2 border-orange-200 hover:border-orange-400 text-gray-900 font-bold py-6 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 text-left"
-          >
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                <span className="text-2xl">👥</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Start a Run Crew</h3>
-                <p className="text-gray-600">Create your own running group</p>
-              </div>
-            </div>
-          </button>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-3xl mx-auto">
           {/* Join a Run Club */}
           <button
             onClick={handleJoinClub}

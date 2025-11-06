@@ -82,7 +82,7 @@ const Crew = () => {
             </div>
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => navigate('/find')}
+                onClick={() => navigate('/find-matches')}
                 className="text-gray-600 hover:text-gray-800"
               >
                 Find Matches

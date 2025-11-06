@@ -6,7 +6,7 @@ const PointsExplainer = () => {
   const [currentPoints] = useState(0);
 
   const handleFindMatches = () => {
-    navigate('/find');
+    navigate('/find-matches');
   };
 
   const handleBackToHome = () => {

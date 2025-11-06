@@ -6,7 +6,7 @@ const MatchProfileSuccess = () => {
   const navigate = useNavigate();
 
   const handleFindMatches = () => {
-    navigate('/find');
+    navigate('/find-matches');
   };
 
   return (

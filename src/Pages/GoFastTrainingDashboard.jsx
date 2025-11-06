@@ -262,7 +262,7 @@ const GoFastDashboard = () => {
                 </div>
               </div>
               <div
-                onClick={() => navigate("/find")}
+                onClick={() => navigate("/find-matches")}
                 className="bg-white/20 backdrop-blur-sm rounded-lg p-4 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
               >
                 <div className="text-center">

@@ -1,6 +1,6 @@
 # GoFast Athlete Activity UX
 
-**Last Updated**: January 2025  
+**Last Updated**: November 2025  
 **Purpose**: UX architecture for athlete activity tracking via Garmin/Strava integrations
 
 ---
@@ -176,6 +176,8 @@ Available for:
   - Training Integration (Use Case 2)
   - Miles Aggregator (Use Case 3)
 ```
+
+**Database Table**: `athlete_activities` (Prisma model: `AthleteActivity`)
 
 ---
 

@@ -179,6 +179,93 @@ Available for:
 
 ---
 
+## API Routes Reference
+
+### Activity Routes (Fetch Activities)
+
+**Location**: `routes/Athlete/athleteActivitiesRoute.js`
+
+**Endpoints**:
+- `GET /api/athlete/activities` - Fetch ALL activities (all athletes)
+  - Query params: `limit`, `offset`, `sortBy`, `sortOrder`
+  - Returns: All activities with athlete relation
+- `GET /api/athlete/:athleteId/activities` - Fetch activities by specific athleteId
+  - Query params: `limit`, `offset`, `sortBy`, `sortOrder`
+  - Returns: Activities for specific athlete + athlete info
+
+**Response Format**:
+```javascript
+{
+  success: true,
+  athleteId: "athlete123", // Only for /:athleteId/activities
+  athlete: { id, firstName, lastName, email }, // Only for /:athleteId/activities
+  activities: [
+    {
+      id: "activity123",
+      athleteId: "athlete123",
+      sourceActivityId: "garmin_activity_456",
+      source: "garmin",
+      activityType: "running",
+      activityName: "Morning Run",
+      startTime: "2025-01-15T06:30:00Z",
+      duration: 3600,
+      distance: 5000,
+      averageSpeed: 3.5,
+      calories: 450,
+      averageHeartRate: 165,
+      maxHeartRate: 180,
+      elevationGain: 245,
+      steps: 6500,
+      // ... other fields
+    }
+  ],
+  count: 10,
+  totalCount: 25,
+  limit: 100,
+  offset: 0
+}
+```
+
+### Garmin Integration Routes
+
+**Location**: `routes/Garmin/`
+
+#### OAuth & Connection Routes
+- `GET /api/garmin/auth-url` - Generate OAuth URL (garminUrlGenRoute.js)
+- `GET /api/garmin/callback` - OAuth callback handler (garminCodeCatchRoute.js)
+- `GET /api/garmin/exchange` - Token exchange (garminCodeCatchRoute.js)
+- `GET /api/garmin/user` - Get Garmin user profile (garminUserProfileRoute.js)
+
+#### Status & Permissions Routes
+- `GET /api/garmin/status?athleteId=xxx` - Get connection status and scopes (garminPermissionsRoute.js)
+- `PATCH /api/garmin/scopes` - Update scopes (garminPermissionsRoute.js)
+- `GET /api/garmin/permissions/check` - Check permissions (garminPermissionsRoute.js)
+- `POST /api/garmin/disconnect` - Disconnect Garmin (programmatic deregistration) (garminPermissionsRoute.js)
+
+#### Webhook Routes (Garmin → GoFast)
+- `GET /api/garmin/ping` - Health check for Garmin (garminActivityRoute.js)
+- `POST /api/garmin/activity` - Activity summary webhook (garminActivityRoute.js)
+  - Receives: `{ activities: [...] }` array
+  - Maps and stores to `AthleteActivity` table
+- `POST /api/garmin/activities` - Manually updated activities webhook (garminActivityRoute.js)
+  - Same as `/activity` but for manually updated activities
+- `POST /api/garmin/activity-details` - Activity details webhook (garminActivityDetailsRoute.js)
+  - Receives: Detailed activity data (laps, splits, HR zones)
+  - Updates existing activity's `detailData` field
+- `POST /api/garmin/permissions` - Permission change webhook (garminPermissionsRoute.js)
+- `PUT /api/garmin/permissions` - Permission change webhook (alternative) (garminPermissionsRoute.js)
+- `POST /api/garmin/webhook` - Generic webhook handler (garminPermissionsRoute.js)
+- `POST /api/garmin/deregistration` - User deregistration webhook (garminDeregistrationRoute.js)
+- `PUT /api/garmin/deregistration` - User deregistration webhook (alternative) (garminDeregistrationRoute.js)
+
+#### Manual Sync Routes (TODO - Not Implemented)
+- `GET /api/garmin/activities?userId=xxx&accessToken=xxx` - Fetch activities from Garmin API (TODO)
+- `POST /api/garmin/activity/sync` - Manual activity sync (TODO)
+
+**Note**: Manual sync routes exist but are not implemented (return TODO responses).
+
+---
+
 ## Implementation Status
 
 ### Backend ✅
